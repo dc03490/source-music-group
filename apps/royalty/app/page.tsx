@@ -9,6 +9,7 @@ import {
   FAQ,
   FeatureCard,
   Footer,
+  SkipLink,
   Lead,
   PhoneFrame,
   PricingCard,
@@ -58,8 +59,9 @@ const faqItems = [
 export default function Home() {
   return (
     <>
+      <SkipLink />
       <EcosystemNav active="royalty" sub="Royalty" cta={{ label: "Join Early Access", href: "#audit" }} />
-      <main>
+      <main id="main">
         {/* ============ HERO ============ */}
         <Section className="relative overflow-hidden pb-16 pt-20 sm:pt-24">
           <div

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Pixel-style "S" mark — gold on the Source near-black, echoing the Press Start 2P wordmark. -->
+  <rect width="32" height="32" rx="7" fill="#0a0a0b"/>
+  <g fill="#e8a33d">
+    <rect x="6" y="4" width="20" height="5"/>
+    <rect x="6" y="9" width="5" height="5"/>
+    <rect x="6" y="14" width="20" height="5"/>
+    <rect x="21" y="19" width="5" height="5"/>
+    <rect x="6" y="24" width="20" height="5"/>
+  </g>
+</svg>

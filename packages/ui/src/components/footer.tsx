@@ -42,6 +42,8 @@ const productLinks = [
 const companyLinks = [
   { label: "About", href: `${SITES.source.url}/about` },
   { label: "Contact", href: `${SITES.source.url}/contact` },
+  { label: "Privacy", href: `${SITES.source.url}/privacy` },
+  { label: "Terms", href: `${SITES.source.url}/terms` },
 ];
 
 export function Footer() {
@@ -58,7 +60,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-medium uppercase tracking-[0.14em] text-subtle">Ecosystem</h4>
+            <h2 className="text-xs font-medium uppercase tracking-[0.14em] text-subtle">Ecosystem</h2>
             <ul className="mt-4 space-y-3">
               {productLinks.map((l) => (
                 <li key={l.label}>
@@ -71,7 +73,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-medium uppercase tracking-[0.14em] text-subtle">Company</h4>
+            <h2 className="text-xs font-medium uppercase tracking-[0.14em] text-subtle">Company</h2>
             <ul className="mt-4 space-y-3">
               {companyLinks.map((l) => (
                 <li key={l.label}>
@@ -85,9 +87,14 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-start justify-between gap-4 border-t border-border py-8 sm:flex-row sm:items-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Source. All rights reserved.
-          </p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Source. All rights reserved.
+            </p>
+            <p className="font-pixel text-[0.5rem] uppercase tracking-[0.14em] text-subtle">
+              A Source Company
+            </p>
+          </div>
           <p className="text-sm text-subtle">Own your music. Own your royalties.</p>
         </div>
       </Container>

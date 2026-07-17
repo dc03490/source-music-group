@@ -7,6 +7,7 @@ import {
   Eyebrow,
   FeatureCard,
   Footer,
+  SkipLink,
   Lead,
   Reveal,
   Section,
@@ -35,8 +36,9 @@ const steps = [
 export default function Home() {
   return (
     <>
+      <SkipLink />
       <EcosystemNav active="publishing" sub="Publishing Co." />
-      <main>
+      <main id="main">
         {/* ============ HERO ============ */}
         <Section className="relative overflow-hidden pb-20 pt-24 sm:pt-32">
           <div

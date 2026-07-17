@@ -25,6 +25,7 @@ export {
   ScreenScan,
   ScreenCollect,
 } from "./components/device";
+export { SkipLink } from "./components/a11y";
 export { EcosystemNav } from "./components/nav";
 export { Footer, CrossPromo } from "./components/footer";
 export { FAQ, type FaqItem } from "./components/faq";

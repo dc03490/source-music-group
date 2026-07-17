@@ -11,21 +11,31 @@ const title = "Source — Own Your Music. Own Your Royalties.";
 const description =
   "The Source ecosystem helps creators release music, collect royalties, and build lasting careers. Royalty intelligence, publishing administration, and a modern record label — one platform.";
 
+const ogImage = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: "Source — a music rights & music technology company",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITES.source.url),
   title,
   description,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "Source",
     title,
     description,
     url: SITES.source.url,
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
+    images: [ogImage],
   },
 };
 

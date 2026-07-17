@@ -4,8 +4,10 @@
 /* Scan the shared UI package so its Tailwind classes are generated. */
 @source "../../../packages/ui/src";
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 body {
   @apply bg-background text-foreground antialiased;

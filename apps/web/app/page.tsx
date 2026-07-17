@@ -14,6 +14,7 @@ import {
   Stagger,
   StaggerItem,
   Globe,
+  SkipLink,
   SITES,
 } from "@source/ui";
 import {
@@ -29,9 +30,10 @@ import {
 export default function Home() {
   return (
     <>
+      <SkipLink />
       <EcosystemNav cta={{ label: "Explore the companies", href: "#companies" }} />
 
-      <main>
+      <main id="main">
         {/* ============ HERO ============ */}
         <Section className="relative overflow-hidden pb-16 pt-24 sm:pb-24 sm:pt-32">
           {/* Legacy switcher globe as the hero backdrop */}
@@ -79,7 +81,11 @@ export default function Home() {
         {/* ============ THREE ECOSYSTEM CARDS ============ */}
         <Section id="companies" className="pt-4 sm:pt-8">
           <Container>
-            <Stagger className="grid gap-5 lg:grid-cols-3">
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>The Companies</Eyebrow>
+              <SectionTitle className="mt-3">Three companies. One system.</SectionTitle>
+            </Reveal>
+            <Stagger className="mt-12 grid gap-5 lg:grid-cols-3">
               <StaggerItem>
                 <EcosystemCard
                   eyebrow="Source Royalty"
@@ -166,7 +172,7 @@ export default function Home() {
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>The Ecosystem</Eyebrow>
-              <SectionTitle className="mt-3">Three companies. One system.</SectionTitle>
+              <SectionTitle className="mt-3">How the companies work together</SectionTitle>
               <Lead className="mt-4">
                 Each Source company stands on its own — together they cover the full life of a song,
                 from release to royalty.
@@ -190,7 +196,7 @@ export default function Home() {
                   },
                   {
                     icon: Radar,
-                    step: "Maximize",
+                    step: "Understand",
                     name: SITES.royalty.name,
                     text: "Review your catalog with AI and spot potential gaps that may need correction or follow-up.",
                   },

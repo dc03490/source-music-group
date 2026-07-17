@@ -25,6 +25,8 @@
   --gold: #e8a33d;
   --gold-2: #f2b441;
   --magenta: #e0218a;
+  /* Lightened magenta for small text on dark backgrounds (WCAG AA ≈5.7:1) */
+  --magenta-text: #e94f9f;
   --teal: #1dd3b0;
   --blue: #2e6bff;
   --purple: #7b2ff7;
@@ -58,6 +60,7 @@
   --color-gold: var(--gold);
   --color-gold-2: var(--gold-2);
   --color-magenta: var(--magenta);
+  --color-magenta-text: var(--magenta-text);
   --color-teal: var(--teal);
   --color-blue: var(--blue);
   --color-purple: var(--purple);

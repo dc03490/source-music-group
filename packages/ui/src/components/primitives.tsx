@@ -28,7 +28,7 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
   return (
     <span
       className={cn(
-        "font-pixel text-[0.62rem] uppercase leading-relaxed tracking-[0.18em] text-magenta",
+        "font-pixel text-[0.62rem] uppercase leading-relaxed tracking-[0.18em] text-magenta-text",
         className,
       )}
     >
@@ -88,7 +88,7 @@ export function Wordmark({
       <span className="inline-flex flex-col leading-none">
         <span className="font-pixel text-[0.8rem] uppercase tracking-[0.08em] text-gold">Source</span>
         {sub ? (
-          <span className="mt-1 font-pixel text-[0.45rem] uppercase tracking-[0.14em] text-magenta">{sub}</span>
+          <span className="mt-1 font-pixel text-[0.45rem] uppercase tracking-[0.14em] text-magenta-text">{sub}</span>
         ) : null}
       </span>
     </span>
