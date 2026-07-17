@@ -23,6 +23,9 @@ interface GlobeProps {
   interactive?: boolean;
   geoUrl?: string;
   className?: string;
+  /** Opt-in accent markers at [lng, lat] that slowly pulse (static under
+      prefers-reduced-motion). */
+  accentDots?: { color: string; coords: [number, number] }[];
 }
 
 type Ring = [number, number][];
@@ -90,6 +93,7 @@ export function Globe({
   interactive = false,
   geoUrl = "/assets/ne_110m_land.json",
   className,
+  accentDots,
 }: GlobeProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -119,7 +123,9 @@ export function Globe({
       W = Math.max(1, rect.width);
       H = Math.max(1, rect.height);
       baseRadius = Math.min(W, H) / 2.2;
-      const dpr = window.devicePixelRatio || 1;
+      /* Cap DPR at 2 — 3x canvases on high-density phones burn CPU/battery
+         for no visible gain on a decorative backdrop. */
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = W * dpr;
       canvas.height = H * dpr;
       context!.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -167,6 +173,26 @@ export function Globe({
           }
         }
       }
+
+      /* Accent markers: slow (~3.5s) sine pulse on radius/alpha, phase-offset
+         per dot. Rendering rides the existing spin timer, so pulses pause
+         off-screen with the IntersectionObserver and stay static (base
+         radius/alpha) under prefers-reduced-motion, where the timer never
+         re-renders after the initial frame. */
+      if (accentDots?.length) {
+        const t = performance.now() / 1000;
+        for (let i = 0; i < accentDots.length; i++) {
+          const a = accentDots[i]!;
+          const pr = projection(a.coords);
+          if (!pr || pr[0] < 0 || pr[0] > W || pr[1] < 0 || pr[1] > H) continue;
+          const pulse = autoRotate ? (Math.sin((t / 3.5) * 2 * Math.PI + i * 1.3) + 1) / 2 : 0.5;
+          context.beginPath();
+          context.fillStyle = a.color;
+          context.globalAlpha = 0.55 + pulse * 0.45;
+          context.arc(pr[0], pr[1], (2.2 + pulse * 1.4) * sf, 0, 2 * Math.PI);
+          context.fill();
+        }
+      }
       context.globalAlpha = 1;
     }
 
@@ -181,9 +207,14 @@ export function Globe({
       .then((data) => {
         if (disposed) return;
         landFeatures = data;
+        /* Sparser halftone on small screens: fewer dots = lighter frames on
+           mobile CPUs. Evaluated once at dot generation — dots are not
+           regenerated on resize (a mid-session breakpoint change is rare and
+           only affects density, not correctness). */
+        const spacing = density * (window.innerWidth < 640 ? 1.5 : 1);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         data.features.forEach((f: any) => {
-          for (const pt of generateDots(f, density)) allDots.push(pt);
+          for (const pt of generateDots(f, spacing)) allDots.push(pt);
         });
         render();
       })
@@ -272,7 +303,8 @@ export function Globe({
       canvas.removeEventListener("mousedown", onMouseDown);
       canvas.removeEventListener("wheel", onWheel);
     };
-  }, [stroke, dot, ocean, strokeAlpha, dotAlpha, speed, density, interactive, geoUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stroke, dot, ocean, strokeAlpha, dotAlpha, speed, density, interactive, geoUrl, JSON.stringify(accentDots)]);
 
   return (
     <canvas

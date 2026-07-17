@@ -28,7 +28,17 @@ import {
   Sparkles,
 } from "lucide-react";
 import { AudienceGrid } from "../components/audience-grid";
+import { CompanySelector } from "../components/company-selector";
 import { StatusList } from "../components/status-list";
+
+/* Hero globe accent pulses — music-capital coordinates, brand accent cycle. */
+const GLOBE_ACCENTS = [
+  { color: "#2e6bff", coords: [-118.24, 34.05] as [number, number] }, // Los Angeles
+  { color: "#1dd3b0", coords: [-0.13, 51.51] as [number, number] }, // London
+  { color: "#e8a33d", coords: [3.38, 6.52] as [number, number] }, // Lagos
+  { color: "#e0218a", coords: [139.69, 35.68] as [number, number] }, // Tokyo
+  { color: "#7b2ff7", coords: [-46.63, -23.55] as [number, number] }, // São Paulo
+];
 
 export default function Home() {
   return (
@@ -41,7 +51,15 @@ export default function Home() {
         <Section className="relative overflow-hidden pb-10 pt-20 sm:pb-14 sm:pt-24">
           {/* Legacy switcher globe as the hero backdrop */}
           <div aria-hidden className="pointer-events-none absolute inset-0">
-            <Globe stroke="#e0218a" dot="#1dd3b0" strokeAlpha={0.5} dotAlpha={0.45} speed={0.18} density={24} />
+            <Globe
+              stroke="#e0218a"
+              dot="#1dd3b0"
+              strokeAlpha={0.5}
+              dotAlpha={0.45}
+              speed={0.18}
+              density={24}
+              accentDots={GLOBE_ACCENTS}
+            />
           </div>
           {/* Radial scrim so headline text stays readable over the globe */}
           <div
@@ -236,6 +254,19 @@ export default function Home() {
                 ))}
               </div>
             </Reveal>
+          </Container>
+        </Section>
+
+        {/* ============ COMPANY SELECTOR ============ */}
+        <Section id="selector">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>Not sure?</Eyebrow>
+              <SectionTitle className="mt-3">Answer two questions.</SectionTitle>
+            </Reveal>
+            <div className="mt-12">
+              <CompanySelector />
+            </div>
           </Container>
         </Section>
 
