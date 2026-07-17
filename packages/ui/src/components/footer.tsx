@@ -42,7 +42,6 @@ const productLinks = [
 const companyLinks = [
   { label: "About", href: `${SITES.source.url}/about` },
   { label: "Contact", href: `${SITES.source.url}/contact` },
-  { label: "Sign In", href: `${SITES.royalty.url}/sign-in` },
 ];
 
 export function Footer() {

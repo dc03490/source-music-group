@@ -3,19 +3,22 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "../lib/cn";
-import { NAV_LINKS, SIGN_IN_HREF, SITES, type SiteKey } from "../content/ecosystem";
+import { NAV_LINKS, SITES, type SiteKey } from "../content/ecosystem";
 import { ButtonLink } from "./button";
 import { Wordmark } from "./primitives";
 
-/** Shared ecosystem navigation. Pass `active` to highlight the current site. */
+/** Shared ecosystem navigation. Pass `active` to highlight the current site.
+    `cta` overrides the header call-to-action per site. */
 export function EcosystemNav({
   active,
   sub,
   logoSrc,
+  cta = { label: "Explore the companies", href: `${SITES.source.url}#companies` },
 }: {
   active?: SiteKey;
   sub?: string;
   logoSrc?: string;
+  cta?: { label: string; href: string };
 }) {
   const [open, setOpen] = useState(false);
 
@@ -47,11 +50,8 @@ export function EcosystemNav({
         </div>
 
         <div className="hidden items-center gap-2 md:flex">
-          <a href={SIGN_IN_HREF} className="px-3 text-sm font-medium text-muted-foreground hover:text-foreground">
-            Sign In
-          </a>
-          <ButtonLink href={SITES.royalty.url} size="sm">
-            Start Free Audit
+          <ButtonLink href={cta.href} size="sm">
+            {cta.label}
           </ButtonLink>
         </div>
 
@@ -79,11 +79,8 @@ export function EcosystemNav({
               </a>
             ))}
             <div className="flex flex-col gap-2 pt-3">
-              <a href={SIGN_IN_HREF} className="px-3 py-2 text-sm font-medium text-muted-foreground">
-                Sign In
-              </a>
-              <ButtonLink href={SITES.royalty.url} size="sm">
-                Start Free Audit
+              <ButtonLink href={cta.href} size="sm" onClick={() => setOpen(false)}>
+                {cta.label}
               </ButtonLink>
             </div>
           </div>

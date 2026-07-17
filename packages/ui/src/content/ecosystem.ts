@@ -81,4 +81,3 @@ export const NAV_LINKS: NavLink[] = [
   { key: "contact", label: "Contact", href: `${SITES.source.url}/contact` },
 ];
 
-export const SIGN_IN_HREF = `${SITES.royalty.url}/sign-in`;

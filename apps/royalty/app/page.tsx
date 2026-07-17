@@ -58,7 +58,7 @@ const faqItems = [
 export default function Home() {
   return (
     <>
-      <EcosystemNav active="royalty" sub="Royalty" />
+      <EcosystemNav active="royalty" sub="Royalty" cta={{ label: "Join Early Access", href: "#audit" }} />
       <main>
         {/* ============ HERO ============ */}
         <Section className="relative overflow-hidden pb-16 pt-20 sm:pt-24">

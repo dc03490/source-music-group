@@ -8,13 +8,11 @@ import {
   FeatureCard,
   Footer,
   Lead,
-  LogoCloud,
   Reveal,
   Section,
   SectionTitle,
   Stagger,
   StaggerItem,
-  TestimonialCard,
   Globe,
   SITES,
 } from "@source/ui";
@@ -31,7 +29,7 @@ import {
 export default function Home() {
   return (
     <>
-      <EcosystemNav />
+      <EcosystemNav cta={{ label: "Explore the companies", href: "#companies" }} />
 
       <main>
         {/* ============ HERO ============ */}
@@ -67,11 +65,11 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.24}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink href="#ecosystem" size="lg">
+                <ButtonLink href="#companies" size="lg">
                   Explore the ecosystem
                 </ButtonLink>
                 <ButtonLink href={SITES.royalty.url} variant="secondary" size="lg">
-                  Start Free Audit
+                  Learn about Source Royalty
                 </ButtonLink>
               </div>
             </Reveal>
@@ -79,15 +77,15 @@ export default function Home() {
         </Section>
 
         {/* ============ THREE ECOSYSTEM CARDS ============ */}
-        <Section id="ecosystem" className="pt-4 sm:pt-8">
+        <Section id="companies" className="pt-4 sm:pt-8">
           <Container>
             <Stagger className="grid gap-5 lg:grid-cols-3">
               <StaggerItem>
                 <EcosystemCard
                   eyebrow="Source Royalty"
-                  title="Find Missing Royalties"
+                  title="Understand your royalties."
                   lines={["AI-powered royalty intelligence for your entire catalog."]}
-                  cta="Launch Platform"
+                  cta="Join the early access list"
                   href={SITES.royalty.url}
                   icon={Radar}
                   accent="blue"
@@ -97,7 +95,7 @@ export default function Home() {
                 <EcosystemCard
                   eyebrow="Source Publishing"
                   title="Protect your songs."
-                  lines={["Collect every royalty.", "Global publishing administration, done right."]}
+                  lines={["Registration, administration, and royalty-collection support for your compositions."]}
                   cta="Learn More"
                   href={SITES.publishing.url}
                   icon={ShieldCheck}
@@ -143,8 +141,8 @@ export default function Home() {
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="AI-native" icon={Sparkles}>
-                  Intelligence that reads statements, spots metadata issues, and surfaces missing
-                  income before you ask.
+                  Intelligence that reads statements, spots metadata issues, and flags data
+                  inconsistencies and possible unmatched royalties for review.
                 </FeatureCard>
               </StaggerItem>
               <StaggerItem>
@@ -188,13 +186,13 @@ export default function Home() {
                     icon: ShieldCheck,
                     step: "Protect",
                     name: SITES.publishing.name,
-                    text: "Register every work correctly and collect from every society, everywhere.",
+                    text: "Register every work correctly and coordinate collection across societies and territories.",
                   },
                   {
                     icon: Radar,
                     step: "Maximize",
                     name: SITES.royalty.name,
-                    text: "Audit your catalog with AI and recover the royalties you're owed.",
+                    text: "Review your catalog with AI and spot potential gaps that may need correction or follow-up.",
                   },
                 ].map((item, i) => (
                   <div key={item.step} className="relative">
@@ -221,65 +219,18 @@ export default function Home() {
           </Container>
         </Section>
 
-        {/* ============ TESTIMONIALS (placeholder) ============ */}
-        <Section id="testimonials" className="border-t border-border bg-card-muted/50">
-          <Container>
-            <Reveal className="mx-auto max-w-2xl text-center">
-              <Eyebrow>What creators say</Eyebrow>
-              <SectionTitle className="mt-3">Built with artists, not just for them.</SectionTitle>
-            </Reveal>
-            <Stagger className="mt-14 grid gap-5 lg:grid-cols-3">
-              <StaggerItem>
-                <TestimonialCard
-                  quote="Placeholder — a songwriter on discovering unregistered works and recovered royalties through Source."
-                  name="Artist Name"
-                  role="Songwriter · Placeholder"
-                />
-              </StaggerItem>
-              <StaggerItem>
-                <TestimonialCard
-                  quote="Placeholder — a producer on finally understanding where every dollar of catalog income comes from."
-                  name="Artist Name"
-                  role="Producer · Placeholder"
-                />
-              </StaggerItem>
-              <StaggerItem>
-                <TestimonialCard
-                  quote="Placeholder — a manager on running releases, publishing, and audits in one connected ecosystem."
-                  name="Artist Name"
-                  role="Manager · Placeholder"
-                />
-              </StaggerItem>
-            </Stagger>
-          </Container>
-        </Section>
-
-        {/* ============ PARTNERS (placeholder) ============ */}
-        <Section id="partners" className="py-14 sm:py-16">
-          <Container>
-            <Reveal>
-              <p className="text-center text-xs font-medium uppercase tracking-[0.14em] text-subtle">
-                Working across the industry — partners coming soon
-              </p>
-              <div className="mt-8">
-                <LogoCloud names={["Partner One", "Partner Two", "Partner Three", "Partner Four", "Partner Five"]} />
-              </div>
-            </Reveal>
-          </Container>
-        </Section>
-
         {/* ============ FINAL CTA ============ */}
         <Section className="border-t border-border">
           <Container className="text-center">
             <Reveal>
               <SectionTitle>Ready to see what your catalog is worth?</SectionTitle>
               <Lead className="mx-auto mt-4 max-w-lg">
-                Start with a free AI audit from Source Royalty — or explore the company that fits
-                where you are today.
+                Join the Source Royalty early access list — or explore the company that fits where
+                you are today.
               </Lead>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <ButtonLink href={SITES.royalty.url} size="lg">
-                  Start Free Audit
+                  Join the Royalty early access list
                 </ButtonLink>
                 <ButtonLink href={SITES.publishing.url} variant="secondary" size="lg">
                   Explore Publishing
