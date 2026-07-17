@@ -1,0 +1,1239 @@
+# Technical Quick Reference
+
+- **Monorepo:** pnpm (via corepack: `corepack pnpm`) + Turborepo. Apps: `apps/web` (parent
+  landing, port 3000), `apps/royalty` (3001), `apps/publishing` (3002), `apps/label` (3003).
+  Shared design system: `packages/ui` (`@source/ui`); tokens in
+  `packages/ui/src/styles/theme.css`; ecosystem URLs/nav in
+  `packages/ui/src/content/ecosystem.ts` (env-aware).
+- **Brand (locked):** dark-only neon — bg `#0a0a0b`, gold `#e8a33d` primary CTAs, magenta
+  `#e0218a`, teal `#1dd3b0`, blue `#2e6bff`, purple `#7b2ff7`, 4-color gradient
+  (`--grad`/`.grad-text`); Space Grotesk + "Press Start 2P" pixel accents, Geist Mono for data.
+- **Build/verify:** `corepack pnpm --filter @source/<app> build`; kill lingering port PIDs
+  before restarting (`lsof -ti :PORT | xargs kill -9`); headless-Chrome screenshots need
+  `--force-prefers-reduced-motion` + generous `--virtual-time-budget` or framer-motion
+  whileInView content captures blank.
+- **Deploys:** Vercel, one project per app (links stashed in `.vercel-links/<app>` — move to
+  `./.vercel`, `vercel deploy --prod --yes`, move back). Live: source-ecosystem /
+  source-royalty-app / source-publishing-app / source-music-group-app `.vercel.app`.
+- **Git:** work rides the `ecosystem` branch. NEVER push `origin/main` — GitHub Pages serves
+  the live legacy site (sourcemusicgrp.com) from it until domain cutover. Legacy static site
+  is archived in `archive/legacy-site/`.
+
+# Source Ecosystem Website Project Context
+
+## Project Overview
+
+This project includes four connected websites within the Source business ecosystem:
+
+1. **Source — Parent Company**
+2. **Source Royalty**
+3. **Source Music Group**
+4. **Source Publishing Company**
+
+Each website must have a distinct purpose, audience, and conversion journey while still feeling like part of one coordinated brand family.
+
+The websites should not look identical, but they should share enough visual, strategic, and structural consistency that visitors understand the companies are connected.
+
+## Ecosystem Structure
+
+### Source — Parent Company
+
+Source is the parent brand and central entry point for the broader business ecosystem.
+
+Its purpose is to introduce the Source organization, explain the relationship between its companies, establish trust, and direct visitors to the appropriate business.
+
+The parent website should help visitors quickly determine whether they need:
+
+* Royalty identification and recovery services
+* Artist development and label services
+* Music publishing and songwriter services
+* Strategic partnerships or business information
+
+### Source Royalty
+
+Source Royalty is the technology-enabled royalty identification, monitoring, administration, and recovery platform.
+
+Its purpose is to help music creators and rights holders better understand where their money comes from, identify potential missing or unmatched royalties, organize royalty information, and improve collection visibility.
+
+The platform may serve:
+
+* Recording artists
+* Songwriters
+* Producers
+* Independent labels
+* Publishers
+* Managers
+* Rights holders
+* Estates and catalog owners
+
+Source Royalty should be positioned as a trusted technology and service platform rather than as a guaranteed royalty recovery service.
+
+The website must avoid making unsupported claims that money has been located or guaranteed before data has been properly analyzed.
+
+### Source Music Group
+
+Source Music Group is the music company and artist-development division.
+
+Its purpose is to discover, develop, market, and support artists while building long-term careers and valuable music assets.
+
+The company may provide:
+
+* Artist development
+* Release strategy
+* Project management
+* Marketing coordination
+* Distribution support
+* Brand development
+* Catalog development
+* Strategic partnerships
+* Label services
+* Music business guidance
+
+The website should establish Source Music Group as selective, strategic, culturally credible, and artist-focused.
+
+### Source Publishing Company
+
+Source Publishing Company is the publishing administration, songwriter-development, and composition-rights division.
+
+Its purpose is to help songwriters, producers, composers, and rights holders manage, register, administer, protect, and monetize their compositions.
+
+The company may provide:
+
+* Song registration support
+* Publishing administration
+* Catalog management
+* Royalty collection support
+* Split documentation
+* Songwriter development
+* Producer support
+* Sync opportunity preparation
+* Rights-management guidance
+* Catalog acquisition or partnership opportunities
+
+The website should clearly explain the difference between master-recording rights and composition or publishing rights.
+
+---
+
+# Shared Business Vision
+
+The Source ecosystem exists to help music creators build careers, protect ownership, understand their rights, and collect the revenue generated by their work.
+
+The broader vision is to combine:
+
+* Music-industry expertise
+* Technology
+* Data visibility
+* Artist development
+* Rights administration
+* Royalty intelligence
+* Long-term catalog value
+
+The websites should communicate that Source is building an integrated music infrastructure company rather than a collection of unrelated businesses.
+
+---
+
+# Shared Brand Positioning
+
+## Core Brand Promise
+
+Source helps music creators understand, develop, protect, and monetize the value of their work.
+
+## Brand Personality
+
+The Source ecosystem should feel:
+
+* Premium
+* Intelligent
+* Modern
+* Credible
+* Artist-centered
+* Technology-enabled
+* Transparent
+* Strategic
+* Culturally aware
+* Forward-looking
+
+The Source ecosystem should not feel:
+
+* Generic
+* Amateur
+* Overly corporate
+* Predatory
+* Confusing
+* Overly technical
+* Like a traditional outdated record label
+* Like a royalty-recovery scam
+* Like four unrelated companies
+* Like a copied SaaS template
+
+## Visual Direction
+
+The websites should share a recognizable visual foundation through:
+
+* Related typography
+* Consistent spacing principles
+* Coordinated color usage
+* Related navigation behavior
+* Shared footer structure
+* Consistent button treatments
+* Similar animation quality
+* Shared design tokens where practical
+
+Each company should still have its own emphasis.
+
+### Suggested Visual Emphasis
+
+* **Source Parent Company:** Sophisticated, minimal, institutional, strategic
+* **Source Royalty:** Data-driven, trustworthy, technical, transparent
+* **Source Music Group:** Cultural, cinematic, expressive, artist-centered
+* **Source Publishing Company:** Editorial, authoritative, creative, rights-focused
+
+---
+
+# Shared Design Principles
+
+All websites should prioritize:
+
+1. Immediate clarity
+2. Strong credibility
+3. Clear differentiation between companies
+4. Mobile-first usability
+5. Accessible interactions
+6. Clear calls to action
+7. Consistent visual systems
+8. Fast perceived performance
+9. High-quality storytelling
+10. Reusable components
+11. Search-engine visibility
+12. Legal and commercial accuracy
+
+Use the following decision hierarchy:
+
+* Clarity before creativity
+* Trust before aggressive conversion
+* Brand distinction before trends
+* Conversion before decoration
+* Accessibility before novelty
+* Performance before excessive animation
+* Evidence before unsupported claims
+* Reusable systems before one-off styling
+
+---
+
+# Parent Company Website Context
+
+## Company
+
+Company name: Source
+
+Primary domain: sourcemusicgrp.com or the designated parent-company landing domain
+
+The final domain architecture may evolve, but the parent website should remain the central routing point for the Source ecosystem.
+
+## Business Description
+
+Source is the parent organization connecting music, technology, artist development, publishing, and royalty intelligence.
+
+It provides a unified home for the Source companies and communicates the organization's broader strategy, capabilities, leadership, and business relationships.
+
+## Primary Audiences
+
+* Artists
+* Songwriters
+* Producers
+* Music-industry professionals
+* Strategic partners
+* Investors
+* Managers
+* Labels
+* Publishers
+* Rights holders
+* Potential employees or contractors
+
+## Primary Website Goal
+
+Help visitors understand the Source ecosystem and route them to the appropriate company.
+
+## Primary Conversion
+
+Choose the appropriate Source company or service.
+
+## Secondary Conversions
+
+* Learn about the organization
+* Explore partnership opportunities
+* Contact the Source team
+* Review company capabilities
+* Understand the leadership vision
+
+## Required Homepage Message
+
+The homepage must answer these questions within the first few sections:
+
+1. What is Source?
+2. Who does Source serve?
+3. What companies are part of Source?
+4. What problem does each company solve?
+5. Where should the visitor go next?
+
+## Recommended Homepage Structure
+
+1. Hero
+2. Source ecosystem overview
+3. Company selection or business-unit cards
+4. Shared mission
+5. How the companies work together
+6. Featured work, artists, technology, or partnerships
+7. Leadership or credibility section
+8. Partnership call to action
+9. Footer with links to each business
+
+## Primary Call to Action
+
+Explore the Source companies
+
+## Secondary Calls to Action
+
+* Partner with Source
+* Contact the team
+* Learn about our mission
+
+## Parent Company Design Expectations
+
+The parent website should:
+
+* Feel authoritative and established
+* Present a clear business architecture
+* Avoid overwhelming visitors with too much detail
+* Route visitors quickly to the right company
+* Show how technology and music expertise connect
+* Establish confidence without appearing overly institutional
+* Use concise language and strong visual hierarchy
+
+---
+
+# Source Royalty Website Context
+
+## Company
+
+Company name: Source Royalty
+
+Current domain: source-royalty.com
+
+## Business Description
+
+Source Royalty is a technology-enabled royalty intelligence and collection-support platform designed to help music creators and rights holders better understand, organize, monitor, and recover royalty revenue.
+
+The platform's long-term goal is to provide a centralized view of royalty-related information across multiple data sources and identify areas requiring further investigation.
+
+## Primary Audiences
+
+* Independent artists
+* Songwriters
+* Producers
+* Managers
+* Independent labels
+* Publishers
+* Catalog owners
+* Estates
+* Rights holders with complex royalty data
+
+## Audience Problems
+
+The website should acknowledge that users may experience:
+
+* Unclear royalty statements
+* Multiple collection sources
+* Missing registrations
+* Unmatched works
+* Incorrect metadata
+* Delayed payments
+* Confusing ownership records
+* Limited visibility across platforms
+* Difficulty understanding where royalties originate
+* Difficulty determining whether all eligible revenue is being collected
+
+## Primary Website Goal
+
+Encourage qualified visitors to begin a royalty review, create an account, join a waitlist, or submit information for analysis.
+
+## Primary Conversion
+
+Start a royalty review
+
+The exact CTA may change based on platform readiness.
+
+Acceptable early-stage calls to action include:
+
+* Join the waitlist
+* Request a royalty review
+* Upload your royalty data
+* Create an account
+* Schedule a consultation
+* Check your royalty readiness
+
+## Secondary Conversions
+
+* Learn how music royalties work
+* Understand the review process
+* Explore supported royalty sources
+* Read educational content
+* Contact the Source Royalty team
+
+## Core Value Proposition
+
+Source Royalty helps music creators gain greater visibility into their royalty ecosystem and identify potential gaps that may require correction, registration, administration, or collection follow-up.
+
+## Trust Requirements
+
+The website must clearly explain:
+
+* What data is collected
+* Why the data is needed
+* How data is protected
+* What Source Royalty analyzes
+* What Source Royalty does not guarantee
+* How users maintain control of their information
+* Whether fees are fixed, subscription-based, commission-based, or contingent
+* What happens after a review is submitted
+
+## Prohibited or High-Risk Claims
+
+Do not state or imply:
+
+* Guaranteed recovery
+* Guaranteed missing money
+* Guaranteed payment amounts
+* Immediate recovery
+* Universal access to all royalty databases
+* Government affiliation
+* Society or PRO affiliation unless formally established
+* Legal representation unless provided by licensed counsel
+* Audit authority over third parties without a contractual basis
+
+Use careful language such as:
+
+* Potential royalty gaps
+* Possible unmatched royalties
+* Areas requiring further review
+* Data inconsistencies
+* Missing or incomplete registrations
+* Revenue that may not have been properly associated with the rights holder
+
+## Recommended Homepage Structure
+
+1. Clear royalty problem statement
+2. Platform value proposition
+3. Who the platform serves
+4. How the review process works
+5. Types of royalty information reviewed
+6. Common causes of royalty gaps
+7. Security and privacy
+8. Trust and transparency
+9. Frequently asked questions
+10. Primary conversion section
+
+## Recommended Product Journey
+
+1. Visitor learns about the royalty problem
+2. Visitor identifies their role
+3. Visitor reviews supported data sources
+4. Visitor creates an account or submits an inquiry
+5. Visitor provides authorized data
+6. Platform organizes and analyzes available information
+7. Platform surfaces potential issues
+8. User receives recommended next actions
+9. User chooses whether to pursue administration, correction, or recovery support
+
+## Source Royalty Design Expectations
+
+The website should:
+
+* Make complex royalty topics understandable
+* Feel secure and trustworthy
+* Avoid hype
+* Use clear diagrams and workflows
+* Present data visually without overwhelming users
+* Explain every step before requesting sensitive information
+* Provide strong privacy and security messaging
+* Use accessible charts and dashboards
+* Distinguish estimated findings from verified findings
+
+## Source Royalty Product Experience
+
+The product interface should eventually support:
+
+* Account creation
+* Creator profile
+* Role selection
+* Rights ownership information
+* Royalty-source connections
+* Statement uploads
+* Metadata review
+* Work and recording matching
+* Potential gap identification
+* Issue categorization
+* Recommended actions
+* Case or recovery tracking
+* Document storage
+* Notifications
+* Reporting
+* Export functionality
+
+---
+
+# Source Music Group Website Context
+
+## Company
+
+Company name: Source Music Group
+
+Current domain: sourcemusicgrp.com
+
+If this domain becomes the parent-company entry point, the Source Music Group website may later move to a dedicated subdomain or separate domain.
+
+## Business Description
+
+Source Music Group is an artist-development and music-services company focused on helping selected artists build sustainable careers, release high-quality music, strengthen their brands, and create long-term catalog value.
+
+The company may operate as a label, artist-development company, strategic partner, or label-services provider depending on the relationship.
+
+## Primary Audiences
+
+* Emerging recording artists
+* Established independent artists
+* Artist managers
+* Producers
+* Creative partners
+* Distribution partners
+* Brand partners
+* Music supervisors
+* Strategic investors
+* Industry professionals
+
+## Primary Website Goal
+
+Establish Source Music Group's credibility and attract qualified artists, partners, and opportunities.
+
+## Primary Conversion
+
+Submit music or request a partnership conversation
+
+Artist submissions should only be promoted if Source Music Group has the capacity and process to review submissions.
+
+## Secondary Conversions
+
+* Explore artists
+* View recent releases
+* Learn about Source Music Group
+* Review services
+* Contact the team
+* Explore partnership opportunities
+* Join the mailing list
+
+## Core Value Proposition
+
+Source Music Group combines artist development, business strategy, marketing, technology, and long-term rights ownership to help artists build durable careers.
+
+## Artist Positioning
+
+The company should be presented as selective.
+
+Avoid giving the impression that every artist who submits music will:
+
+* Receive a deal
+* Receive funding
+* Receive a response
+* Receive guaranteed marketing
+* Receive guaranteed industry introductions
+* Achieve commercial success
+
+## Recommended Homepage Structure
+
+1. Cinematic hero
+2. Featured artist or release
+3. Company philosophy
+4. Artist-development approach
+5. Services or capabilities
+6. Selected music or projects
+7. News, milestones, or partnerships
+8. Submission or partnership section
+9. Connection to Source Publishing and Source Royalty
+10. Footer
+
+## Artist Pages
+
+Artist pages should include:
+
+* Artist name
+* Artist biography
+* Positioning statement
+* Music links
+* Recent releases
+* Photos and visual identity
+* Videos
+* Press highlights
+* Social links
+* Booking or business-contact route
+* Songwriting or production credits where relevant
+
+## Source Music Group Design Expectations
+
+The website should:
+
+* Feel premium and culturally credible
+* Prioritize artist imagery and storytelling
+* Avoid looking like a technology startup
+* Use motion intentionally
+* Allow each artist to retain a distinct identity
+* Present the company as strategic rather than transactional
+* Demonstrate selectivity and taste
+* Balance visual creativity with clear navigation
+* Perform well despite rich media
+
+## Content Tone
+
+The tone should be:
+
+* Confident
+* Artist-centered
+* Ambitious
+* Editorial
+* Modern
+* Direct
+* Credible
+
+Avoid:
+
+* Excessive corporate language
+* Unsupported claims
+* Generic music-industry slogans
+* Overuse of terms such as revolutionary, disruptive, or game-changing
+* Promises of fame or guaranteed success
+
+---
+
+# Source Publishing Company Website Context
+
+## Company
+
+Company name: Source Publishing Company
+
+Current domain: source-publishing.com
+
+## Business Description
+
+Source Publishing Company helps songwriters, producers, composers, and catalog owners manage the business and rights associated with musical compositions.
+
+Its services may include administration, registration, royalty collection support, catalog management, songwriter development, sync preparation, rights organization, and strategic publishing partnerships.
+
+## Primary Audiences
+
+* Songwriters
+* Producers
+* Composers
+* Independent artists who write their own music
+* Catalog owners
+* Artist managers
+* Estates
+* Independent publishers
+* Labels needing publishing support
+* Music supervisors and sync partners
+
+## Primary Website Goal
+
+Educate creators about publishing rights and convert qualified visitors into administration, partnership, or consultation opportunities.
+
+## Primary Conversion
+
+Request a publishing consultation
+
+## Secondary Conversions
+
+* Submit a catalog
+* Learn about publishing
+* Request administration support
+* Explore songwriter-development opportunities
+* Contact the team
+* Review available services
+* Join the mailing list
+
+## Core Value Proposition
+
+Source Publishing Company helps music creators organize, administer, protect, and monetize the composition rights connected to their songs.
+
+## Required Educational Distinction
+
+The website must clearly distinguish between:
+
+### Master Rights
+
+The ownership and revenue associated with the sound recording.
+
+### Publishing Rights
+
+The ownership and revenue associated with the underlying musical composition, including lyrics, melody, and songwriting interests.
+
+This distinction should be explained visually and in plain language.
+
+## Recommended Homepage Structure
+
+1. Publishing-focused hero
+2. Plain-language explanation of music publishing
+3. Who Source Publishing serves
+4. Services
+5. Master rights versus publishing rights
+6. How administration works
+7. Song registration and metadata
+8. Royalty categories
+9. Catalog and songwriter partnerships
+10. Frequently asked questions
+11. Consultation call to action
+
+## Potential Service Categories
+
+Only display services that the company is prepared to deliver.
+
+Potential categories include:
+
+* Publishing administration
+* Song registration
+* Catalog organization
+* Split-sheet support
+* Metadata review
+* Royalty collection support
+* Songwriter and producer services
+* Catalog management
+* Sync preparation
+* Global collection coordination
+* Publishing deal evaluation support
+* Rights and ownership education
+
+## Publishing Trust Requirements
+
+The website should clearly explain:
+
+* Whether Source acts as an administrator, publisher, co-publisher, or advisor
+* Whether ownership is transferred
+* Whether agreements are exclusive
+* The duration of agreements
+* Commission or fee structures
+* Territory
+* Termination rights
+* Collection periods
+* Post-term collection rights
+* What services are included
+* What services require third parties
+
+Do not use contract language on marketing pages that conflicts with actual agreements.
+
+## Source Publishing Design Expectations
+
+The website should:
+
+* Feel authoritative but approachable
+* Explain complex rights concepts visually
+* Use editorial layouts
+* Highlight songs, writers, and creative work
+* Build trust before asking for catalog information
+* Avoid appearing like a legal-services website
+* Avoid appearing identical to Source Royalty
+* Clearly connect publishing administration to royalty outcomes
+* Use strong educational content to support SEO and credibility
+
+---
+
+# Cross-Company User Journeys
+
+The websites should support the following journeys.
+
+## Artist Journey
+
+An artist may begin at Source Music Group and later need:
+
+* Source Publishing for compositions
+* Source Royalty for royalty visibility
+* Parent-company information for partnerships
+
+## Songwriter Journey
+
+A songwriter may begin at Source Publishing and later need:
+
+* Source Royalty for collection visibility
+* Source Music Group for artist or project development
+* Parent-company information for partnerships
+
+## Producer Journey
+
+A producer may need:
+
+* Source Publishing for composition interests
+* Source Royalty for income visibility
+* Source Music Group for placements and artist relationships
+
+## Catalog Owner Journey
+
+A catalog owner may need:
+
+* Source Publishing for administration
+* Source Royalty for data analysis
+* Parent-company information for strategic partnerships
+
+## Strategic Partner Journey
+
+A strategic partner may begin at the parent website and then navigate to the relevant business unit.
+
+---
+
+# Cross-Site Navigation
+
+Every site should clearly identify that it is part of the Source ecosystem.
+
+Recommended ecosystem navigation:
+
+* Source
+* Source Royalty
+* Source Music Group
+* Source Publishing Company
+
+The ecosystem navigation should not overpower the individual website's primary navigation.
+
+Possible approaches include:
+
+* A compact company switcher
+* A parent-company link in the header
+* A shared ecosystem section in the footer
+* A small "A Source Company" brand marker
+* A dropdown that explains each company
+
+Avoid opening excessive new browser tabs.
+
+---
+
+# Shared Footer Requirements
+
+Every website should include:
+
+* Company name
+* Parent-company relationship
+* Privacy policy
+* Terms of use
+* Contact route
+* Copyright notice
+* Social links where relevant
+* Ecosystem links
+* Data-policy link for Source Royalty
+* Submission terms where applicable
+* Appropriate legal disclaimers
+
+---
+
+# Shared Technical Expectations
+
+Before changing code:
+
+* Inspect the existing architecture.
+* Identify the framework, routing, styling system, and deployment model.
+* Reuse existing components where practical.
+* Preserve functional behavior.
+* Avoid unnecessary dependencies.
+* Do not modify secrets or environment files.
+* Do not remove analytics, authentication, localization, forms, payment logic, or integrations without explicit approval.
+* Preserve SEO metadata during redesigns.
+* Run available linting, type checking, testing, and production builds after implementation.
+* Report anything that could not be verified.
+
+## Shared Component Opportunities
+
+The websites may share:
+
+* Ecosystem navigation
+* Footer
+* Typography tokens
+* Button system
+* Container widths
+* Grid system
+* Spacing scale
+* Form patterns
+* Accessibility helpers
+* Cookie and privacy components
+* SEO utilities
+* Analytics events
+* Contact modules
+* Legal-page layouts
+
+Do not force every site to share the same hero, page templates, imagery, or emotional tone.
+
+---
+
+# Accessibility Requirements
+
+Target WCAG 2.2 AA where reasonably applicable.
+
+All websites should support:
+
+* Keyboard navigation
+* Visible focus states
+* Semantic headings
+* Descriptive links
+* Form labels
+* Error messaging
+* Sufficient color contrast
+* Alternative text
+* Reduced-motion preferences
+* Accessible menus
+* Accessible modal behavior
+* Responsive text sizing
+* Appropriate touch-target sizes
+* Screen-reader-friendly status messages
+
+---
+
+# Performance Requirements
+
+The websites should prioritize:
+
+* Responsive image delivery
+* Modern image formats
+* Optimized font loading
+* Lazy loading below-the-fold media
+* Controlled animation
+* Minimal layout shift
+* Reduced unnecessary JavaScript
+* Limited third-party scripts
+* Fast mobile performance
+* Efficient video handling
+* Reusable components
+* Server-rendered content where appropriate
+
+Source Music Group may use heavier visual media, but performance must remain a priority.
+
+Source Royalty should prioritize speed and clarity over decorative animation.
+
+---
+
+# SEO Strategy
+
+## Source Parent Company
+
+Target themes:
+
+* Music technology company
+* Music rights company
+* Artist-development company
+* Royalty technology
+* Music publishing company
+* Music-industry partnerships
+
+## Source Royalty
+
+Target educational and commercial themes:
+
+* Missing music royalties
+* Royalty statement review
+* Music royalty tracking
+* Unmatched royalties
+* Artist royalty data
+* Songwriter royalty collection
+* Producer royalties
+* Music metadata issues
+* Royalty administration
+* How to find missing royalties
+
+Avoid implying guaranteed recovery in titles or metadata.
+
+## Source Music Group
+
+Target themes:
+
+* Independent record label
+* Artist development
+* Label services
+* Music artist management support
+* Independent artist strategy
+* Music release strategy
+* Emerging artist development
+
+## Source Publishing Company
+
+Target themes:
+
+* Music publishing administration
+* Song registration
+* Songwriter royalties
+* Producer publishing
+* Music catalog administration
+* Publishing rights
+* Performance royalties
+* Mechanical royalties
+* Sync licensing preparation
+* Publishing company for independent artists
+
+---
+
+# Analytics and Measurement
+
+Each website should track its own conversions while allowing ecosystem-level reporting.
+
+## Shared Events
+
+* Ecosystem company selected
+* Contact form started
+* Contact form completed
+* Primary CTA clicked
+* Email signup completed
+* Resource viewed
+* External music link clicked
+* Social link clicked
+
+## Source Royalty Events
+
+* Account creation started
+* Account creation completed
+* Royalty review started
+* Data connection started
+* Data connection completed
+* Statement uploaded
+* Consultation requested
+* Pricing viewed
+
+## Source Music Group Events
+
+* Artist page viewed
+* Music played
+* Video played
+* Submission started
+* Submission completed
+* Partnership inquiry submitted
+* Release link clicked
+
+## Source Publishing Events
+
+* Consultation started
+* Consultation submitted
+* Catalog submission started
+* Catalog submission completed
+* Publishing guide viewed
+* Service page viewed
+* Rights education content viewed
+
+Do not collect unnecessary personal or sensitive data.
+
+---
+
+# Content Governance
+
+All content should be reviewed for:
+
+* Factual accuracy
+* Rights terminology
+* Contract consistency
+* Privacy implications
+* Unsupported claims
+* Brand consistency
+* Search intent
+* Accessibility
+* Reading clarity
+* Audience relevance
+
+Legal and rights-related content should be reviewed by qualified counsel where necessary.
+
+AI-generated copy must not invent:
+
+* Partnerships
+* Clients
+* Artists
+* Royalties recovered
+* Revenue figures
+* Awards
+* Testimonials
+* Affiliations
+* Licensing relationships
+* Data access
+* Platform integrations
+* Industry endorsements
+
+---
+
+# Design Review Workflow
+
+All website work should proceed in this order:
+
+1. Audit
+2. Recommendations
+3. User approval
+4. Implementation plan
+5. Implementation
+6. Validation
+
+Do not proceed from an audit into a broad redesign without approval.
+
+## Audit Requirements
+
+Every audit should evaluate:
+
+* Business clarity
+* Ecosystem clarity
+* Audience alignment
+* Navigation
+* Visual hierarchy
+* Typography
+* Color
+* Components
+* Conversion
+* Mobile experience
+* Accessibility
+* Performance
+* SEO
+* Content
+* Trust
+* Legal-risk language
+* Design-system consistency
+
+## Recommendation Requirements
+
+Every recommendation should include:
+
+* Website
+* Page
+* Component
+* Issue
+* Why it matters
+* Proposed change
+* Priority
+* Impact
+* Effort
+* Confidence
+
+## Implementation Requirements
+
+Before implementation:
+
+* Confirm which website is being changed.
+* Confirm the approved scope.
+* Identify protected functionality.
+* Check for uncommitted changes.
+* Identify cross-site component impact.
+* Avoid changing shared components without evaluating every affected website.
+
+After implementation:
+
+* Run linting.
+* Run type checking.
+* Run tests.
+* Run the production build.
+* Review mobile behavior.
+* Validate forms.
+* Review metadata.
+* Review keyboard navigation.
+* Summarize changed files.
+* Report anything that could not be verified.
+
+---
+
+# Current Priorities
+
+## Ecosystem Priorities
+
+1. Establish a clear parent-company architecture.
+2. Clearly differentiate the four companies.
+3. Create consistent ecosystem navigation.
+4. Build a shared but flexible design system.
+5. Prevent visitors from confusing Source Royalty with Source Publishing.
+6. Explain how the companies work together.
+7. Strengthen trust and credibility across every site.
+8. Create distinct conversion journeys for each company.
+9. Improve mobile usability.
+10. Prepare the ecosystem for future products and services.
+
+## Source Parent Company Priorities
+
+1. Create a clear central landing experience.
+2. Explain the Source vision.
+3. Route visitors to the correct company.
+4. Present leadership and partnership credibility.
+5. Avoid duplicating the detailed content of subsidiary websites.
+
+## Source Royalty Priorities
+
+1. Clearly explain the royalty problem.
+2. Establish trust before requesting data.
+3. Define the initial MVP user journey.
+4. Avoid unsupported recovery claims.
+5. Explain data security and authorization.
+6. Build an educational content foundation.
+7. Develop a clear waitlist, consultation, or account-creation conversion.
+
+## Source Music Group Priorities
+
+1. Create a premium music-company identity.
+2. Highlight Duka and future artists professionally.
+3. Build compelling artist and release pages.
+4. Explain the company's artist-development approach.
+5. Create a selective submission or partnership process.
+6. Connect artists to Source Publishing and Source Royalty when appropriate.
+
+## Source Publishing Company Priorities
+
+1. Explain music publishing in plain language.
+2. Clarify master rights versus publishing rights.
+3. Define publishing and administration services.
+4. Create a strong consultation journey.
+5. Build educational authority.
+6. Support songwriter, producer, and catalog-owner inquiries.
+7. Align all marketing language with actual agreement structures.
+
+---
+
+# Protected Areas
+
+Do not modify these areas without explicit approval:
+
+* Authentication
+* User accounts
+* Royalty calculations
+* Financial data
+* Payment processing
+* Royalty statement uploads
+* Data-source integrations
+* Database schemas
+* User privacy settings
+* Legal disclaimers
+* Contract terms
+* Artist submission data
+* Catalog submission data
+* Publishing ownership information
+* Analytics configuration
+* Email automation
+* Localization
+* Domain configuration
+* Deployment configuration
+* Environment variables
+* Third-party API integrations
+* Music distribution links
+* Rights-management logic
+
+---
+
+# Initial Agent Instruction
+
+When reviewing any Source website:
+
+1. Identify which Source company is being reviewed.
+2. Read this project context.
+3. Inspect the codebase and existing design system.
+4. Determine whether components are shared across sites.
+5. Identify the page's intended audience and conversion.
+6. Evaluate whether the company's purpose is immediately clear.
+7. Evaluate whether visitors could confuse it with another Source company.
+8. Review trust, rights terminology, and unsupported claims.
+9. Review mobile, accessibility, SEO, and performance.
+10. Produce recommendations without modifying files unless Implementation Mode is explicitly requested.
+
+When recommending cross-site changes, explain:
+
+* Which websites are affected
+* Whether the change should be shared
+* Whether the change should remain company-specific
+* Risks of creating inconsistent behavior
+* Risks of making the companies look too similar
