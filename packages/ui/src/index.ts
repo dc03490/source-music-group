@@ -13,7 +13,18 @@ export {
   Wordmark,
 } from "./components/primitives";
 export { Button, ButtonLink } from "./components/button";
-export { Card, EcosystemCard, FeatureCard, TestimonialCard } from "./components/cards";
+export { Card, EcosystemCard, FeatureCard, TestimonialCard, PricingCard } from "./components/cards";
+export {
+  PhoneFrame,
+  BrowserFrame,
+  ScreenHeader,
+  StatRow,
+  MiniBars,
+  ScoreRing,
+  ScreenDashboard,
+  ScreenScan,
+  ScreenCollect,
+} from "./components/device";
 export { EcosystemNav } from "./components/nav";
 export { Footer, CrossPromo } from "./components/footer";
 export { FAQ, type FaqItem } from "./components/faq";

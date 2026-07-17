@@ -102,6 +102,66 @@ export function FeatureCard({
   );
 }
 
+export function PricingCard({
+  name,
+  price,
+  period,
+  blurb,
+  features,
+  cta,
+  href,
+  highlighted = false,
+}: {
+  name: string;
+  price: string;
+  period?: string;
+  blurb: string;
+  features: string[];
+  cta: string;
+  href: string;
+  highlighted?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "relative flex h-full flex-col rounded-[var(--radius-xl)] border bg-card p-7",
+        highlighted ? "border-gold shadow-[0_0_40px_-12px_rgba(232,163,61,0.45)]" : "border-border",
+      )}
+    >
+      {highlighted ? (
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full border border-gold bg-background px-3 py-1 font-pixel text-[0.5rem] uppercase tracking-[0.12em] text-gold">
+          Popular
+        </span>
+      ) : null}
+      <span className="font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-muted-foreground">{name}</span>
+      <p className="mt-3 flex items-baseline gap-1">
+        <span className="text-4xl font-semibold tracking-tight">{price}</span>
+        {period ? <span className="text-sm text-muted-foreground">{period}</span> : null}
+      </p>
+      <p className="mt-2 text-sm text-muted-foreground">{blurb}</p>
+      <ul className="mt-6 flex-1 space-y-2.5">
+        {features.map((f) => (
+          <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
+            <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
+            {f}
+          </li>
+        ))}
+      </ul>
+      <a
+        href={href}
+        className={cn(
+          "mt-7 inline-flex h-11 items-center justify-center rounded-full px-5 text-sm font-medium transition-all",
+          highlighted
+            ? "bg-brand text-brand-foreground hover:bg-gold-2"
+            : "border border-border bg-card text-foreground hover:bg-muted",
+        )}
+      >
+        {cta}
+      </a>
+    </div>
+  );
+}
+
 export function TestimonialCard({ quote, name, role }: { quote: string; name: string; role: string }) {
   return (
     <figure className="flex h-full flex-col rounded-[var(--radius-xl)] border border-border bg-card p-6">
