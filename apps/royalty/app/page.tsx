@@ -1,5 +1,4 @@
 import {
-  Badge,
   BrowserFrame,
   ButtonLink,
   Container,
@@ -14,22 +13,17 @@ import {
   PricingCard,
   Reveal,
   ScreenDashboard,
+  ScreenEarnings,
   Section,
   SectionTitle,
+  SparkChip,
   Stagger,
   StaggerItem,
+  StatChip,
   TestimonialCard,
   SITES,
 } from "@source/ui";
-import {
-  Activity,
-  BrainCircuit,
-  FileSearch,
-  Gauge,
-  ListChecks,
-  Radar,
-  Smartphone,
-} from "lucide-react";
+import { Activity, BrainCircuit, FileSearch, Gauge, ListChecks, Radar } from "lucide-react";
 import { FeaturesWalkthrough } from "./features-walkthrough";
 
 const faqItems = [
@@ -60,51 +54,62 @@ export default function Home() {
     <>
       <EcosystemNav active="royalty" sub="Royalty" />
       <main>
-        {/* ============ HERO ============ */}
-        <Section className="relative overflow-hidden pb-16 pt-20 sm:pt-24">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 -top-40 mx-auto h-[420px] max-w-3xl rounded-full bg-gradient-to-r from-blue/15 via-purple/15 to-magenta/10 blur-3xl"
-          />
-          <Container className="relative">
-            <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_auto]">
-              <div className="text-center lg:text-left">
-                <Reveal>
-                  <Badge>
-                    <Smartphone className="h-3.5 w-3.5 text-teal" />
-                    Works on mobile &amp; desktop
-                  </Badge>
-                </Reveal>
-                <Reveal delay={0.08}>
-                  <h1 className="mt-6 text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-                    Know Where <span className="grad-text">Every Dollar</span> Comes From.
-                  </h1>
-                </Reveal>
-                <Reveal delay={0.16}>
-                  <Lead className="mx-auto mt-6 max-w-xl lg:mx-0">
-                    Source Royalty uses AI to identify metadata issues, missing registrations, and
-                    potential royalty opportunities across your music catalog — from your pocket, on
-                    the go, or on the big screen.
-                  </Lead>
-                </Reveal>
-                <Reveal delay={0.24}>
-                  <div className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-                    <ButtonLink href="#audit" size="lg">
-                      Start Free Audit
-                    </ButtonLink>
-                    <ButtonLink href="#demo" variant="secondary" size="lg">
-                      See Demo
-                    </ButtonLink>
-                  </div>
-                </Reveal>
-              </div>
+        {/* ============ HERO — Trade-style purple panel ============ */}
+        <Section className="pb-16 pt-8 sm:pt-10">
+          <Container>
+            <Reveal>
+              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-b from-[#a184fa] to-purple px-6 pt-14 text-center sm:rounded-[2.5rem] sm:pt-20">
+                {/* soft blurred blobs */}
+                <div aria-hidden className="pointer-events-none absolute -left-10 top-1/3 h-56 w-56 rounded-full bg-magenta/45 blur-3xl" />
+                <div aria-hidden className="pointer-events-none absolute -right-8 bottom-10 h-64 w-64 rounded-full bg-[#ff9ecb]/40 blur-3xl" />
+                <div aria-hidden className="pointer-events-none absolute right-1/4 top-6 h-40 w-40 rounded-full bg-teal/25 blur-3xl" />
 
-              <Reveal delay={0.2} className="mx-auto">
-                <PhoneFrame>
-                  <ScreenDashboard />
-                </PhoneFrame>
-              </Reveal>
-            </div>
+                <div className="relative">
+                  <p className="font-pixel text-[0.55rem] uppercase tracking-[0.16em] text-black/60">
+                    Source Royalty · Mobile &amp; Desktop
+                  </p>
+                  <h1 className="mx-auto mt-4 max-w-3xl text-balance text-5xl font-bold leading-[1.02] tracking-tight text-[#0d0714] sm:text-6xl lg:text-7xl">
+                    Royalties in Your Pocket.
+                  </h1>
+                  <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-black/70 sm:text-lg">
+                    AI that finds metadata issues, missing registrations, and unclaimed money across
+                    your catalog — and tells you what every dollar is doing, wherever you are.
+                  </p>
+
+                  <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                    <a
+                      href="#audit"
+                      className="inline-flex h-12 items-center rounded-full bg-[#0d0714] px-6 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+                    >
+                      Start Free Audit
+                    </a>
+                    <a
+                      href="#demo"
+                      className="inline-flex h-12 items-center rounded-full border border-black/35 px-6 text-sm font-medium text-[#0d0714] transition-colors hover:bg-black/10"
+                    >
+                      See Demo
+                    </a>
+                  </div>
+
+                  {/* phone rising from the panel bottom, chips floating beside it */}
+                  <div className="relative mx-auto mt-12 w-fit">
+                    <PhoneFrame className="-mb-24 sm:-mb-20">
+                      <ScreenEarnings />
+                    </PhoneFrame>
+                    <StatChip
+                      value="$460.14"
+                      caption="unclaimed · claim-ready"
+                      className="absolute -left-52 top-16 hidden md:flex"
+                    />
+                    <SparkChip
+                      label="MLC · Mechanical"
+                      delta="0.08%"
+                      className="absolute -right-44 top-40 hidden md:block"
+                    />
+                  </div>
+                </div>
+              </div>
+            </Reveal>
           </Container>
         </Section>
 
@@ -304,23 +309,33 @@ export default function Home() {
           </Container>
         </Section>
 
-        {/* ============ FINAL CTA ============ */}
-        <Section id="audit" className="border-t border-border bg-card-muted/50">
-          <Container className="text-center">
+        {/* ============ FINAL CTA — purple panel bookend ============ */}
+        <Section id="audit">
+          <Container>
             <Reveal>
-              <Eyebrow>Launching Soon</Eyebrow>
-              <SectionTitle className="mt-3">Be first in line for your free audit.</SectionTitle>
-              <Lead className="mx-auto mt-4 max-w-lg">
-                The platform is in active development. Join the early-access list and we&apos;ll
-                open your audit the moment it&apos;s ready.
-              </Lead>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink
-                  href="mailto:royalty@sourcemusicgrp.com?subject=Early%20access%20—%20Source%20Royalty"
-                  size="lg"
-                >
-                  Join the early-access list →
-                </ButtonLink>
+              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-b from-[#a184fa] to-purple px-6 py-16 text-center sm:rounded-[2.5rem] sm:py-20">
+                <div aria-hidden className="pointer-events-none absolute -left-8 bottom-0 h-48 w-48 rounded-full bg-magenta/40 blur-3xl" />
+                <div aria-hidden className="pointer-events-none absolute -right-8 top-0 h-48 w-48 rounded-full bg-[#ff9ecb]/40 blur-3xl" />
+                <div className="relative">
+                  <p className="font-pixel text-[0.55rem] uppercase tracking-[0.16em] text-black/60">
+                    Launching Soon
+                  </p>
+                  <h2 className="mx-auto mt-4 max-w-2xl text-balance text-3xl font-bold tracking-tight text-[#0d0714] sm:text-5xl">
+                    Be first in line for your free audit.
+                  </h2>
+                  <p className="mx-auto mt-4 max-w-lg text-black/70">
+                    The platform is in active development. Join the early-access list and we&apos;ll
+                    open your audit the moment it&apos;s ready.
+                  </p>
+                  <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                    <a
+                      href="mailto:royalty@sourcemusicgrp.com?subject=Early%20access%20—%20Source%20Royalty"
+                      className="inline-flex h-12 items-center rounded-full bg-[#0d0714] px-6 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+                    >
+                      Join the early-access list →
+                    </a>
+                  </div>
+                </div>
               </div>
             </Reveal>
           </Container>

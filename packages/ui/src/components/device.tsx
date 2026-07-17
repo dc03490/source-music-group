@@ -154,7 +154,104 @@ export function ScoreRing({ score = 72, size = 96 }: { score?: number; size?: nu
   );
 }
 
+/** Smooth line chart (inline SVG, demo values) — trading-app style. */
+export function MiniLine({
+  values = [22, 28, 24, 34, 30, 42, 38, 52, 47, 61, 58, 72],
+  stroke = "#1dd3b0",
+  className,
+}: {
+  values?: number[];
+  stroke?: string;
+  className?: string;
+}) {
+  const W = 240;
+  const H = 72;
+  const max = Math.max(...values);
+  const min = Math.min(...values);
+  const pts = values
+    .map((v, i) => `${(i / (values.length - 1)) * W},${H - 6 - ((v - min) / (max - min)) * (H - 14)}`)
+    .join(" ");
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className={cn("h-[72px] w-full", className)} aria-hidden>
+      <polyline points={pts} fill="none" stroke={stroke} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+      <circle cx={W} cy={H - 6 - ((values[values.length - 1]! - min) / (max - min)) * (H - 14)} r="3.5" fill={stroke} />
+    </svg>
+  );
+}
+
+/** Floating stat chip (Trade-style callout beside the phone). */
+export function StatChip({ value, caption, className }: { value: string; caption: string; className?: string }) {
+  return (
+    <div
+      className={cn(
+        "flex items-center gap-3 rounded-2xl border border-black/20 bg-[#0d0d11] px-4 py-3 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.55)]",
+        className,
+      )}
+    >
+      <div>
+        <p className="font-mono text-lg font-bold leading-none text-foreground">{value}</p>
+        <p className="mt-1.5 text-[0.65rem] text-muted-foreground">{caption}</p>
+      </div>
+      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-purple font-mono text-xs font-bold text-white">
+        %
+      </span>
+    </div>
+  );
+}
+
+/** Floating mini-chart chip (Trade-style ticker callout). */
+export function SparkChip({
+  label,
+  delta,
+  className,
+}: {
+  label: string;
+  delta: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "rounded-2xl border border-black/20 bg-[#0d0d11] px-4 py-3 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.55)]",
+        className,
+      )}
+    >
+      <p className="font-mono text-[0.68rem] font-semibold text-foreground">{label}</p>
+      <p className="mt-0.5 text-[0.62rem] text-teal">▲ {delta}</p>
+      <MiniLine values={[30, 26, 34, 31, 40, 37, 48]} className="mt-1 h-8 w-24" />
+    </div>
+  );
+}
+
 /* ---------- Prebuilt demo screens ---------- */
+
+/** Trading-style earnings screen: big figure, line chart, timeframe pills. */
+export function ScreenEarnings() {
+  return (
+    <div className="pb-7">
+      <ScreenHeader title="Source Royalty" />
+      <p className="px-4 text-[0.62rem] uppercase tracking-wider text-subtle">Demo · Catalog earnings</p>
+      <p className="px-4 pt-1 font-mono text-3xl font-bold text-foreground">$4,218</p>
+      <p className="px-4 pt-0.5 text-[0.65rem] text-teal">▲ $460.14 unclaimed · past 5 years</p>
+      <div className="px-4 pt-2">
+        <MiniLine />
+      </div>
+      <div className="flex items-center gap-1.5 px-4 pt-3">
+        {["1D", "1W", "1M", "6M", "1Y", "All"].map((t) => (
+          <span
+            key={t}
+            className={cn(
+              "rounded-full px-2.5 py-1 font-mono text-[0.58rem]",
+              t === "1Y" ? "bg-purple text-white" : "text-subtle",
+            )}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function ScreenDashboard() {
   return (
