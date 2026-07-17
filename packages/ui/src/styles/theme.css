@@ -1,0 +1,86 @@
+/* @source/ui — shared design tokens (Tailwind v4, CSS-first).
+   Import AFTER `@import "tailwindcss";` in each app's globals.css.
+
+   Theme: the original Source neon-dark brand — near-black surfaces with
+   gold / magenta / teal / blue / purple accents and the signature
+   teal→blue→purple→magenta gradient. Dark-only by design. */
+
+:root {
+  --background: #0a0a0b;
+  --foreground: #f5f5f5;
+
+  --card: #15151a;
+  --card-foreground: #f5f5f5;
+  --card-muted: #0f0f12;
+
+  --muted: #1c1c23;
+  --muted-foreground: #b8b8b8;
+  --subtle: #7d7d85;
+
+  --border: #2a2a33;
+  --input: #2a2a33;
+  --ring: #e8a33d;
+
+  /* Legacy brand accents */
+  --gold: #e8a33d;
+  --gold-2: #f2b441;
+  --magenta: #e0218a;
+  --teal: #1dd3b0;
+  --blue: #2e6bff;
+  --purple: #7b2ff7;
+
+  /* Primary action color (legacy .btn--primary was gold) */
+  --brand: #e8a33d;
+  --brand-foreground: #1a1206;
+  --violet: #7b2ff7;
+
+  /* Signature gradient (legacy --grad) */
+  --grad: linear-gradient(100deg, var(--teal), var(--blue), var(--purple), var(--magenta));
+
+  --radius: 1rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-card-muted: var(--card-muted);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-violet: var(--violet);
+  --color-gold: var(--gold);
+  --color-gold-2: var(--gold-2);
+  --color-magenta: var(--magenta);
+  --color-teal: var(--teal);
+  --color-blue: var(--blue);
+  --color-purple: var(--purple);
+
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+  --font-pixel: var(--font-press-start), var(--font-space-grotesk), monospace;
+
+  --radius-card: var(--radius);
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+
+  /* Glow-tinted shadows (legacy --shadow-glow) */
+  --shadow-soft: 0 0 0 1px rgb(255 255 255 / 0.04), 0 8px 30px -12px rgb(224 33 138 / 0.25);
+  --shadow-card: 0 0 0 1px rgb(255 255 255 / 0.04), 0 20px 60px -20px rgb(224 33 138 / 0.35);
+
+  --container-page: 72rem;
+}
+
+/* Gradient text — legacy .grad-text */
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "@source/ui/styles.css";
+
+/* Scan the shared UI package so its Tailwind classes are generated. */
+@source "../../../packages/ui/src";
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  @apply bg-background text-foreground antialiased;
+}
