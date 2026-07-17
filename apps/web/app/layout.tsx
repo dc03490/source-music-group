@@ -7,9 +7,9 @@ const pressStart = Press_Start_2P({ weight: "400", subsets: ["latin"], variable:
 import { SITES } from "@source/ui";
 import "./globals.css";
 
-const title = "Source — Own Your Music. Own Your Royalties.";
+const title = "Source — One company for the life of a song.";
 const description =
-  "The Source ecosystem helps creators release music, collect royalties, and build lasting careers. Royalty intelligence, publishing administration, and a modern record label — one platform.";
+  "A music rights & music technology company — record label, publishing administration, and royalty intelligence for artists, songwriters, producers, managers, and rights holders.";
 
 const ogImage = {
   url: "/og.png",
@@ -44,7 +44,8 @@ const orgJsonLd = {
   "@type": "Organization",
   name: "Source",
   url: SITES.source.url,
-  description: "The modern operating system for music rights.",
+  description:
+    "A music rights & music technology company — record label, publishing administration, and royalty intelligence for artists, songwriters, producers, managers, and rights holders.",
   subOrganization: [
     { "@type": "Organization", name: "Source Royalty", url: SITES.royalty.url },
     { "@type": "Organization", name: "Source Publishing", url: SITES.publishing.url },

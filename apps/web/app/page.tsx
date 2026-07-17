@@ -1,6 +1,7 @@
 import {
   Badge,
   ButtonLink,
+  CompanyIndexStrip,
   Container,
   EcosystemCard,
   EcosystemNav,
@@ -18,14 +19,16 @@ import {
   SITES,
 } from "@source/ui";
 import {
+  ArrowRight,
   AudioLines,
   BarChart3,
   Disc3,
   Radar,
   ShieldCheck,
   Sparkles,
-  Workflow,
 } from "lucide-react";
+import { AudienceGrid } from "../components/audience-grid";
+import { StatusList } from "../components/status-list";
 
 export default function Home() {
   return (
@@ -35,7 +38,7 @@ export default function Home() {
 
       <main id="main">
         {/* ============ HERO ============ */}
-        <Section className="relative overflow-hidden pb-16 pt-24 sm:pb-24 sm:pt-32">
+        <Section className="relative overflow-hidden pb-10 pt-20 sm:pb-14 sm:pt-24">
           {/* Legacy switcher globe as the hero backdrop */}
           <div aria-hidden className="pointer-events-none absolute inset-0">
             <Globe stroke="#e0218a" dot="#1dd3b0" strokeAlpha={0.5} dotAlpha={0.45} speed={0.18} density={24} />
@@ -49,36 +52,38 @@ export default function Home() {
             <Reveal>
               <Badge>
                 <Sparkles className="h-3.5 w-3.5 text-gold" />
-                The modern operating system for music rights
+                A music rights &amp; music technology company
               </Badge>
             </Reveal>
             <Reveal delay={0.08}>
               <h1 className="mx-auto mt-6 max-w-3xl text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-                Own Your Music.
-                <br />
-                <span className="grad-text">Own Your Royalties.</span>
+                One company for the <span className="grad-text">life of a song</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.16}>
-              <Lead className="mx-auto mt-6 max-w-xl">
-                The Source ecosystem helps creators release music, collect royalties, and build
-                lasting careers.
+              <Lead className="mx-auto mt-6 max-w-2xl">
+                Source is the parent of three connected companies — a record label, a publishing
+                administrator, and a royalty-intelligence platform — built for artists, songwriters,
+                producers, managers, and rights holders.
               </Lead>
             </Reveal>
             <Reveal delay={0.24}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
                 <ButtonLink href="#companies" size="lg">
-                  Explore the ecosystem
+                  Explore the companies
                 </ButtonLink>
-                <ButtonLink href={SITES.royalty.url} variant="secondary" size="lg">
-                  Learn about Source Royalty
+                <ButtonLink href="/contact" variant="secondary" size="lg">
+                  Partner with us
                 </ButtonLink>
               </div>
+            </Reveal>
+            <Reveal delay={0.32}>
+              <CompanyIndexStrip className="mx-auto mt-10 max-w-3xl" />
             </Reveal>
           </Container>
         </Section>
 
-        {/* ============ THREE ECOSYSTEM CARDS ============ */}
+        {/* ============ THREE COMPANY CARDS ============ */}
         <Section id="companies" className="pt-4 sm:pt-8">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
@@ -123,8 +128,23 @@ export default function Home() {
           </Container>
         </Section>
 
+        {/* ============ START HERE — AUDIENCE ROUTING ============ */}
+        <Section id="start-here" className="border-t border-border bg-card-muted/50">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>Start Here</Eyebrow>
+              <SectionTitle className="mt-3">Built for every side of a song.</SectionTitle>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="mt-12">
+                <AudienceGrid />
+              </div>
+            </Reveal>
+          </Container>
+        </Section>
+
         {/* ============ WHY SOURCE ============ */}
-        <Section id="why" className="border-t border-border bg-card-muted/50">
+        <Section id="why">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>Why Source</Eyebrow>
@@ -138,7 +158,7 @@ export default function Home() {
               </Lead>
             </Reveal>
 
-            <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <Stagger className="mt-14 grid gap-5 sm:grid-cols-3">
               <StaggerItem>
                 <FeatureCard title="Data-driven" icon={BarChart3}>
                   Every recommendation is grounded in your actual catalog, statements, and
@@ -157,18 +177,12 @@ export default function Home() {
                   no fine-print surprises.
                 </FeatureCard>
               </StaggerItem>
-              <StaggerItem>
-                <FeatureCard title="One ecosystem" icon={Workflow}>
-                  Release through the label, administer through publishing, audit through Royalty —
-                  everything connects.
-                </FeatureCard>
-              </StaggerItem>
             </Stagger>
           </Container>
         </Section>
 
-        {/* ============ THE ECOSYSTEM ============ */}
-        <Section id="how-it-connects">
+        {/* ============ HOW THE COMPANIES WORK TOGETHER ============ */}
+        <Section id="how-it-connects" className="border-t border-border bg-card-muted/50">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>The Ecosystem</Eyebrow>
@@ -225,23 +239,71 @@ export default function Home() {
           </Container>
         </Section>
 
+        {/* ============ FROM THE ECOSYSTEM ============ */}
+        <Section id="from-the-ecosystem">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <SectionTitle>From the ecosystem</SectionTitle>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="mx-auto mt-12 grid max-w-4xl gap-5 lg:grid-cols-2">
+                <a
+                  href={SITES.label.url}
+                  className="group flex flex-col overflow-hidden rounded-[var(--radius-xl)] border border-border bg-card p-6 shadow-[var(--shadow-soft)] transition-colors hover:border-subtle"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/assets/duka-placeholder.svg"
+                    alt="Duka (placeholder artwork)"
+                    className="aspect-[2/1] w-full rounded-[var(--radius-card)] object-cover"
+                  />
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    Duka — first artist on the Source Music Group roster
+                  </p>
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-gold-2">
+                    Visit Source Music Group
+                    <ArrowRight
+                      className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                      strokeWidth={2}
+                    />
+                  </span>
+                </a>
+                <StatusList className="h-full" />
+              </div>
+            </Reveal>
+          </Container>
+        </Section>
+
+        {/* ============ PARTNER & CONTACT ============ */}
+        <Section id="partner" className="border-t border-border bg-card-muted/50">
+          <Container className="text-center">
+            <Reveal>
+              <SectionTitle>Partner with Source</SectionTitle>
+              <Lead className="mx-auto mt-4 max-w-lg">
+                Distribution, sync, catalog, or technology — if you work with music rights, we want
+                to talk.
+              </Lead>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <ButtonLink href="/contact" size="lg">
+                  Contact the team
+                </ButtonLink>
+                <ButtonLink href="/about" variant="secondary" size="lg">
+                  About Source
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </Container>
+        </Section>
+
         {/* ============ FINAL CTA ============ */}
         <Section className="border-t border-border">
           <Container className="text-center">
             <Reveal>
-              <SectionTitle>Ready to see what your catalog is worth?</SectionTitle>
+              <SectionTitle>Find your starting point.</SectionTitle>
               <Lead className="mx-auto mt-4 max-w-lg">
-                Join the Source Royalty early access list — or explore the company that fits where
-                you are today.
+                Three companies, one connected system — pick the one that fits where you are today.
               </Lead>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink href={SITES.royalty.url} size="lg">
-                  Join the Royalty early access list
-                </ButtonLink>
-                <ButtonLink href={SITES.publishing.url} variant="secondary" size="lg">
-                  Explore Publishing
-                </ButtonLink>
-              </div>
+              <CompanyIndexStrip className="mx-auto mt-8 max-w-3xl" />
             </Reveal>
           </Container>
         </Section>
