@@ -22,7 +22,7 @@ const SPOTIFY_ARTIST = "https://open.spotify.com/artist/0oxAY1bzauffvCA5m6tsBZ";
 export default function Home() {
   return (
     <>
-      <EcosystemNav active="label" sub="Music Group" logoSrc="/assets/logo.png" />
+      <EcosystemNav active="label" sub="Music Group" />
       <main>
         {/* ============ HERO ============ */}
         <Section className="relative overflow-hidden pb-20 pt-20 sm:pt-24">
