@@ -18,19 +18,22 @@ export interface SiteMeta {
 const isLocal =
   process.env.NEXT_PUBLIC_ECOSYSTEM_ENV === "local" || process.env.NODE_ENV === "development";
 
-const URLS: Record<SiteKey, string> = isLocal
-  ? {
-      source: "http://localhost:3000",
-      royalty: "http://localhost:3001",
-      publishing: "http://localhost:3002",
-      label: "http://localhost:3003",
-    }
-  : {
-      source: "https://source.com",
-      royalty: "https://source-royalty.com",
-      publishing: "https://source-publishing.com",
-      label: "https://sourcemusicgrp.com",
-    };
+/* Per-site env overrides (set in Vercel project settings) let deployments link
+   to each other before the final domains exist. NEXT_PUBLIC_ vars are inlined
+   at build time, so each override must be referenced literally. */
+const pick = (override: string | undefined, local: string, prod: string) =>
+  override && override.length > 0 ? override : isLocal ? local : prod;
+
+const URLS: Record<SiteKey, string> = {
+  source: pick(process.env.NEXT_PUBLIC_URL_SOURCE, "http://localhost:3000", "https://source.com"),
+  royalty: pick(process.env.NEXT_PUBLIC_URL_ROYALTY, "http://localhost:3001", "https://source-royalty.com"),
+  publishing: pick(
+    process.env.NEXT_PUBLIC_URL_PUBLISHING,
+    "http://localhost:3002",
+    "https://source-publishing.com",
+  ),
+  label: pick(process.env.NEXT_PUBLIC_URL_LABEL, "http://localhost:3003", "https://sourcemusicgrp.com"),
+};
 
 export const SITES: Record<SiteKey, SiteMeta> = {
   source: {
