@@ -24,10 +24,6 @@ export {
   ScreenDashboard,
   ScreenScan,
   ScreenCollect,
-  ScreenEarnings,
-  MiniLine,
-  StatChip,
-  SparkChip,
 } from "./components/device";
 export { EcosystemNav } from "./components/nav";
 export { Footer, CrossPromo } from "./components/footer";

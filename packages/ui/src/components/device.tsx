@@ -5,35 +5,19 @@ import { cn } from "../lib/cn";
    PhoneFrame/BrowserFrame wrap the same AppScreen content to tell the
    "works on any device" story. */
 
-/** Current-gen iPhone-style frame: Dynamic Island, flat titanium edges,
-    Action button + volume (left), power + Camera Control (right).
-    Children render as the screen. */
+/** Phone bezel with notch + side buttons. Children render as the screen. */
 export function PhoneFrame({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <div className={cn("relative mx-auto w-[290px]", className)}>
-      {/* left side: Action button, volume up/down */}
-      <span aria-hidden className="absolute -left-[3px] top-[88px] h-6 w-[3px] rounded-l-md bg-[#3a3a41]" />
-      <span aria-hidden className="absolute -left-[3px] top-[128px] h-10 w-[3px] rounded-l-md bg-[#3a3a41]" />
-      <span aria-hidden className="absolute -left-[3px] top-[176px] h-10 w-[3px] rounded-l-md bg-[#3a3a41]" />
-      {/* right side: power, Camera Control */}
-      <span aria-hidden className="absolute -right-[3px] top-[140px] h-16 w-[3px] rounded-r-md bg-[#3a3a41]" />
-      <span aria-hidden className="absolute -right-[2px] top-[248px] h-9 w-[2px] rounded-r-md bg-[#2f2f36]" />
-      {/* flat titanium band */}
-      <div className="relative rounded-[3rem] bg-gradient-to-b from-[#4a4a52] via-[#2c2c33] to-[#3d3d45] p-[3px] shadow-[var(--shadow-card)]">
-        {/* near-invisible inner bezel — edge-to-edge display */}
-        <div className="rounded-[calc(3rem-3px)] bg-black p-[7px]">
-          <div className="relative overflow-hidden rounded-[2.45rem] bg-background">
-            {/* Dynamic Island */}
-            <div
-              aria-hidden
-              className="absolute left-1/2 top-[10px] z-10 flex h-[26px] w-[92px] -translate-x-1/2 items-center justify-end rounded-full bg-black pr-2"
-            >
-              <span className="h-2.5 w-2.5 rounded-full bg-[#101014] ring-1 ring-[#1d1d24]" />
-            </div>
-            {children}
-            {/* home indicator */}
-            <div aria-hidden className="pointer-events-none absolute bottom-1.5 left-1/2 h-1 w-24 -translate-x-1/2 rounded-full bg-foreground/25" />
-          </div>
+      {/* side buttons */}
+      <span aria-hidden className="absolute -left-[3px] top-24 h-10 w-[3px] rounded-l bg-muted" />
+      <span aria-hidden className="absolute -left-[3px] top-40 h-14 w-[3px] rounded-l bg-muted" />
+      <span aria-hidden className="absolute -right-[3px] top-32 h-16 w-[3px] rounded-r bg-muted" />
+      <div className="relative rounded-[2.6rem] border border-border bg-card-muted p-2.5 shadow-[var(--shadow-card)]">
+        <div className="relative overflow-hidden rounded-[2rem] border border-border bg-background">
+          {/* notch */}
+          <div aria-hidden className="absolute left-1/2 top-2 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-card-muted" />
+          {children}
         </div>
       </div>
     </div>
@@ -76,7 +60,7 @@ export function BrowserFrame({
 
 export function ScreenHeader({ title }: { title: string }) {
   return (
-    <div className="flex items-center justify-between px-4 pb-3 pt-12">
+    <div className="flex items-center justify-between px-4 pb-3 pt-9">
       <span className="font-pixel text-[0.5rem] uppercase tracking-[0.1em] text-gold">{title}</span>
       <span aria-hidden className="h-6 w-6 rounded-full bg-gradient-to-br from-magenta/50 to-teal/50" />
     </div>
@@ -154,108 +138,11 @@ export function ScoreRing({ score = 72, size = 96 }: { score?: number; size?: nu
   );
 }
 
-/** Smooth line chart (inline SVG, demo values) — trading-app style. */
-export function MiniLine({
-  values = [22, 28, 24, 34, 30, 42, 38, 52, 47, 61, 58, 72],
-  stroke = "#1dd3b0",
-  className,
-}: {
-  values?: number[];
-  stroke?: string;
-  className?: string;
-}) {
-  const W = 240;
-  const H = 72;
-  const max = Math.max(...values);
-  const min = Math.min(...values);
-  const pts = values
-    .map((v, i) => `${(i / (values.length - 1)) * W},${H - 6 - ((v - min) / (max - min)) * (H - 14)}`)
-    .join(" ");
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} className={cn("h-[72px] w-full", className)} aria-hidden>
-      <polyline points={pts} fill="none" stroke={stroke} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
-      <circle cx={W} cy={H - 6 - ((values[values.length - 1]! - min) / (max - min)) * (H - 14)} r="3.5" fill={stroke} />
-    </svg>
-  );
-}
-
-/** Floating stat chip (Trade-style callout beside the phone). */
-export function StatChip({ value, caption, className }: { value: string; caption: string; className?: string }) {
-  return (
-    <div
-      className={cn(
-        "flex items-center gap-3 rounded-2xl border border-black/20 bg-[#0d0d11] px-4 py-3 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.55)]",
-        className,
-      )}
-    >
-      <div>
-        <p className="font-mono text-lg font-bold leading-none text-foreground">{value}</p>
-        <p className="mt-1.5 text-[0.65rem] text-muted-foreground">{caption}</p>
-      </div>
-      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-purple font-mono text-xs font-bold text-white">
-        %
-      </span>
-    </div>
-  );
-}
-
-/** Floating mini-chart chip (Trade-style ticker callout). */
-export function SparkChip({
-  label,
-  delta,
-  className,
-}: {
-  label: string;
-  delta: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "rounded-2xl border border-black/20 bg-[#0d0d11] px-4 py-3 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.55)]",
-        className,
-      )}
-    >
-      <p className="font-mono text-[0.68rem] font-semibold text-foreground">{label}</p>
-      <p className="mt-0.5 text-[0.62rem] text-teal">▲ {delta}</p>
-      <MiniLine values={[30, 26, 34, 31, 40, 37, 48]} className="mt-1 h-8 w-24" />
-    </div>
-  );
-}
-
 /* ---------- Prebuilt demo screens ---------- */
-
-/** Trading-style earnings screen: big figure, line chart, timeframe pills. */
-export function ScreenEarnings() {
-  return (
-    <div className="pb-7">
-      <ScreenHeader title="Source Royalty" />
-      <p className="px-4 text-[0.62rem] uppercase tracking-wider text-subtle">Demo · Catalog earnings</p>
-      <p className="px-4 pt-1 font-mono text-3xl font-bold text-foreground">$4,218</p>
-      <p className="px-4 pt-0.5 text-[0.65rem] text-teal">▲ $460.14 unclaimed · past 5 years</p>
-      <div className="px-4 pt-2">
-        <MiniLine />
-      </div>
-      <div className="flex items-center gap-1.5 px-4 pt-3">
-        {["1D", "1W", "1M", "6M", "1Y", "All"].map((t) => (
-          <span
-            key={t}
-            className={cn(
-              "rounded-full px-2.5 py-1 font-mono text-[0.58rem]",
-              t === "1Y" ? "bg-purple text-white" : "text-subtle",
-            )}
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export function ScreenDashboard() {
   return (
-    <div className="pb-7">
+    <div className="pb-4">
       <ScreenHeader title="Source Royalty" />
       <p className="px-4 text-[0.62rem] uppercase tracking-wider text-subtle">Demo · Owed to you</p>
       <p className="px-4 pt-1 font-mono text-2xl font-bold text-teal">$4,218.66</p>
@@ -269,7 +156,7 @@ export function ScreenDashboard() {
 
 export function ScreenScan() {
   return (
-    <div className="pb-7">
+    <div className="pb-4">
       <ScreenHeader title="Catalog Scan" />
       <p className="px-4 text-[0.62rem] uppercase tracking-wider text-subtle">Demo · Health score</p>
       <ScoreRing score={72} />
@@ -282,7 +169,7 @@ export function ScreenScan() {
 
 export function ScreenCollect() {
   return (
-    <div className="pb-7">
+    <div className="pb-4">
       <ScreenHeader title="Recovered" />
       <p className="px-4 text-[0.62rem] uppercase tracking-wider text-subtle">Demo · This quarter</p>
       <p className="px-4 pt-1 font-mono text-2xl font-bold text-gold">+$1,371.09</p>
