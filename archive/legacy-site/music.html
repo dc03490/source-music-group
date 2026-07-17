@@ -6,17 +6,17 @@
   <title>Source Music Group — Boutique Label · Marketing · Partnership</title>
   <meta name="description" content="Source Music Group is a boutique music label built on marketing guidance, unique music, and a true artist-as-partner model. Home of Duka." />
 
-  <!-- Open Graph / social preview (update URL + image when you have a domain) -->
+  <!-- Open Graph / social preview -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Source Music Group" />
   <meta property="og:description" content="A boutique label: marketing guidance, unique music, and a real artist partnership. Home of Duka." />
   <meta property="og:image" content="https://sourcemusicgrp.com/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://sourcemusicgrp.com" />
+  <meta property="og:url" content="https://sourcemusicgrp.com/music.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://sourcemusicgrp.com/assets/og-image.png" />
-  <link rel="canonical" href="https://sourcemusicgrp.com" />
+  <link rel="canonical" href="https://sourcemusicgrp.com/music.html" />
 
   <link rel="icon" type="image/png" href="assets/logo.png" />
 
@@ -33,7 +33,7 @@
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="top">
     <div class="nav__inner">
-      <a class="nav__brand" href="#top" aria-label="Source Music Group home">
+      <a class="nav__brand" href="music.html" aria-label="Source Music Group home">
         <img src="assets/logo.png" alt="Source Music Group logo" class="nav__logo" width="44" height="44" />
         <span class="nav__brand-text">SOURCE<span class="nav__brand-sub">MUSIC GROUP</span></span>
       </a>
@@ -43,9 +43,10 @@
       </button>
 
       <nav class="nav__menu" id="navMenu" aria-label="Primary">
-        <a href="#about">Label</a>
-        <a href="#artists">Artists</a>
-        <a href="#contact" class="nav__cta">Submit Music</a>
+        <a href="music.html#about">Label</a>
+        <a href="music.html#artists">Artists</a>
+        <a href="submit.html" class="nav__cta">Submit Music</a>
+        <a href="publishing.html" class="brand-switch">⇄ Publishing</a>
       </nav>
     </div>
   </header>
@@ -65,7 +66,7 @@
         </p>
         <div class="hero__actions">
           <a href="#artists" class="btn btn--primary">Meet Duka</a>
-          <a href="#contact" class="btn btn--ghost">Submit Your Music</a>
+          <a href="submit.html" class="btn btn--ghost">Submit Your Music</a>
         </div>
       </div>
       <a href="#about" class="hero__scroll" aria-label="Scroll to learn more">▾</a>
@@ -154,48 +155,18 @@
       </div>
     </section>
 
-    <!-- ===================== CONTACT / SUBMIT ===================== -->
-    <section class="section contact" id="contact">
+    <!-- ===================== SUBMIT CTA ===================== -->
+    <section class="section contact" id="submit-cta">
       <div class="container container--narrow">
         <p class="eyebrow eyebrow--center">Get In Touch</p>
         <h2 class="section__title">Submit your music</h2>
         <p class="section__lead">
-          Looking for a partner who actually has your back? Send us your music and a little about
-          your goals. We listen to everything.
+          Sing it straight into the page or upload your track — our AI listens to every submission and
+          gets to know your sound in seconds.
         </p>
-
-        <!-- Replace YOUR_FORM_ID with your Formspree form ID (formspree.io). -->
-        <form class="form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <div class="form__row">
-            <label class="form__field">
-              <span>Name</span>
-              <input type="text" name="name" required autocomplete="name" />
-            </label>
-            <label class="form__field">
-              <span>Email</span>
-              <input type="email" name="email" required autocomplete="email" />
-            </label>
-          </div>
-
-          <label class="form__field">
-            <span>Artist / Project name</span>
-            <input type="text" name="artist" />
-          </label>
-
-          <label class="form__field">
-            <span>Links to your music (Spotify, SoundCloud, YouTube…)</span>
-            <input type="text" name="links" placeholder="https://" />
-          </label>
-
-          <label class="form__field">
-            <span>Tell us about you & your goals</span>
-            <textarea name="message" rows="5" required></textarea>
-          </label>
-
-          <button type="submit" class="btn btn--primary form__submit">Send Submission</button>
-          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
-        </form>
-
+        <div class="hero__actions">
+          <a href="submit.html" class="btn btn--primary">Submit Your Music →</a>
+        </div>
         <p class="contact__alt">
           Prefer email? Reach us at
           <a href="mailto:hello@sourcemusicgrp.com">hello@sourcemusicgrp.com</a>
@@ -207,14 +178,15 @@
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container footer__inner">
-      <a href="#top" class="footer__brand">
+      <a href="music.html" class="footer__brand">
         <img src="assets/logo.png" alt="" class="footer__logo" width="40" height="40" aria-hidden="true" />
         <span>Source Music Group</span>
       </a>
       <nav class="footer__links" aria-label="Footer">
-        <a href="#about">Label</a>
-        <a href="#artists">Artists</a>
-        <a href="#contact">Submit Music</a>
+        <a href="music.html#about">Label</a>
+        <a href="music.html#artists">Artists</a>
+        <a href="submit.html">Submit Music</a>
+        <a href="publishing.html">Publishing</a>
         <a href="https://open.spotify.com/artist/0oxAY1bzauffvCA5m6tsBZ" target="_blank" rel="noopener">Spotify</a>
       </nav>
       <p class="footer__copy">© <span id="year"></span> Source Music Group. All rights reserved.</p>

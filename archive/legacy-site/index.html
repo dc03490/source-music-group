@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Source — Music Group &amp; Publishing Company</title>
+  <meta name="description" content="Source is home to two companies: Source Music Group, the boutique label, and Source Publishing Company, for royalty collection and music publishing." />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Source — Music Group &amp; Publishing" />
+  <meta property="og:description" content="Two companies, one source. The label and the publisher." />
+  <meta property="og:image" content="https://sourcemusicgrp.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://sourcemusicgrp.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://sourcemusicgrp.com/assets/og-image.png" />
+  <link rel="canonical" href="https://sourcemusicgrp.com" />
+
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="switcher-page">
+  <main class="switcher" id="main">
+    <div class="switcher__glow" aria-hidden="true"></div>
+    <canvas class="switcher__globe" data-globe
+            data-stroke="#e0218a" data-dot="#1dd3b0" data-ocean="transparent"
+            data-stroke-alpha="0.5" data-dot-alpha="0.45" data-speed="0.18" data-density="24"
+            aria-hidden="true"></canvas>
+
+    <div class="switcher__inner">
+      <img src="assets/logo.png" alt="Source" class="switcher__logo" width="140" height="140" />
+      <p class="eyebrow eyebrow--center">One source, two companies</p>
+      <h1 class="switcher__title">Where would you like to go?</h1>
+
+      <div class="switcher__cards">
+        <a class="switch-card" href="music.html">
+          <span class="switch-card__eyebrow">The Label</span>
+          <h2 class="switch-card__title">Source Music Group</h2>
+          <p class="switch-card__text">
+            Boutique label — sharp marketing, unique music, and a real artist partnership. Home of Duka.
+            Submit your music here.
+          </p>
+          <span class="switch-card__cta">Enter Music Group →</span>
+        </a>
+
+        <a class="switch-card switch-card--pub" href="publishing.html">
+          <span class="switch-card__eyebrow">The Publisher</span>
+          <h2 class="switch-card__title">Source Publishing Company</h2>
+          <p class="switch-card__text">
+            Royalty collection &amp; music publishing — every play, every territory, collected for you.
+            Register your works here.
+          </p>
+          <span class="switch-card__cta">Enter Publishing →</span>
+        </a>
+      </div>
+    </div>
+
+    <footer class="switcher__footer">© <span id="year"></span> Source. All rights reserved.</footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="js/globe.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

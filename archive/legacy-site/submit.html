@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Your Music — Source Music Group</title>
+  <meta name="description" content="Sing straight into the page or upload your track. Our AI transcribes your lyrics and checks them against released music — the smartest way to submit to Source Music Group." />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Submit Your Music — Source Music Group" />
+  <meta property="og:description" content="Sing or upload your track — AI-verified submissions for Source Music Group." />
+  <meta property="og:image" content="https://sourcemusicgrp.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://sourcemusicgrp.com/submit.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://sourcemusicgrp.com/assets/og-image.png" />
+  <link rel="canonical" href="https://sourcemusicgrp.com/submit.html" />
+
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="nav__brand" href="music.html" aria-label="Source Music Group home">
+        <img src="assets/logo.png" alt="Source Music Group logo" class="nav__logo" width="44" height="44" />
+        <span class="nav__brand-text">SOURCE<span class="nav__brand-sub">MUSIC GROUP</span></span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav__menu" id="navMenu" aria-label="Primary">
+        <a href="music.html#about">Label</a>
+        <a href="music.html#artists">Artists</a>
+        <a href="submit.html" class="nav__cta" aria-current="page">Submit Music</a>
+        <a href="publishing.html" class="brand-switch">⇄ Publishing</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== SUBMIT ===================== -->
+    <section class="section contact" id="contact">
+      <div class="container container--narrow">
+        <p class="eyebrow eyebrow--center">Submit Your Music</p>
+        <h2 class="section__title">Let's hear it.</h2>
+        <p class="section__lead">
+          Looking for a partner who actually has your back? Sing it, upload it, or just tell us about
+          yourself below. We listen to everything.
+        </p>
+
+        <!-- ========== SING TO SUBMIT — AI-verified music submission ========== -->
+        <div class="sing" id="sing" hidden>
+          <div class="sing__head">
+            <span class="sing__badge">New</span>
+            <h3 class="sing__title">🎤 Sing your song</h3>
+            <p class="sing__lead">
+              Skip the links — sing straight into the page. Our AI transcribes your lyrics and checks
+              them against released music, so we get to know your sound in seconds.
+            </p>
+          </div>
+
+          <!-- Recorder -->
+          <div class="rec" data-state="idle">
+            <div class="rec__meter" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="rec__controls">
+              <button type="button" class="rec__btn rec__btn--record" id="recToggle" aria-label="Start recording">
+                <span class="rec__dot"></span>
+                <span class="rec__btn-label">Record</span>
+              </button>
+              <span class="rec__time" id="recTime" aria-live="polite">0:00</span>
+            </div>
+
+            <div class="rec__or" id="recOr"><span>or</span></div>
+
+            <label class="rec__upload" id="recUpload">
+              <input type="file" id="recFile" accept="audio/*" />
+              <span class="rec__upload-btn">📁 Upload your track</span>
+              <span class="rec__upload-note">Best for ISRC &amp; streaming verification</span>
+            </label>
+
+            <audio class="rec__playback" id="recPlayback" controls hidden></audio>
+
+            <div class="rec__actions" hidden>
+              <button type="button" class="btn btn--ghost btn--sm" id="recRedo">Re-record</button>
+              <button type="button" class="btn btn--primary btn--sm" id="recAnalyze">Analyze my song ↗</button>
+            </div>
+
+            <p class="rec__hint" id="recHint">Sing 15–30 seconds — or upload your track for full ISRC &amp; streaming checks.</p>
+          </div>
+
+          <!-- Results -->
+          <div class="sing__results" id="singResults" hidden aria-live="polite">
+            <div class="verdict" id="singVerdict"></div>
+
+            <div class="result-block">
+              <h4 class="result-block__title">Transcribed lyrics</h4>
+              <p class="result-block__lyrics" id="singLyrics"></p>
+            </div>
+
+            <div class="result-block" id="singMatchBlock" hidden>
+              <h4 class="result-block__title">Possible release match</h4>
+              <table class="match-table">
+                <tbody id="singMatchRows"></tbody>
+              </table>
+            </div>
+
+            <ul class="flags" id="singFlags"></ul>
+            <p class="sing__confirm">Looks right? Add your details below and send your submission — your song analysis rides along automatically.</p>
+          </div>
+        </div>
+
+        <!-- Replace YOUR_FORM_ID with your Formspree form ID (formspree.io). -->
+        <form class="form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form__row">
+            <label class="form__field">
+              <span>Name</span>
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+            <label class="form__field">
+              <span>Email</span>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+          </div>
+
+          <label class="form__field">
+            <span>Artist / Project name</span>
+            <input type="text" name="artist" />
+          </label>
+
+          <label class="form__field">
+            <span>Links to your music (Spotify, SoundCloud, YouTube…)</span>
+            <input type="text" name="links" placeholder="https://" />
+          </label>
+
+          <label class="form__field">
+            <span>Tell us about you & your goals</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+
+          <!-- Populated by the "Sing to Submit" AI analysis (js/main.js) -->
+          <input type="hidden" name="ai_transcript" id="aiTranscript" />
+          <input type="hidden" name="ai_verdict" id="aiVerdict" />
+          <input type="hidden" name="ai_match" id="aiMatch" />
+
+          <button type="submit" class="btn btn--primary form__submit">Send Submission</button>
+          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="contact__alt">
+          Prefer email? Reach us at
+          <a href="mailto:hello@sourcemusicgrp.com">hello@sourcemusicgrp.com</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="music.html" class="footer__brand">
+        <img src="assets/logo.png" alt="" class="footer__logo" width="40" height="40" aria-hidden="true" />
+        <span>Source Music Group</span>
+      </a>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="music.html#about">Label</a>
+        <a href="music.html#artists">Artists</a>
+        <a href="submit.html">Submit Music</a>
+        <a href="publishing.html">Publishing</a>
+        <a href="https://open.spotify.com/artist/0oxAY1bzauffvCA5m6tsBZ" target="_blank" rel="noopener">Spotify</a>
+      </nav>
+      <p class="footer__copy">© <span id="year"></span> Source Music Group. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
