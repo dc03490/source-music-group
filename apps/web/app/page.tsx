@@ -31,7 +31,7 @@ import {
 export default function Home() {
   return (
     <>
-      <EcosystemNav logoSrc="/assets/logo.png" />
+      <EcosystemNav />
 
       <main>
         {/* ============ HERO ============ */}
