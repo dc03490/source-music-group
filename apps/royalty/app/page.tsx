@@ -24,14 +24,26 @@ import {
 } from "@source/ui";
 import {
   Activity,
+  Archive,
   BrainCircuit,
+  Briefcase,
+  ClipboardX,
+  Disc3,
   FileSearch,
+  FileWarning,
   Gauge,
   ListChecks,
+  Mic2,
+  Network,
+  PenLine,
   Radar,
+  SlidersHorizontal,
   Smartphone,
+  Users,
 } from "lucide-react";
 import { FeaturesWalkthrough } from "./features-walkthrough";
+import { EarlyAccessForm } from "./early-access-form";
+import { LOCAL_LINKS } from "./local-links";
 
 const faqItems = [
   {
@@ -56,11 +68,35 @@ const faqItems = [
   },
 ];
 
+const joinSteps = [
+  {
+    title: "You're on the list",
+    text: "We confirm your spot by email. No spam — just launch updates.",
+  },
+  {
+    title: "Audits open in waves",
+    text: "Early-access members are invited first as the platform comes online.",
+  },
+  {
+    title: "You connect your data",
+    text: "Link or upload the statements and registrations you want reviewed — you stay in control.",
+  },
+  {
+    title: "You get your first audit",
+    text: "A catalog health score and a ranked list of issues worth investigating, free at launch.",
+  },
+];
+
 export default function Home() {
   return (
     <>
       <SkipLink />
-      <EcosystemNav active="royalty" sub="Royalty" cta={{ label: "Join Early Access", href: "#audit" }} />
+      <EcosystemNav
+        active="royalty"
+        sub="Royalty"
+        localLinks={LOCAL_LINKS}
+        cta={{ label: "Join Early Access", href: "/early-access" }}
+      />
       <main id="main">
         {/* ============ HERO ============ */}
         <Section className="relative overflow-hidden pb-16 pt-20 sm:pt-24">
@@ -139,8 +175,54 @@ export default function Home() {
           </Container>
         </Section>
 
+        {/* ============ WHO IT'S FOR ============ */}
+        <Section id="who">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>Who It&apos;s For</Eyebrow>
+              <SectionTitle className="mt-3">Built for the people who own the rights.</SectionTitle>
+            </Reveal>
+
+            <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <StaggerItem>
+                <FeatureCard title="Artists" icon={Mic2} accent="blue">
+                  Independent or signed — see how your releases are registered and where your
+                  recording royalties flow.
+                </FeatureCard>
+              </StaggerItem>
+              <StaggerItem>
+                <FeatureCard title="Songwriters" icon={PenLine} accent="blue">
+                  Track compositions across PROs and the MLC, and spot works that may be
+                  unregistered or mismatched.
+                </FeatureCard>
+              </StaggerItem>
+              <StaggerItem>
+                <FeatureCard title="Producers" icon={SlidersHorizontal} accent="blue">
+                  Follow your splits and credits across every track you&apos;ve touched, in one
+                  place.
+                </FeatureCard>
+              </StaggerItem>
+              <StaggerItem>
+                <FeatureCard title="Managers" icon={Briefcase} accent="blue">
+                  Monitor every client&apos;s catalog health from one dashboard, wherever you are.
+                </FeatureCard>
+              </StaggerItem>
+              <StaggerItem>
+                <FeatureCard title="Independent labels" icon={Disc3} accent="blue">
+                  Roster-wide visibility into registrations, statements, and potential gaps.
+                </FeatureCard>
+              </StaggerItem>
+              <StaggerItem>
+                <FeatureCard title="Catalog owners & estates" icon={Archive} accent="blue">
+                  Bring order to inherited or acquired catalogs before the next statement cycle.
+                </FeatureCard>
+              </StaggerItem>
+            </Stagger>
+          </Container>
+        </Section>
+
         {/* ============ WALKTHROUGH ============ */}
-        <Section id="demo">
+        <Section id="demo" className="border-t border-border bg-card-muted/50">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>How It Works</Eyebrow>
@@ -158,7 +240,7 @@ export default function Home() {
         </Section>
 
         {/* ============ FEATURES GRID ============ */}
-        <Section id="features" className="border-t border-border bg-card-muted/50">
+        <Section id="features">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>The Platform</Eyebrow>
@@ -206,8 +288,109 @@ export default function Home() {
           </Container>
         </Section>
 
+        {/* ============ WHY ROYALTIES GO MISSING ============ */}
+        <Section id="problem" className="border-t border-border bg-card-muted/50">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>The Problem</Eyebrow>
+              <SectionTitle className="mt-3">Why royalties go missing.</SectionTitle>
+              <Lead className="mt-4">
+                Royalties rarely vanish because someone took them. They stall because the data
+                behind a song breaks somewhere along the chain.
+              </Lead>
+            </Reveal>
+
+            <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <StaggerItem>
+                <FeatureCard title="Metadata mismatches" icon={FileWarning} accent="teal">
+                  A misspelled name or a missing ISRC or ISWC can keep a royalty from ever matching
+                  to you.
+                </FeatureCard>
+              </StaggerItem>
+              <StaggerItem>
+                <FeatureCard title="Missing registrations" icon={ClipboardX} accent="teal">
+                  Works not registered with a PRO, the MLC, or a society in a key territory
+                  can&apos;t pay out properly.
+                </FeatureCard>
+              </StaggerItem>
+              <StaggerItem>
+                <FeatureCard title="Undocumented splits" icon={Users} accent="teal">
+                  When collaborators never file matching splits, payments can sit unmatched or
+                  route to the wrong party.
+                </FeatureCard>
+              </StaggerItem>
+              <StaggerItem>
+                <FeatureCard title="Fragmented sources" icon={Network} accent="teal">
+                  Royalties arrive from dozens of sources on different schedules — gaps are hard to
+                  see without one view.
+                </FeatureCard>
+              </StaggerItem>
+            </Stagger>
+          </Container>
+        </Section>
+
+        {/* ============ SECURITY & PRIVACY ============ */}
+        <Section id="security">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>Security &amp; Privacy</Eyebrow>
+              <SectionTitle className="mt-3">Your data, on your terms.</SectionTitle>
+            </Reveal>
+
+            <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <StaggerItem className="h-full">
+                <Card className="h-full">
+                  <h3 className="text-base font-semibold tracking-tight">What we collect</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Only what an audit needs: catalog metadata, registration details, and the
+                    statements you choose to share.
+                  </p>
+                </Card>
+              </StaggerItem>
+              <StaggerItem className="h-full">
+                <Card className="h-full">
+                  <h3 className="text-base font-semibold tracking-tight">Why we need it</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Audits compare your statements against registration and release data to flag
+                    inconsistencies worth reviewing.
+                  </p>
+                </Card>
+              </StaggerItem>
+              <StaggerItem className="h-full">
+                <Card className="h-full">
+                  <h3 className="text-base font-semibold tracking-tight">How it&apos;s protected</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Early-access data will be encrypted in transit and at rest, used only for your
+                    audit, and never sold.
+                  </p>
+                </Card>
+              </StaggerItem>
+              <StaggerItem className="h-full">
+                <Card className="h-full">
+                  <h3 className="text-base font-semibold tracking-tight">What we don&apos;t guarantee</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    An audit surfaces potential gaps for review. We don&apos;t promise missing
+                    money, recovery amounts, or outcomes.
+                  </p>
+                </Card>
+              </StaggerItem>
+            </Stagger>
+
+            <Reveal delay={0.1}>
+              <p className="mt-10 text-center">
+                <a
+                  href="/data-policy"
+                  className="text-sm font-medium text-gold-2 underline-offset-4 hover:underline"
+                >
+                  Read the full data policy →
+                </a>
+              </p>
+            </Reveal>
+          </Container>
+        </Section>
+
         {/* ============ EARLY ACCESS ============ */}
-        <Section id="early-access">
+        <Section id="early-access" className="border-t border-border bg-card-muted/50">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>Early Access</Eyebrow>
@@ -244,7 +427,7 @@ export default function Home() {
         </Section>
 
         {/* ============ PRICING (planned tiers) ============ */}
-        <Section id="pricing" className="border-t border-border bg-card-muted/50">
+        <Section id="pricing">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>Planned Pricing</Eyebrow>
@@ -301,7 +484,7 @@ export default function Home() {
         </Section>
 
         {/* ============ FAQ ============ */}
-        <Section id="faq">
+        <Section id="faq" className="border-t border-border bg-card-muted/50">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>FAQ</Eyebrow>
@@ -311,6 +494,34 @@ export default function Home() {
               <div className="mx-auto mt-12 max-w-2xl">
                 <FAQ items={faqItems} />
               </div>
+            </Reveal>
+          </Container>
+        </Section>
+
+        {/* ============ AFTER YOU JOIN ============ */}
+        <Section id="after-you-join">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>Early Access</Eyebrow>
+              <SectionTitle className="mt-3">What happens after you join.</SectionTitle>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <ol className="mx-auto mt-12 max-w-2xl space-y-6">
+                {joinSteps.map((s, i) => (
+                  <li key={s.title} className="flex gap-4">
+                    <span
+                      aria-hidden
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border bg-card font-mono text-sm font-semibold text-gold"
+                    >
+                      {i + 1}
+                    </span>
+                    <div>
+                      <h3 className="text-base font-semibold tracking-tight">{s.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </Reveal>
           </Container>
         </Section>
@@ -325,15 +536,11 @@ export default function Home() {
                 The platform is in active development. Join the early-access list and we&apos;ll
                 open your audit the moment it&apos;s ready.
               </Lead>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink
-                  href="mailto:royalty@sourcemusicgrp.com?subject=Early%20access%20—%20Source%20Royalty"
-                  size="lg"
-                >
-                  Join the early-access list →
-                </ButtonLink>
-              </div>
             </Reveal>
+            {/* Form stays outside Reveal/Stagger — arming remounts children. */}
+            <div className="mx-auto mt-10 max-w-md">
+              <EarlyAccessForm />
+            </div>
           </Container>
         </Section>
 

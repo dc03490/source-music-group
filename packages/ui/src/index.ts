@@ -17,6 +17,7 @@ export { Card, EcosystemCard, FeatureCard, TestimonialCard, PricingCard } from "
 export {
   PhoneFrame,
   BrowserFrame,
+  DemoChip,
   ScreenHeader,
   StatRow,
   MiniBars,

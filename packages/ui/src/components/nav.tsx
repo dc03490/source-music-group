@@ -8,16 +8,19 @@ import { ButtonLink } from "./button";
 import { Wordmark } from "./primitives";
 
 /** Shared ecosystem navigation. Pass `active` to highlight the current site.
-    `cta` overrides the header call-to-action per site. */
+    `cta` overrides the header call-to-action per site. `localLinks` are
+    site-local anchors rendered before the ecosystem links. */
 export function EcosystemNav({
   active,
   sub,
   logoSrc,
+  localLinks,
   cta = { label: "Explore the companies", href: `${SITES.source.url}#companies` },
 }: {
   active?: SiteKey;
   sub?: string;
   logoSrc?: string;
+  localLinks?: { label: string; href: string }[];
   cta?: { label: string; href: string };
 }) {
   const [open, setOpen] = useState(false);
@@ -30,6 +33,18 @@ export function EcosystemNav({
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
+          {localLinks?.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+          {localLinks && localLinks.length > 0 ? (
+            <span aria-hidden className="mx-2 h-4 w-px bg-border" />
+          ) : null}
           {NAV_LINKS.map((link) => {
             const isActive = link.siteKey && link.siteKey === active;
             return (
@@ -68,6 +83,20 @@ export function EcosystemNav({
       {open ? (
         <div className="border-t border-border bg-background md:hidden">
           <div className="space-y-1 px-6 py-4">
+            {localLinks && localLinks.length > 0 ? (
+              <div className="mb-2 border-b border-border pb-2">
+                {localLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            ) : null}
             {NAV_LINKS.map((link) => (
               <a
                 key={link.key}

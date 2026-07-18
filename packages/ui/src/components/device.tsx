@@ -58,11 +58,28 @@ export function BrowserFrame({
 
 /* ---------- Mock app-screen kit (demo data, drawn with divs/SVG) ---------- */
 
-export function ScreenHeader({ title }: { title: string }) {
+/** Small "Demo" pill so mock screens are always labeled as demo data. */
+export function DemoChip({ className }: { className?: string }) {
+  return (
+    <span
+      className={cn(
+        "rounded-full border border-gold/60 bg-background px-2 py-0.5 font-pixel text-[0.62rem] uppercase tracking-[0.12em] text-gold",
+        className,
+      )}
+    >
+      Demo
+    </span>
+  );
+}
+
+export function ScreenHeader({ title, chip = true }: { title: string; chip?: boolean }) {
   return (
     <div className="flex items-center justify-between px-4 pb-3 pt-9">
       <span className="font-pixel text-[0.5rem] uppercase tracking-[0.1em] text-gold">{title}</span>
-      <span aria-hidden className="h-6 w-6 rounded-full bg-gradient-to-br from-magenta/50 to-teal/50" />
+      <span className="flex items-center gap-2">
+        {chip ? <DemoChip /> : null}
+        <span aria-hidden className="h-6 w-6 rounded-full bg-gradient-to-br from-magenta/50 to-teal/50" />
+      </span>
     </div>
   );
 }
@@ -170,12 +187,12 @@ export function ScreenScan() {
 export function ScreenCollect() {
   return (
     <div className="pb-4">
-      <ScreenHeader title="Recovered" />
-      <p className="px-4 text-[0.62rem] uppercase tracking-wider text-subtle">Demo · This quarter</p>
+      <ScreenHeader title="Claim Tracker" />
+      <p className="px-4 text-[0.62rem] uppercase tracking-wider text-subtle">Example · Resolved claims</p>
       <p className="px-4 pt-1 font-mono text-2xl font-bold text-gold">+$1,371.09</p>
       <MiniBars values={[18, 26, 38, 47, 61, 78, 92]} accent="#e8a33d" />
-      <StatRow label="MLC claim filed" value="Paid" tone="up" />
-      <StatRow label="PRO re-registration" value="Paid" tone="up" />
+      <StatRow label="MLC claim filed" value="Resolved" tone="up" />
+      <StatRow label="PRO re-registration" value="Resolved" tone="up" />
       <StatRow label="DSP metadata fix" value="In review" />
     </div>
   );
