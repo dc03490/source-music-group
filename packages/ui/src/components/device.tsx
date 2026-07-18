@@ -75,7 +75,7 @@ export function DemoChip({ className }: { className?: string }) {
 export function ScreenHeader({ title, chip = true }: { title: string; chip?: boolean }) {
   return (
     <div className="flex items-center justify-between px-4 pb-3 pt-9">
-      <span className="font-pixel text-[0.5rem] uppercase tracking-[0.1em] text-gold">{title}</span>
+      <span className="font-pixel text-[0.62rem] uppercase tracking-[0.1em] text-gold">{title}</span>
       <span className="flex items-center gap-2">
         {chip ? <DemoChip /> : null}
         <span aria-hidden className="h-6 w-6 rounded-full bg-gradient-to-br from-magenta/50 to-teal/50" />

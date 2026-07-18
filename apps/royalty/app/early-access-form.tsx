@@ -25,7 +25,7 @@ const ROLES = [
 ];
 
 const inputClasses =
-  "h-12 w-full rounded-[var(--radius-card)] border border-input bg-card px-4 text-sm text-foreground placeholder:text-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+  "h-12 w-full rounded-[var(--radius-card)] border border-input bg-card px-4 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 const labelClasses = "mb-2 block text-sm font-medium text-foreground";
 

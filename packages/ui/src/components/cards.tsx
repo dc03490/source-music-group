@@ -132,14 +132,14 @@ export function PricingCard({
       )}
     >
       {highlighted ? (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full border border-gold bg-background px-3 py-1 font-pixel text-[0.5rem] uppercase tracking-[0.12em] text-gold">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full border border-gold bg-background px-3 py-1 font-pixel text-[0.62rem] uppercase tracking-[0.12em] text-gold">
           Popular
         </span>
       ) : null}
-      <span className="flex items-center gap-2">
-        <span className="font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-muted-foreground">{name}</span>
+      <span className="flex flex-wrap items-center gap-2">
+        <span className="font-pixel text-[0.62rem] uppercase tracking-[0.14em] text-muted-foreground">{name}</span>
         {tag ? (
-          <span className="rounded-full border border-border px-2 py-0.5 font-pixel text-[0.62rem] uppercase tracking-[0.12em] text-subtle">
+          <span className="whitespace-nowrap rounded-full border border-border px-2 py-0.5 font-pixel text-[0.62rem] uppercase tracking-[0.12em] text-subtle">
             {tag}
           </span>
         ) : null}

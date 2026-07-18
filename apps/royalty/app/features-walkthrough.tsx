@@ -55,7 +55,7 @@ export function FeaturesWalkthrough() {
                 >
                   <s.icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
                 </span>
-                <span className="font-pixel text-[0.5rem] uppercase tracking-[0.1em] text-subtle">
+                <span className="font-pixel text-[0.62rem] uppercase tracking-[0.1em] text-subtle">
                   Step {i + 1}
                 </span>
               </span>

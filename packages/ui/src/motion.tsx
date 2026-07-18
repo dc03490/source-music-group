@@ -148,6 +148,13 @@ export function StaggerItem({ children, className, y = 16 }: { children: ReactNo
   );
 }
 
+/* DECISION — framer-motion is intentionally NOT dynamic-imported. The SSR-safe
+   arming pattern above needs `motion` and `useReducedMotion` synchronously at
+   the first client render: deferring the library would force an async swap (a
+   visible flash) or a loading gate around every Reveal/Stagger, reintroducing
+   the blank-content bugs this file exists to prevent — all to save ~35KB gz.
+   Skipped on purpose. */
+
 /** Subtle hover lift for cards. */
 export function HoverLift({ children, className }: { children: ReactNode; className?: string }) {
   const reduce = useReducedMotion();

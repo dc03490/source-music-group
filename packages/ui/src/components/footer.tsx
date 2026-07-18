@@ -109,7 +109,7 @@ export function Footer({
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Source. All rights reserved.
             </p>
-            <p className="font-pixel text-[0.5rem] uppercase tracking-[0.14em] text-subtle">
+            <p className="font-pixel text-[0.62rem] uppercase tracking-[0.14em] text-subtle">
               A Source Company
             </p>
           </div>
