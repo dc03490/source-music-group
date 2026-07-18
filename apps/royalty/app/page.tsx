@@ -115,7 +115,7 @@ export default function Home() {
                 </Reveal>
                 <Reveal delay={0.08}>
                   <h1 className="mt-6 text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-                    Know Where <span className="grad-text">Every Dollar</span> Comes From.
+                    Know Where <span className="grad-text">Your Royalties</span> Come From.
                   </h1>
                 </Reveal>
                 <Reveal delay={0.16}>
@@ -547,13 +547,16 @@ export default function Home() {
         <Section className="pt-0">
           <CrossPromo
             title="Need publishing administration?"
-            body="Source Publishing registers your works and collects every royalty, worldwide."
+            body="Source Publishing registers your works and collects across societies worldwide."
             cta="Visit Source Publishing"
             href={SITES.publishing.url}
           />
         </Section>
       </main>
-      <Footer />
+      <Footer
+        contactEmail="royalty@sourcemusicgrp.com"
+        extraLinks={[{ label: "Data Policy", href: "/data-policy" }]}
+      />
     </>
   );
 }

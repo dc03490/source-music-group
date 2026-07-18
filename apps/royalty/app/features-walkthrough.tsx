@@ -40,7 +40,7 @@ export function FeaturesWalkthrough() {
               onClick={() => setActive(i)}
               aria-pressed={selected}
               className={cn(
-                "block w-full rounded-[var(--radius-xl)] border p-5 text-left transition-all duration-200",
+                "block w-full rounded-[var(--radius-xl)] border p-5 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 selected
                   ? "border-gold bg-card shadow-[0_0_30px_-12px_rgba(232,163,61,0.5)]"
                   : "border-border bg-card-muted hover:border-subtle",
@@ -66,9 +66,14 @@ export function FeaturesWalkthrough() {
         })}
       </div>
 
-      <div className="mx-auto">
+      {/* Phone first on mobile so the screen being described is visible above the step list. */}
+      <div className="order-first mx-auto lg:order-none">
         <PhoneFrame>{step.screen}</PhoneFrame>
       </div>
+
+      <p aria-live="polite" className="sr-only">
+        Showing step {active + 1}: {step.title}
+      </p>
     </div>
   );
 }

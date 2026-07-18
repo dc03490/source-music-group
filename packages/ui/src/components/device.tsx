@@ -92,7 +92,7 @@ export function StatRow({ label, value, tone = "default" }: { label: string; val
         className={cn(
           "font-mono text-[0.72rem] font-semibold",
           tone === "up" && "text-teal",
-          tone === "flag" && "text-magenta",
+          tone === "flag" && "text-magenta-text",
           tone === "default" && "text-foreground",
         )}
       >

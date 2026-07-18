@@ -46,7 +46,15 @@ const companyLinks = [
   { label: "Terms", href: `${SITES.source.url}/terms` },
 ];
 
-export function Footer() {
+export function Footer({
+  contactEmail,
+  extraLinks,
+}: {
+  /** Site-specific contact address shown under the brand blurb. */
+  contactEmail?: string;
+  /** Site-specific links appended to the Company column (e.g. Data Policy). */
+  extraLinks?: { label: string; href: string }[];
+} = {}) {
   return (
     <footer className="border-t border-border bg-background">
       <Container>
@@ -57,6 +65,16 @@ export function Footer() {
               The modern operating system for music rights — helping creators own, understand, and
               maximize the value of their work.
             </p>
+            {contactEmail ? (
+              <p className="mt-4 text-sm">
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {contactEmail}
+                </a>
+              </p>
+            ) : null}
           </div>
 
           <div>
@@ -75,7 +93,7 @@ export function Footer() {
           <div>
             <h2 className="text-xs font-medium uppercase tracking-[0.14em] text-subtle">Company</h2>
             <ul className="mt-4 space-y-3">
-              {companyLinks.map((l) => (
+              {[...companyLinks, ...(extraLinks ?? [])].map((l) => (
                 <li key={l.label}>
                   <a href={l.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
                     {l.label}

@@ -48,7 +48,10 @@ export default function EarlyAccessPage() {
           </Container>
         </Section>
       </main>
-      <Footer />
+      <Footer
+        contactEmail="royalty@sourcemusicgrp.com"
+        extraLinks={[{ label: "Data Policy", href: "/data-policy" }]}
+      />
     </>
   );
 }
