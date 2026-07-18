@@ -104,6 +104,7 @@ export function FeatureCard({
 
 export function PricingCard({
   name,
+  tag,
   price,
   period,
   blurb,
@@ -113,6 +114,8 @@ export function PricingCard({
   highlighted = false,
 }: {
   name: string;
+  /** Small honesty pill beside the plan name (e.g. "At launch" for planned pricing). */
+  tag?: string;
   price: string;
   period?: string;
   blurb: string;
@@ -133,7 +136,14 @@ export function PricingCard({
           Popular
         </span>
       ) : null}
-      <span className="font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-muted-foreground">{name}</span>
+      <span className="flex items-center gap-2">
+        <span className="font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-muted-foreground">{name}</span>
+        {tag ? (
+          <span className="rounded-full border border-border px-2 py-0.5 font-pixel text-[0.62rem] uppercase tracking-[0.12em] text-subtle">
+            {tag}
+          </span>
+        ) : null}
+      </span>
       <p className="mt-3 flex items-baseline gap-1">
         <span className="text-4xl font-semibold tracking-tight">{price}</span>
         {period ? <span className="text-sm text-muted-foreground">{period}</span> : null}

@@ -2,6 +2,7 @@ import {
   Badge,
   BrowserFrame,
   ButtonLink,
+  Card,
   Container,
   CrossPromo,
   EcosystemNav,
@@ -19,7 +20,6 @@ import {
   SectionTitle,
   Stagger,
   StaggerItem,
-  TestimonialCard,
   SITES,
 } from "@source/ui";
 import {
@@ -36,23 +36,23 @@ import { FeaturesWalkthrough } from "./features-walkthrough";
 const faqItems = [
   {
     q: "What exactly is a catalog audit?",
-    a: "We read your releases, registrations, splits, and statements, then flag metadata issues, missing registrations, and unclaimed royalties — ranked by how much each one is likely worth to you.",
+    a: "We read your releases, registrations, splits, and statements, then flag metadata issues, missing registrations, and potentially unmatched royalties — ranked by estimated value so you know what's worth investigating first.",
   },
   {
     q: "Is my catalog data safe?",
-    a: "Yes. Your data is used only to run your audit, encrypted in transit and at rest, and never shared or sold. You can delete it at any time.",
+    a: "Protecting catalog data is a core design requirement. Early-access data will be encrypted in transit and at rest, used only to run your audit, and never sold. You'll be able to request deletion at any time.",
   },
   {
     q: "Which platforms and societies do you cover?",
-    a: "Streaming DSPs plus the major collection points — PROs, the MLC, and international societies — with coverage expanding as the platform grows.",
+    a: "Source Royalty is being built to analyze the statements and registration data you authorize or export — from PROs, the MLC, distributors, and DSP portals — with supported sources expanding through early access.",
   },
   {
     q: "When does the platform launch?",
     a: "Source Royalty is in active development. Join the early-access list below and you'll be first in line when audits open.",
   },
   {
-    q: "Can I cancel anytime?",
-    a: "Yes — paid plans are month-to-month with no lock-in, and the free audit is exactly that: free.",
+    q: "Will I be locked into a contract?",
+    a: "The plan is month-to-month pricing with no long-term lock-in, and the first audit free. Final terms will be published at launch before you pay anything.",
   },
 ];
 
@@ -74,7 +74,7 @@ export default function Home() {
                 <Reveal>
                   <Badge>
                     <Smartphone className="h-3.5 w-3.5 text-teal" />
-                    Works on mobile &amp; desktop
+                    Designed for mobile &amp; desktop
                   </Badge>
                 </Reveal>
                 <Reveal delay={0.08}>
@@ -92,10 +92,10 @@ export default function Home() {
                 <Reveal delay={0.24}>
                   <div className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
                     <ButtonLink href="#audit" size="lg">
-                      Start Free Audit
+                      Join early access
                     </ButtonLink>
                     <ButtonLink href="#demo" variant="secondary" size="lg">
-                      See Demo
+                      See the demo
                     </ButtonLink>
                   </div>
                 </Reveal>
@@ -119,8 +119,8 @@ export default function Home() {
                 Your catalog in your pocket. Your audit on the big screen.
               </SectionTitle>
               <Lead className="mt-4">
-                One URL, no downloads. Check what you&apos;re owed from the studio, the tour van, or
-                the couch — the same live dashboard follows you everywhere.
+                One URL, no downloads. Check your catalog&apos;s status from the studio, the tour
+                van, or the couch — one dashboard, planned for every screen.
               </Lead>
             </Reveal>
 
@@ -144,9 +144,9 @@ export default function Home() {
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>How It Works</Eyebrow>
-              <SectionTitle className="mt-3">Three taps to found money.</SectionTitle>
+              <SectionTitle className="mt-3">Three taps from scan to action.</SectionTitle>
               <Lead className="mt-4">
-                Tap a step to see the screen — this is the actual flow, sized for one thumb.
+                Tap a step to see the screen — a preview of the planned flow, sized for one thumb.
               </Lead>
             </Reveal>
             <Reveal delay={0.12}>
@@ -174,8 +174,8 @@ export default function Home() {
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="Royalty Audit" icon={Radar} accent="blue">
-                  A full sweep across registrations, splits, and statements to surface money
-                  you&apos;re owed but not receiving.
+                  A full sweep across registrations, splits, and statements to surface royalties
+                  that may not be reaching you.
                 </FeatureCard>
               </StaggerItem>
               <StaggerItem>
@@ -206,62 +206,70 @@ export default function Home() {
           </Container>
         </Section>
 
-        {/* ============ REVIEWS (placeholder) ============ */}
-        <Section id="reviews">
+        {/* ============ EARLY ACCESS ============ */}
+        <Section id="early-access">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>Early Access</Eyebrow>
-              <SectionTitle className="mt-3">What early users are saying.</SectionTitle>
+              <SectionTitle className="mt-3">What early access includes.</SectionTitle>
             </Reveal>
             <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <StaggerItem>
-                <TestimonialCard
-                  quote="Placeholder — an artist on finding four unregistered songs in their first scan."
-                  name="Artist Name"
-                  role="Independent Artist · Placeholder"
-                />
+              <StaggerItem className="h-full">
+                <Card className="h-full">
+                  <h3 className="text-base font-semibold tracking-tight">Free first audit</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Your first full catalog audit is free when audits open — a health score and a
+                    ranked issue list.
+                  </p>
+                </Card>
               </StaggerItem>
-              <StaggerItem>
-                <TestimonialCard
-                  quote="Placeholder — a manager on checking claim status from the road between shows."
-                  name="Artist Name"
-                  role="Artist Manager · Placeholder"
-                />
+              <StaggerItem className="h-full">
+                <Card className="h-full">
+                  <h3 className="text-base font-semibold tracking-tight">First in line</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Early-access members are invited in waves before public launch.
+                  </p>
+                </Card>
               </StaggerItem>
-              <StaggerItem>
-                <TestimonialCard
-                  quote="Placeholder — a producer on the health score finally making royalties make sense."
-                  name="Artist Name"
-                  role="Producer · Placeholder"
-                />
+              <StaggerItem className="h-full">
+                <Card className="h-full">
+                  <h3 className="text-base font-semibold tracking-tight">A say in the roadmap</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Tell us what your catalog needs — early feedback shapes what we build first.
+                  </p>
+                </Card>
               </StaggerItem>
             </Stagger>
           </Container>
         </Section>
 
-        {/* ============ PRICING (placeholder tiers) ============ */}
+        {/* ============ PRICING (planned tiers) ============ */}
         <Section id="pricing" className="border-t border-border bg-card-muted/50">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
-              <Eyebrow>Pricing</Eyebrow>
+              <Eyebrow>Planned Pricing</Eyebrow>
               <SectionTitle className="mt-3">Start free. Upgrade when it pays for itself.</SectionTitle>
-              <Lead className="mt-4">Launch pricing — final plans may change before release.</Lead>
+              <Lead className="mt-4">
+                Planned launch pricing — plans and prices may change before release.
+              </Lead>
             </Reveal>
 
             <Stagger className="mx-auto mt-14 grid max-w-4xl gap-5 pt-3 lg:grid-cols-3">
               <StaggerItem>
                 <PricingCard
                   name="Free Audit"
+                  tag="At launch"
                   price="$0"
                   blurb="See what's out there before you spend a dollar."
                   features={["One full catalog scan", "Catalog Health Score", "Top 3 issues surfaced"]}
-                  cta="Start Free Audit"
+                  cta="Join early access"
                   href="#audit"
                 />
               </StaggerItem>
               <StaggerItem>
                 <PricingCard
                   name="Artist"
+                  tag="At launch"
                   price="$9"
                   period="/month"
                   blurb="Continuous monitoring for working artists."
@@ -279,6 +287,7 @@ export default function Home() {
               <StaggerItem>
                 <PricingCard
                   name="Label"
+                  tag="At launch"
                   price="$29"
                   period="/month"
                   blurb="Every artist on your roster, one dashboard."

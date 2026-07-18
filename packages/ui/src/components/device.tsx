@@ -144,7 +144,7 @@ export function ScreenDashboard() {
   return (
     <div className="pb-4">
       <ScreenHeader title="Source Royalty" />
-      <p className="px-4 text-[0.62rem] uppercase tracking-wider text-subtle">Demo · Owed to you</p>
+      <p className="px-4 text-[0.62rem] uppercase tracking-wider text-subtle">Demo · Example estimate</p>
       <p className="px-4 pt-1 font-mono text-2xl font-bold text-teal">$4,218.66</p>
       <MiniBars />
       <StatRow label="Streaming royalties" value="$2,840.12" tone="up" />

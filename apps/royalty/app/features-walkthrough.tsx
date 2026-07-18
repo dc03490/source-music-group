@@ -12,14 +12,14 @@ const STEPS = [
     screen: <ScreenScan />,
   },
   {
-    title: "Spot missing money",
+    title: "Spot potential gaps",
     text: "Metadata issues, unregistered works, unclaimed mechanicals — flagged and ranked by how much they're worth to you.",
     icon: AlertTriangle,
     screen: <ScreenDashboard />,
   },
   {
     title: "Collect with confidence",
-    text: "Guided fixes and claim tracking until the money lands. Check the status from anywhere.",
+    text: "Guided fixes and claim tracking through resolution. Check the status from anywhere.",
     icon: HandCoins,
     screen: <ScreenCollect />,
   },
