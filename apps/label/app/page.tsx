@@ -16,10 +16,10 @@ import {
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, Disc3 } from "lucide-react";
 import { SubmissionForm } from "./submission-form";
+import { FanSignupForm } from "./fan-signup-form";
 import { LabelPrinciples } from "./label-principles";
 import { LOCAL_LINKS } from "./local-links";
-
-const SPOTIFY_ARTIST = "https://open.spotify.com/artist/0oxAY1bzauffvCA5m6tsBZ";
+import { LATEST, SPOTIFY_ARTIST, TRACKS } from "./artists/duka/tracks";
 
 export default function Home() {
   return (
@@ -57,7 +57,7 @@ export default function Home() {
             <Reveal delay={0.06}>
               <Badge>
                 <Disc3 className="h-3.5 w-3.5 text-gold" />
-                Independent Record Label
+                Independent Hip Hop / R&amp;B Label
               </Badge>
             </Reveal>
             <Reveal delay={0.12}>
@@ -67,20 +67,26 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.18}>
               <Lead className="mx-auto mt-6 max-w-xl">
-                Source Music Group is a boutique label built on three things: sharp marketing
-                guidance, genuinely unique music, and a real business partnership with every artist
-                we sign.
+                Source Music Group is a boutique Hip Hop and R&amp;B label built on three things:
+                sharp marketing guidance, genuinely unique music, and a real business partnership
+                with every artist we sign.
               </Lead>
             </Reveal>
             <Reveal delay={0.24}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
                 <ButtonLink href="#artists" size="lg">
-                  Meet Duka
+                  Listen to Duka
                 </ButtonLink>
                 <ButtonLink href="#submit" variant="secondary" size="lg">
                   Submit Your Music
                 </ButtonLink>
               </div>
+              <a
+                href="#updates"
+                className="mt-5 inline-block font-mono text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              >
+                Get the next release first ↓
+              </a>
             </Reveal>
           </Container>
         </Section>
@@ -122,8 +128,8 @@ export default function Home() {
                 </p>
                 <p className="mt-4 leading-relaxed text-muted-foreground">
                   Duka is the first artist on the Source Music Group roster — an independent voice
-                  with a sound that doesn&apos;t sit neatly in a box. Stream the latest below, and
-                  follow along as the catalog grows.
+                  working the lane between Hip Hop and R&amp;B. Stream the latest below, and follow
+                  along as the catalog grows.
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <ButtonLink href="/artists/duka" size="sm">
@@ -163,6 +169,77 @@ export default function Home() {
           </Container>
         </Section>
 
+        {/* ============ LATEST RELEASE ============ */}
+        {/* "Latest Release" label + year verified July 19, 2026 from the Spotify artist
+            page ("Latest Release • Single" card for Min Type, <time datetime="2026">) —
+            see artists/duka/tracks.ts for the full provenance note. */}
+        <Section id="latest" className="scroll-mt-20 border-t border-border bg-card-muted/50">
+          <Container className="text-center">
+            <Reveal>
+              <Eyebrow>Latest Release</Eyebrow>
+              <SectionTitle className="mt-3 text-2xl sm:text-3xl">Latest release</SectionTitle>
+              <p className="mx-auto mt-8 max-w-4xl text-balance break-words text-[clamp(3rem,9vw,6.5rem)] font-semibold leading-[0.95] tracking-tight">
+                {LATEST.track.title}
+              </p>
+              <p className="mt-5 font-mono text-xs uppercase tracking-[0.2em] text-gold">
+                DUKA{LATEST.track.credit ? ` WITH ${LATEST.track.credit.toUpperCase()}` : ""} · HIP
+                HOP / R&amp;B · SPOTIFY · {LATEST.year}
+              </p>
+            </Reveal>
+            {/* Embed stays outside Reveal/Stagger — arming remounts the iframe. */}
+            {/* ARTWORK SLOT: the embed carries official artwork; swap in owner-supplied art
+                via <Image> when available. */}
+            <div className="mx-auto mt-8 max-w-xl">
+              <iframe
+                title={`${LATEST.track.title} — Duka on Spotify`}
+                style={{ borderRadius: 12, border: 0 }}
+                src={`${LATEST.track.url.replace(
+                  "open.spotify.com/track/",
+                  "open.spotify.com/embed/track/"
+                )}?utm_source=generator&theme=0`}
+                width="100%"
+                height={152}
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              />
+            </div>
+            <Reveal>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <ButtonLink href={LATEST.track.url} target="_blank" rel="noopener" size="lg">
+                  Play on Spotify
+                  <ArrowUpRight className="h-4 w-4" aria-hidden />
+                </ButtonLink>
+                <ButtonLink href="#updates" variant="link">
+                  Get release alerts
+                </ButtonLink>
+              </div>
+              <p
+                aria-hidden
+                className="mt-12 overflow-hidden whitespace-nowrap font-mono text-xs uppercase tracking-[0.2em] text-subtle"
+              >
+                {TRACKS.map((t) => t.title).join(" · ")}
+              </p>
+            </Reveal>
+          </Container>
+        </Section>
+
+        {/* ============ FAN LIST ============ */}
+        <Section id="updates" className="scroll-mt-20">
+          <Container className="text-center">
+            <Reveal className="mx-auto max-w-2xl">
+              <Eyebrow>Fan List</Eyebrow>
+              <SectionTitle className="mt-3">Get the next release first.</SectionTitle>
+              <Lead className="mx-auto mt-4 max-w-lg">
+                One email when new Duka music drops — a link to press play, and that&apos;s it.
+              </Lead>
+            </Reveal>
+            {/* Form stays outside Reveal/Stagger — arming remounts children. */}
+            <div className="mx-auto mt-10 max-w-md">
+              <FanSignupForm />
+            </div>
+          </Container>
+        </Section>
+
         {/* ============ SUBMIT CTA ============ */}
         <Section id="submit" className="scroll-mt-20 border-t border-border bg-card-muted/50">
           <Container className="text-center">
@@ -183,6 +260,29 @@ export default function Home() {
               Prefer email? Send links to{" "}
               <a href="mailto:hello@sourcemusicgrp.com" className="text-gold-2 hover:underline">
                 hello@sourcemusicgrp.com
+              </a>
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Not submitting music? Reach the right desk:{" "}
+              <a
+                href="mailto:hello@sourcemusicgrp.com?subject=Booking%20inquiry%20—%20Source%20Music%20Group"
+                className="text-gold-2 hover:underline"
+              >
+                Booking
+              </a>{" "}
+              ·{" "}
+              <a
+                href="mailto:hello@sourcemusicgrp.com?subject=Press%20inquiry%20—%20Source%20Music%20Group"
+                className="text-gold-2 hover:underline"
+              >
+                Press
+              </a>{" "}
+              ·{" "}
+              <a
+                href="mailto:hello@sourcemusicgrp.com?subject=Partnership%20inquiry%20—%20Source%20Music%20Group"
+                className="text-gold-2 hover:underline"
+              >
+                Partnerships
               </a>
             </p>
           </Container>

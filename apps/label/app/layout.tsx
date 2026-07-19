@@ -9,7 +9,7 @@ import "./globals.css";
 
 const title = "Source Music Group — Independent Record Label Where Artists Become Partners";
 const description =
-  "Source Music Group is an independent record label focused on artist development and real partnership — sharp marketing guidance, genuinely unique music, and transparent, artist-first terms. Home of Duka.";
+  "Source Music Group is an independent Hip Hop and R&B label focused on artist development and real partnership — sharp marketing guidance, genuinely unique music, and transparent, artist-first terms. Home of Duka.";
 
 const ogImage = {
   url: "/assets/og-image.png",
@@ -22,6 +22,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITES.label.url),
   title,
   description,
+  keywords: [
+    "independent record label",
+    "Hip Hop label",
+    "R&B label",
+    "artist development",
+    "label services",
+    "Duka",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -45,6 +53,7 @@ const orgJsonLd = {
   name: "Source Music Group",
   url: SITES.label.url,
   description,
+  genre: ["Hip Hop", "R&B"],
   parentOrganization: {
     "@type": "Organization",
     name: "Source",

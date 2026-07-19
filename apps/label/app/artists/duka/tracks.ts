@@ -17,13 +17,15 @@ export type Track = {
   credit?: string;
 };
 
+const MIN_TYPE: Track = {
+  title: "Min Type",
+  url: "https://open.spotify.com/track/78bd60KzEPQun7OXVEwNmQ",
+  credit: "Johnson",
+};
+
 export const TRACKS: Track[] = [
   { title: "Toxic", url: "https://open.spotify.com/track/6yQbpdfFNGP5Q2SOxyxlVY" },
-  {
-    title: "Min Type",
-    url: "https://open.spotify.com/track/78bd60KzEPQun7OXVEwNmQ",
-    credit: "Johnson",
-  },
+  MIN_TYPE,
   { title: "Confidential", url: "https://open.spotify.com/track/3PnjEgXyfksI9UJQGs3wj9" },
   { title: "Lonely AF", url: "https://open.spotify.com/track/3CbxrNna6DagX57heYMZDr" },
   { title: "No Love In Atlanta", url: "https://open.spotify.com/track/6Cnt2jfxyrSxH7hdYWUB5a" },
@@ -46,6 +48,6 @@ export const TRACKS: Track[] = [
    Year is the only date granularity present in the dump — do not invent
    a month or day. */
 export const LATEST = {
-  track: TRACKS[1], // Min Type (with Johnson)
+  track: MIN_TYPE, // Min Type (with Johnson)
   year: "2026",
 };
