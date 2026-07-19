@@ -1,6 +1,7 @@
 import {
   Badge,
   ButtonLink,
+  Card,
   Container,
   CrossPromo,
   EcosystemNav,
@@ -17,6 +18,8 @@ import {
   SITES,
 } from "@source/ui";
 import { CircleDollarSign, FileStack, Clapperboard, BookMarked, ShieldCheck } from "lucide-react";
+import { ConsultationForm } from "./consultation-form";
+import { LOCAL_LINKS } from "./local-links";
 import { RightsComparison } from "./rights-comparison";
 
 const steps = [
@@ -34,11 +37,58 @@ const steps = [
   },
 ];
 
+/* NOTE FOR COUNSEL REVIEW: role/fee framing below must match the actual
+   administration agreement before any agreement is signed. */
+const termsItems = [
+  {
+    title: "Administrator, not owner",
+    text: "We act as your administrator — you keep ownership of your songs. We register, collect, and account; the copyrights stay yours.",
+  },
+  {
+    title: "Commission-based",
+    text: "We earn a percentage of the publishing royalties we collect on your behalf. The exact rate is published in your agreement — not discovered after.",
+  },
+  {
+    title: "Terms before you sign",
+    text: "Commission rate, term length, territory, exclusivity, and termination rights are all set out in your agreement before you sign. Read it, question it, then decide.",
+  },
+  {
+    title: "Ask us anything",
+    text: "Source Publishing is early-stage, and we'd rather earn trust than assume it. If something matters to you — collection periods, post-term collection, how you'd leave — ask, and we'll answer in plain language.",
+  },
+];
+
+const afterSteps = [
+  {
+    title: "A real reply",
+    text: "A person — not an autoresponder — reads your note and replies from publishing@sourcemusicgrp.com, typically within a few business days.",
+  },
+  {
+    title: "A catalog conversation",
+    text: "We go through your catalog together: what's registered, what isn't, and whether administration makes sense for where you are. Bring questions.",
+  },
+  {
+    title: "Your decision, on paper",
+    text: "If it's a fit, you get the full agreement — commission, term, territory, termination — to read before you sign. If it's not, you'll still leave knowing more about your catalog than when you came.",
+  },
+];
+
+const helpfulItems = [
+  "Split sheets or writer-share agreements",
+  "Society memberships — your PRO and, in the US, The MLC",
+  "A list of released songs — titles, writers, release dates",
+];
+
 export default function Home() {
   return (
     <>
       <SkipLink />
-      <EcosystemNav active="publishing" sub="Publishing Co." />
+      <EcosystemNav
+        active="publishing"
+        sub="Publishing Co."
+        localLinks={LOCAL_LINKS}
+        cta={{ label: "Request a consultation", href: "/#consult" }}
+      />
       <main id="main">
         {/* ============ HERO ============ */}
         <Section className="relative overflow-hidden pb-20 pt-24 sm:pt-32">
@@ -69,8 +119,8 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.24}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink href="#register" size="lg">
-                  Register your works
+                <ButtonLink href="#consult" size="lg">
+                  Request a consultation
                 </ButtonLink>
                 <ButtonLink href="#services" variant="secondary" size="lg">
                   What we collect
@@ -165,31 +215,103 @@ export default function Home() {
           </Container>
         </Section>
 
-        {/* ============ REGISTER CTA ============ */}
-        <Section id="register" className="border-t border-border bg-card-muted/50">
-          <Container className="text-center">
-            <Reveal>
-              <Eyebrow>Get Started</Eyebrow>
-              <SectionTitle className="mt-3">Register your works</SectionTitle>
-              <Lead className="mx-auto mt-4 max-w-lg">
-                Tell us about your catalog and we&apos;ll show you what&apos;s collectable. No catalog
-                too small.
+        {/* ============ TERMS TRANSPARENCY ============ */}
+        <Section id="terms">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>How We Work</Eyebrow>
+              <SectionTitle className="mt-3">Straight terms, in writing.</SectionTitle>
+              <Lead className="mt-4">
+                Publishing deals have a reputation. Ours is simple to explain — and everything below
+                is spelled out in the agreement you read before you sign.
               </Lead>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink
-                  href="mailto:publishing@sourcemusicgrp.com?subject=Publishing%20—%20Register%20my%20works"
-                  size="lg"
-                >
-                  Email the publishing team →
-                </ButtonLink>
-              </div>
-              <p className="mt-6 text-sm text-muted-foreground">
-                Or reach us at{" "}
-                <a href="mailto:publishing@sourcemusicgrp.com" className="text-teal hover:underline">
-                  publishing@sourcemusicgrp.com
-                </a>
-              </p>
             </Reveal>
+
+            <Stagger className="mx-auto mt-14 grid max-w-4xl gap-5 sm:grid-cols-2">
+              {termsItems.map((item) => (
+                <StaggerItem key={item.title}>
+                  <Card className="h-full">
+                    <h3 className="text-base font-semibold tracking-tight">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                  </Card>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </Container>
+        </Section>
+
+        {/* ============ WHAT HAPPENS AFTER ============ */}
+        <Section id="after">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>What To Expect</Eyebrow>
+              <SectionTitle className="mt-3">What happens after you reach out.</SectionTitle>
+            </Reveal>
+
+            <Reveal>
+              <ol className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-3">
+                {afterSteps.map((item, i) => (
+                  <li
+                    key={item.title}
+                    className="h-full rounded-[var(--radius-xl)] border border-border bg-card p-6"
+                  >
+                    <span
+                      aria-hidden
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-teal/40 bg-muted font-mono text-sm text-teal"
+                    >
+                      {i + 1}
+                    </span>
+                    <h3 className="mt-4 text-base font-semibold tracking-tight">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
+
+            <Reveal>
+              <Card className="mx-auto mt-10 max-w-2xl">
+                <h3 className="text-base font-semibold tracking-tight">Helpful to have ready</h3>
+                <ul className="mt-4 space-y-2.5">
+                  {helpfulItems.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
+                    >
+                      <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-sm text-subtle">
+                  None of this is required to start the conversation.
+                </p>
+              </Card>
+            </Reveal>
+          </Container>
+        </Section>
+
+        {/* ============ CONSULTATION ============ */}
+        <Section id="consult" className="border-t border-border bg-card-muted/50">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>Get Started</Eyebrow>
+              <SectionTitle className="mt-3">Request a publishing consultation</SectionTitle>
+              <Lead className="mx-auto mt-4 max-w-lg">
+                Tell us about your songs and where they&apos;re released. We&apos;ll review your
+                catalog together and walk you through what administration could look like — no
+                pressure, no obligation.
+              </Lead>
+            </Reveal>
+            {/* Form stays outside Reveal/Stagger — arming remounts children. */}
+            <div className="mx-auto mt-10 max-w-lg">
+              <ConsultationForm />
+            </div>
+            <p className="mt-8 text-center text-sm text-muted-foreground">
+              Or reach us directly at{" "}
+              <a href="mailto:publishing@sourcemusicgrp.com" className="text-teal hover:underline">
+                publishing@sourcemusicgrp.com
+              </a>
+            </p>
           </Container>
         </Section>
 
@@ -202,7 +324,7 @@ export default function Home() {
           />
         </Section>
       </main>
-      <Footer />
+      <Footer contactEmail="publishing@sourcemusicgrp.com" />
     </>
   );
 }
