@@ -484,6 +484,36 @@ export default function Home() {
           </Container>
         </Section>
 
+        {/* ============ SYNC & LICENSING ============ */}
+        <Section id="sync" className="scroll-mt-20">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl">
+              <Card className="text-center">
+                <Eyebrow>For Music Supervisors</Eyebrow>
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight">
+                  Sync &amp; licensing inquiries
+                </h2>
+                <p className="mt-4 leading-relaxed text-muted-foreground">
+                  Clearing a song for film, TV, ads, or games? Email us and we&apos;ll come back
+                  with ownership, splits, and delivery details.
+                </p>
+                <p className="mt-4">
+                  <a
+                    href="mailto:publishing@sourcemusicgrp.com?subject=Sync%20inquiry%20—%20Source%20Publishing"
+                    className="text-teal hover:underline"
+                  >
+                    publishing@sourcemusicgrp.com
+                  </a>
+                </p>
+              </Card>
+            </Reveal>
+            {/* FUTURE writers/works surface (do not build yet): a /writers or /works page
+                listing administered writers and sync-ready works once a real administered
+                catalog exists. Shape when built: writer name, role, selected works, per-work
+                clearance contact. Requires owner-verified catalog data. */}
+          </Container>
+        </Section>
+
         <Section className="pt-0">
           <CrossPromo
             title="Want to audit what your catalog earned?"

@@ -1,7 +1,11 @@
 import { Card, cn } from "@source/ui";
 
-/* Honest, current-state status board — no invented traction. Update rows as
-   the companies evolve. */
+/* Honest, current-state status board — no invented traction. REVIEW CADENCE:
+   re-verify every row monthly and on any launch, signing, or pause — a stale
+   status line is an unsupported claim. Last reviewed: July 19, 2026 — all
+   three rows confirmed accurate (label operating with Duka on the roster;
+   publishing accepting administration inquiries; royalty in development with
+   early access open). */
 const STATUS = [
   { label: "Source Music Group — operating · artist roster: Duka", dot: "bg-gold" },
   { label: "Source Publishing — accepting administration inquiries", dot: "bg-teal" },

@@ -279,7 +279,7 @@ export default function Home() {
             <Reveal delay={0.1}>
               <div className="mx-auto mt-12 grid max-w-4xl gap-5 lg:grid-cols-2">
                 <a
-                  href={SITES.label.url}
+                  href={`${SITES.label.url}/artists/duka`}
                   className="group flex flex-col overflow-hidden rounded-[var(--radius-xl)] border border-border bg-card p-6 shadow-[var(--shadow-soft)] transition-colors hover:border-subtle"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -292,7 +292,7 @@ export default function Home() {
                     Duka — first artist on the Source Music Group roster
                   </p>
                   <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-gold-2">
-                    Visit Source Music Group
+                    Meet Duka
                     <ArrowRight
                       className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                       strokeWidth={2}
