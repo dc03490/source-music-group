@@ -7,24 +7,61 @@ const pressStart = Press_Start_2P({ weight: "400", subsets: ["latin"], variable:
 import { SITES } from "@source/ui";
 import "./globals.css";
 
+const title = "Source Music Group — Independent Record Label Where Artists Become Partners";
+const description =
+  "Source Music Group is an independent record label focused on artist development and real partnership — sharp marketing guidance, genuinely unique music, and transparent, artist-first terms. Home of Duka.";
+
+const ogImage = {
+  url: "/assets/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Source Music Group — independent record label",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITES.label.url),
-  title: "Source Music Group — Building Artists With Long-Term Vision",
-  description:
-    "Source Music Group is a modern record label: artist development, creative services, marketing, distribution, and management — built on real partnership.",
+  title,
+  description,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "Source Music Group",
-    title: "Source Music Group — Building Artists With Long-Term Vision",
-    description: "Artist development. Label services. Creative partnerships.",
+    title,
+    description: "Independent record label. Artist development. Real partnership.",
     url: SITES.label.url,
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [ogImage],
+  },
+};
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Source Music Group",
+  url: SITES.label.url,
+  description,
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Source",
+    url: SITES.source.url,
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${pressStart.variable} ${GeistMono.variable}`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

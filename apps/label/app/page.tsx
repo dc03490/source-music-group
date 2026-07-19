@@ -17,6 +17,8 @@ import {
   SITES,
 } from "@source/ui";
 import { Disc3, Megaphone, Gem, Handshake } from "lucide-react";
+import { SubmissionForm } from "./submission-form";
+import { LOCAL_LINKS } from "./local-links";
 
 const SPOTIFY_ARTIST = "https://open.spotify.com/artist/0oxAY1bzauffvCA5m6tsBZ";
 
@@ -24,7 +26,12 @@ export default function Home() {
   return (
     <>
       <SkipLink />
-      <EcosystemNav active="label" sub="Music Group" />
+      <EcosystemNav
+        active="label"
+        sub="Music Group"
+        localLinks={LOCAL_LINKS}
+        cta={{ label: "Submit Your Music", href: "/#submit" }}
+      />
       <main id="main">
         {/* ============ HERO ============ */}
         <Section className="relative overflow-hidden pb-20 pt-20 sm:pt-24">
@@ -133,7 +140,7 @@ export default function Home() {
 
                 <div>
                   <h3 className="text-2xl font-semibold tracking-tight">Duka</h3>
-                  <p className="mt-1 font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-magenta">
+                  <p className="mt-1 font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-magenta-text">
                     Source Music Group · Artist
                   </p>
                   <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -179,31 +186,41 @@ export default function Home() {
                 sign selectively — submissions are reviewed in batches, and if it&apos;s a fit,
                 we&apos;ll reach out.
               </Lead>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink href="mailto:hello@sourcemusicgrp.com?subject=Music%20Submission" size="lg">
-                  Submit Your Music →
-                </ButtonLink>
-              </div>
-              <p className="mt-6 text-sm text-muted-foreground">
-                Prefer email? Reach us at{" "}
-                <a href="mailto:hello@sourcemusicgrp.com" className="text-gold-2 hover:underline">
-                  hello@sourcemusicgrp.com
-                </a>
-              </p>
             </Reveal>
+            {/* Form stays outside Reveal/Stagger — arming remounts children. */}
+            <div className="mx-auto mt-10 max-w-md">
+              <SubmissionForm />
+            </div>
+            <p className="mt-6 text-sm text-muted-foreground">
+              Prefer email? Send links to{" "}
+              <a href="mailto:hello@sourcemusicgrp.com" className="text-gold-2 hover:underline">
+                hello@sourcemusicgrp.com
+              </a>
+            </p>
           </Container>
         </Section>
 
         <Section className="pt-0">
-          <CrossPromo
-            title="Looking to manage your catalog?"
-            body="Source Royalty gives artists and managers a clear view of every income stream."
-            cta="Use Source Royalty"
-            href={SITES.royalty.url}
-          />
+          <div className="space-y-4">
+            <CrossPromo
+              title="Know where your money comes from."
+              body="Source Royalty is building a clear view of every royalty stream for artists and managers — early access is open now."
+              cta="Explore Source Royalty"
+              href={SITES.royalty.url}
+            />
+            <CrossPromo
+              title="Write your own songs?"
+              body="Source Publishing registers your compositions and collects the royalties they earn."
+              cta="Explore Source Publishing"
+              href={SITES.publishing.url}
+            />
+          </div>
         </Section>
       </main>
-      <Footer />
+      <Footer
+        contactEmail="hello@sourcemusicgrp.com"
+        extraLinks={[{ label: "Submission Terms", href: "/submission-terms" }]}
+      />
     </>
   );
 }
