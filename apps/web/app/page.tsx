@@ -87,16 +87,31 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.24}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink href="#companies" size="lg">
+                <ButtonLink
+                  href="#companies"
+                  size="lg"
+                  data-evt="primary_cta_clicked"
+                  data-evt-cta="explore_companies"
+                  data-evt-location="hero"
+                >
                   Explore the companies
                 </ButtonLink>
-                <ButtonLink href="/contact" variant="secondary" size="lg">
+                <ButtonLink
+                  href="/contact"
+                  variant="secondary"
+                  size="lg"
+                  data-evt="primary_cta_clicked"
+                  data-evt-cta="partner_with_us"
+                  data-evt-location="hero"
+                >
                   Partner with us
                 </ButtonLink>
               </div>
             </Reveal>
             <Reveal delay={0.32}>
-              <CompanyIndexStrip className="mx-auto mt-10 max-w-3xl" />
+              <div data-evt="ecosystem_company_selected" data-evt-source="index_strip">
+                <CompanyIndexStrip className="mx-auto mt-10 max-w-3xl" />
+              </div>
             </Reveal>
           </Container>
         </Section>
@@ -110,6 +125,8 @@ export default function Home() {
             </Reveal>
             <Stagger className="mt-12 grid gap-5 lg:grid-cols-3">
               <StaggerItem>
+                {/* Wrapper divs carry analytics attrs so @source/ui stays untouched. */}
+                <div data-evt="ecosystem_company_selected" data-evt-company="royalty" data-evt-source="cards">
                 <EcosystemCard
                   eyebrow="Source Royalty"
                   title="Understand your royalties."
@@ -119,8 +136,10 @@ export default function Home() {
                   icon={Radar}
                   accent="blue"
                 />
+                </div>
               </StaggerItem>
               <StaggerItem>
+                <div data-evt="ecosystem_company_selected" data-evt-company="publishing" data-evt-source="cards">
                 <EcosystemCard
                   eyebrow="Source Publishing"
                   title="Protect your songs."
@@ -130,8 +149,10 @@ export default function Home() {
                   icon={ShieldCheck}
                   accent="teal"
                 />
+                </div>
               </StaggerItem>
               <StaggerItem>
+                <div data-evt="ecosystem_company_selected" data-evt-company="label" data-evt-source="cards">
                 <EcosystemCard
                   eyebrow="Source Music Group"
                   title="Build a lasting career."
@@ -141,6 +162,7 @@ export default function Home() {
                   icon={Disc3}
                   accent="gold"
                 />
+                </div>
               </StaggerItem>
             </Stagger>
           </Container>
@@ -280,6 +302,9 @@ export default function Home() {
               <div className="mx-auto mt-12 grid max-w-4xl gap-5 lg:grid-cols-2">
                 <a
                   href={`${SITES.label.url}/artists/duka`}
+                  data-evt="ecosystem_company_selected"
+                  data-evt-company="label"
+                  data-evt-source="from_the_ecosystem"
                   className="group flex flex-col overflow-hidden rounded-[var(--radius-xl)] border border-border bg-card p-6 shadow-[var(--shadow-soft)] transition-colors hover:border-subtle"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -315,7 +340,13 @@ export default function Home() {
                 to talk.
               </Lead>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink href="/contact" size="lg">
+                <ButtonLink
+                  href="/contact"
+                  size="lg"
+                  data-evt="primary_cta_clicked"
+                  data-evt-cta="contact_team"
+                  data-evt-location="partner"
+                >
                   Contact the team
                 </ButtonLink>
                 <ButtonLink href="/about" variant="secondary" size="lg">
@@ -334,7 +365,9 @@ export default function Home() {
               <Lead className="mx-auto mt-4 max-w-lg">
                 Three companies, one connected system — pick the one that fits where you are today.
               </Lead>
-              <CompanyIndexStrip className="mx-auto mt-8 max-w-3xl" />
+              <div data-evt="ecosystem_company_selected" data-evt-source="index_strip">
+                <CompanyIndexStrip className="mx-auto mt-8 max-w-3xl" />
+              </div>
             </Reveal>
           </Container>
         </Section>

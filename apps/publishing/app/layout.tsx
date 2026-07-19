@@ -6,6 +6,7 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space
 const pressStart = Press_Start_2P({ weight: "400", subsets: ["latin"], variable: "--font-press-start" });
 import { SITES } from "@source/ui";
 import "./globals.css";
+import { SiteAnalytics } from "./site-analytics";
 
 const title = "Source Publishing — Music Publishing Administration for Independent Songwriters";
 const description =
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         {children}
+        <SiteAnalytics site="publishing" />
       </body>
     </html>
   );

@@ -122,6 +122,9 @@ export default function DukaPage() {
                       href={t.url}
                       target="_blank"
                       rel="noopener"
+                      data-evt="external_music_link_clicked"
+                      data-evt-artist="duka"
+                      data-evt-item={t.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
                       className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
                     >
                       Listen
@@ -155,7 +158,15 @@ export default function DukaPage() {
               />
             </div>
             <div className="mt-6">
-              <ButtonLink href={SPOTIFY_ARTIST} target="_blank" rel="noopener" size="sm">
+              <ButtonLink
+                href={SPOTIFY_ARTIST}
+                target="_blank"
+                rel="noopener"
+                size="sm"
+                data-evt="external_music_link_clicked"
+                data-evt-artist="duka"
+                data-evt-item="follow_artist"
+              >
                 Follow Duka on Spotify
                 <ArrowUpRight className="h-4 w-4" aria-hidden />
               </ButtonLink>
@@ -199,6 +210,9 @@ export default function DukaPage() {
                   </span>
                   <a
                     href="mailto:hello@sourcemusicgrp.com?subject=Duka%20—%20Booking%20inquiry"
+                    data-evt="primary_cta_clicked"
+                    data-evt-cta="booking_email"
+                    data-evt-location="duka_business"
                     className="text-gold-2 hover:underline"
                   >
                     hello@sourcemusicgrp.com
@@ -210,6 +224,9 @@ export default function DukaPage() {
                   </span>
                   <a
                     href="mailto:hello@sourcemusicgrp.com?subject=Duka%20—%20Press%20inquiry"
+                    data-evt="primary_cta_clicked"
+                    data-evt-cta="press_email"
+                    data-evt-location="duka_business"
                     className="text-gold-2 hover:underline"
                   >
                     hello@sourcemusicgrp.com
@@ -221,6 +238,9 @@ export default function DukaPage() {
                   </span>
                   <a
                     href="mailto:hello@sourcemusicgrp.com?subject=Duka%20—%20Partnership%20inquiry"
+                    data-evt="primary_cta_clicked"
+                    data-evt-cta="partnership_email"
+                    data-evt-location="duka_business"
                     className="text-gold-2 hover:underline"
                   >
                     hello@sourcemusicgrp.com

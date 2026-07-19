@@ -127,10 +127,23 @@ export default function Home() {
                 </Reveal>
                 <Reveal delay={0.24}>
                   <div className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-                    <ButtonLink href="#audit" size="lg">
+                    <ButtonLink
+                      href="#audit"
+                      size="lg"
+                      data-evt="primary_cta_clicked"
+                      data-evt-cta="join_early_access"
+                      data-evt-location="hero"
+                    >
                       Join early access
                     </ButtonLink>
-                    <ButtonLink href="#demo" variant="secondary" size="lg">
+                    <ButtonLink
+                      href="#demo"
+                      variant="secondary"
+                      size="lg"
+                      data-evt="primary_cta_clicked"
+                      data-evt-cta="see_demo"
+                      data-evt-location="hero"
+                    >
                       See the demo
                     </ButtonLink>
                   </div>
@@ -429,13 +442,18 @@ export default function Home() {
         {/* ============ PRICING (planned tiers) ============ */}
         <Section id="pricing">
           <Container>
-            <Reveal className="mx-auto max-w-2xl text-center">
-              <Eyebrow>Planned Pricing</Eyebrow>
-              <SectionTitle className="mt-3">Start free. Upgrade when it pays for itself.</SectionTitle>
-              <Lead className="mt-4">
-                Planned launch pricing — plans and prices may change before release.
-              </Lead>
-            </Reveal>
+            {/* pricing_viewed fires once when this header block is half visible —
+                attached to the short header (not the tall card grid) so the 0.5
+                threshold is reachable on mobile. */}
+            <div data-evt-view="pricing_viewed">
+              <Reveal className="mx-auto max-w-2xl text-center">
+                <Eyebrow>Planned Pricing</Eyebrow>
+                <SectionTitle className="mt-3">Start free. Upgrade when it pays for itself.</SectionTitle>
+                <Lead className="mt-4">
+                  Planned launch pricing — plans and prices may change before release.
+                </Lead>
+              </Reveal>
+            </div>
 
             <Stagger className="mx-auto mt-14 grid max-w-4xl gap-5 pt-3 lg:grid-cols-3">
               <StaggerItem>
@@ -545,12 +563,15 @@ export default function Home() {
         </Section>
 
         <Section className="pt-0">
-          <CrossPromo
-            title="Need publishing administration?"
-            body="Source Publishing registers your works and collects across major societies and platforms."
-            cta="Visit Source Publishing"
-            href={SITES.publishing.url}
-          />
+          {/* Wrapper div carries analytics attrs so @source/ui stays untouched. */}
+          <div data-evt="ecosystem_company_selected" data-evt-company="publishing" data-evt-source="cross_promo">
+            <CrossPromo
+              title="Need publishing administration?"
+              body="Source Publishing registers your works and collects across major societies and platforms."
+              cta="Visit Source Publishing"
+              href={SITES.publishing.url}
+            />
+          </div>
         </Section>
       </main>
       <Footer

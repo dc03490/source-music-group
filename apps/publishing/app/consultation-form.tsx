@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import { track } from "@vercel/analytics";
 import { Button, ButtonLink } from "@source/ui";
 import { ArrowRight } from "lucide-react";
 
@@ -37,6 +38,15 @@ const smallPrint = "No mailing list, no spam — we only use this to reply to yo
 
 export function ConsultationForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  /* Analytics only — additive, one-shot; no field or submission behavior changes.
+     consultation_started / consultation_submitted double as this site's
+     contact_form_started / contact_form_completed events. */
+  const startedRef = useRef(false);
+  function markStarted() {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    track("consultation_started", { site: "publishing", form: "consultation" });
+  }
 
   if (!FORM_ID) {
     return (
@@ -71,6 +81,7 @@ export function ConsultationForm() {
         headers: { Accept: "application/json" },
         body: new FormData(e.currentTarget),
       });
+      if (res.ok) track("consultation_submitted", { site: "publishing", form: "consultation" });
       setStatus(res.ok ? "success" : "error");
     } catch {
       setStatus("error");
@@ -78,7 +89,7 @@ export function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="relative text-left">
+    <form onSubmit={handleSubmit} onFocus={markStarted} className="relative text-left">
       <input type="hidden" name="_subject" value="Source Publishing consultation request" />
       {/* Honeypot — hidden from real users and assistive tech. */}
       <div aria-hidden="true" className="absolute h-px w-px overflow-hidden [clip-path:inset(50%)]">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { track } from "@vercel/analytics";
 import { Button, ButtonLink } from "@source/ui";
 import { SPOTIFY_ARTIST } from "./artists/duka/tracks";
 
@@ -25,7 +26,15 @@ export function FanSignupForm() {
   if (!FORM_ID) {
     return (
       <div className="text-center">
-        <ButtonLink href={SPOTIFY_ARTIST} target="_blank" rel="noopener" size="lg">
+        <ButtonLink
+          href={SPOTIFY_ARTIST}
+          target="_blank"
+          rel="noopener"
+          size="lg"
+          data-evt="external_music_link_clicked"
+          data-evt-artist="duka"
+          data-evt-item="follow_artist_fallback"
+        >
           Follow Duka on Spotify
         </ButtonLink>
         <p className="mt-4 text-sm text-subtle">
@@ -56,6 +65,7 @@ export function FanSignupForm() {
         headers: { Accept: "application/json" },
         body: new FormData(e.currentTarget),
       });
+      if (res.ok) track("email_signup_completed", { site: "label", list: "duka_fanlist" });
       setStatus(res.ok ? "success" : "error");
     } catch {
       setStatus("error");
@@ -104,6 +114,9 @@ export function FanSignupForm() {
             href={SPOTIFY_ARTIST}
             target="_blank"
             rel="noopener"
+            data-evt="external_music_link_clicked"
+            data-evt-artist="duka"
+            data-evt-item="follow_artist_error"
             className="font-medium underline underline-offset-4"
           >
             follow Duka on Spotify

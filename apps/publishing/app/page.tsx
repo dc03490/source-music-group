@@ -222,7 +222,13 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.24}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink href="#consult" size="lg">
+                <ButtonLink
+                  href="#consult"
+                  size="lg"
+                  data-evt="primary_cta_clicked"
+                  data-evt-cta="request_consultation"
+                  data-evt-location="hero"
+                >
                   Request a consultation
                 </ButtonLink>
                 <ButtonLink href="#services" variant="secondary" size="lg">
@@ -500,6 +506,9 @@ export default function Home() {
                 <p className="mt-4">
                   <a
                     href="mailto:publishing@sourcemusicgrp.com?subject=Sync%20inquiry%20—%20Source%20Publishing"
+                    data-evt="primary_cta_clicked"
+                    data-evt-cta="sync_email"
+                    data-evt-location="sync"
                     className="text-teal hover:underline"
                   >
                     publishing@sourcemusicgrp.com
@@ -515,12 +524,15 @@ export default function Home() {
         </Section>
 
         <Section className="pt-0">
-          <CrossPromo
-            title="Want to audit what your catalog earned?"
-            body="Source Royalty is the intelligence layer of the ecosystem — it audits statements and metadata to flag potential royalty gaps worth investigating."
-            cta="Explore Source Royalty"
-            href={SITES.royalty.url}
-          />
+          {/* Wrapper div carries analytics attrs so @source/ui stays untouched. */}
+          <div data-evt="ecosystem_company_selected" data-evt-company="royalty" data-evt-source="cross_promo">
+            <CrossPromo
+              title="Want to audit what your catalog earned?"
+              body="Source Royalty is the intelligence layer of the ecosystem — it audits statements and metadata to flag potential royalty gaps worth investigating."
+              cta="Explore Source Royalty"
+              href={SITES.royalty.url}
+            />
+          </div>
         </Section>
       </main>
       <Footer contactEmail="publishing@sourcemusicgrp.com" />

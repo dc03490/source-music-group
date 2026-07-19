@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { track } from "@vercel/analytics";
 import { ButtonLink, cn, SITES } from "@source/ui";
 
 /* Two-question router: pure client state, native radios for full keyboard
@@ -32,12 +33,15 @@ const RESULTS: Record<
     href: string;
     cta: string;
     bar: string;
+    /** Analytics id for ecosystem_company_selected (source: selector). */
+    company: string;
     phrase: (make: string) => string;
   }
 > = {
   release: {
     name: SITES.label.name,
     href: SITES.label.url,
+    company: "label",
     cta: "Go to Source Music Group",
     bar: "bg-gradient-to-r from-gold to-magenta",
     phrase: (make) => `As ${make} looking for release and career support, start with ${SITES.label.name}.`,
@@ -45,6 +49,7 @@ const RESULTS: Record<
   admin: {
     name: SITES.publishing.name,
     href: SITES.publishing.url,
+    company: "publishing",
     cta: "Go to Source Publishing",
     bar: "bg-gradient-to-r from-teal to-blue",
     phrase: (make) => `As ${make} needing administration, start with ${SITES.publishing.name}.`,
@@ -52,6 +57,7 @@ const RESULTS: Record<
   royalty: {
     name: SITES.royalty.name,
     href: SITES.royalty.url,
+    company: "royalty",
     cta: "Go to Source Royalty",
     bar: "bg-gradient-to-r from-blue to-purple",
     phrase: (make) => `As ${make} who wants royalty visibility, start with ${SITES.royalty.name} — early access is open.`,
@@ -59,6 +65,7 @@ const RESULTS: Record<
   partnership: {
     name: "the Source team",
     href: "/contact",
+    company: "source",
     cta: "Contact the team",
     bar: "bg-gradient-to-r from-gold to-magenta",
     phrase: (make) => `As ${make} exploring a partnership, talk directly to the Source team.`,
@@ -140,7 +147,18 @@ export function CompanySelector() {
             <span aria-hidden className={cn("absolute inset-x-0 top-0 h-[3px] opacity-90", result.bar)} />
             <p className="text-base leading-relaxed text-foreground">{result.phrase(makePhrase)}</p>
             <div className="mt-5">
-              <ButtonLink href={result.href} size="md">
+              <ButtonLink
+                href={result.href}
+                size="md"
+                onClick={() =>
+                  track("ecosystem_company_selected", {
+                    site: "web",
+                    company: result.company,
+                    source: "selector",
+                    href: result.href,
+                  })
+                }
+              >
                 {result.cta}
                 <ArrowRight className="h-4 w-4" strokeWidth={2} />
               </ButtonLink>

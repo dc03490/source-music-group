@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import { track } from "@vercel/analytics";
 import { Button, ButtonLink } from "@source/ui";
 import { ArrowRight } from "lucide-react";
 
@@ -36,6 +37,13 @@ const smallPrint = (
 
 export function SubmissionForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  /* Analytics only — additive, one-shot; no field or submission behavior changes. */
+  const startedRef = useRef(false);
+  function markStarted() {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    track("submission_started", { site: "label", form: "music_submission" });
+  }
 
   if (!FORM_ID) {
     return (
@@ -70,6 +78,7 @@ export function SubmissionForm() {
         headers: { Accept: "application/json" },
         body: new FormData(e.currentTarget),
       });
+      if (res.ok) track("submission_completed", { site: "label", form: "music_submission" });
       setStatus(res.ok ? "success" : "error");
     } catch {
       setStatus("error");
@@ -77,7 +86,7 @@ export function SubmissionForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="relative text-left">
+    <form onSubmit={handleSubmit} onFocus={markStarted} className="relative text-left">
       <input type="hidden" name="_subject" value="Source Music Group — music submission" />
       {/* Honeypot — hidden from real users and assistive tech. */}
       <div aria-hidden="true" className="absolute h-px w-px overflow-hidden [clip-path:inset(50%)]">

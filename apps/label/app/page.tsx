@@ -74,10 +74,23 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.24}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink href="#artists" size="lg">
+                <ButtonLink
+                  href="#artists"
+                  size="lg"
+                  data-evt="primary_cta_clicked"
+                  data-evt-cta="listen_duka"
+                  data-evt-location="hero"
+                >
                   Listen to Duka
                 </ButtonLink>
-                <ButtonLink href="#submit" variant="secondary" size="lg">
+                <ButtonLink
+                  href="#submit"
+                  variant="secondary"
+                  size="lg"
+                  data-evt="primary_cta_clicked"
+                  data-evt-cta="submit_music"
+                  data-evt-location="hero"
+                >
                   Submit Your Music
                 </ButtonLink>
               </div>
@@ -142,6 +155,9 @@ export default function Home() {
                     rel="noopener"
                     variant="secondary"
                     size="sm"
+                    data-evt="external_music_link_clicked"
+                    data-evt-artist="duka"
+                    data-evt-item="artist"
                   >
                     Open in Spotify
                     <ArrowUpRight className="h-4 w-4" aria-hidden />
@@ -205,7 +221,16 @@ export default function Home() {
             </div>
             <Reveal>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <ButtonLink href={LATEST.track.url} target="_blank" rel="noopener" size="lg">
+                {/* Spotify destination is captured via the href property on this event. */}
+                <ButtonLink
+                  href={LATEST.track.url}
+                  target="_blank"
+                  rel="noopener"
+                  size="lg"
+                  data-evt="primary_cta_clicked"
+                  data-evt-cta="play_latest"
+                  data-evt-location="latest"
+                >
                   Play on Spotify
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
                 </ButtonLink>
@@ -267,6 +292,9 @@ export default function Home() {
               <a
                 href="mailto:hello@sourcemusicgrp.com?subject=Booking%20inquiry%20—%20Source%20Music%20Group"
                 className="text-gold-2 hover:underline"
+                data-evt="primary_cta_clicked"
+                data-evt-cta="booking_email"
+                data-evt-location="submit"
               >
                 Booking
               </a>{" "}
@@ -274,6 +302,9 @@ export default function Home() {
               <a
                 href="mailto:hello@sourcemusicgrp.com?subject=Press%20inquiry%20—%20Source%20Music%20Group"
                 className="text-gold-2 hover:underline"
+                data-evt="primary_cta_clicked"
+                data-evt-cta="press_email"
+                data-evt-location="submit"
               >
                 Press
               </a>{" "}
@@ -281,6 +312,9 @@ export default function Home() {
               <a
                 href="mailto:hello@sourcemusicgrp.com?subject=Partnership%20inquiry%20—%20Source%20Music%20Group"
                 className="text-gold-2 hover:underline"
+                data-evt="primary_cta_clicked"
+                data-evt-cta="partnership_email"
+                data-evt-location="submit"
               >
                 Partnerships
               </a>
@@ -290,18 +324,23 @@ export default function Home() {
 
         <Section className="pt-0">
           <div className="space-y-4">
-            <CrossPromo
-              title="Know where your money comes from."
-              body="Source Royalty is building a clear view of every royalty stream for artists and managers — early access is open now."
-              cta="Explore Source Royalty"
-              href={SITES.royalty.url}
-            />
-            <CrossPromo
-              title="Write your own songs?"
-              body="Source Publishing registers your compositions and collects the royalties they earn."
-              cta="Explore Source Publishing"
-              href={SITES.publishing.url}
-            />
+            {/* Wrapper divs carry analytics attrs so @source/ui stays untouched. */}
+            <div data-evt="ecosystem_company_selected" data-evt-company="royalty" data-evt-source="cross_promo">
+              <CrossPromo
+                title="Know where your money comes from."
+                body="Source Royalty is building a clear view of every royalty stream for artists and managers — early access is open now."
+                cta="Explore Source Royalty"
+                href={SITES.royalty.url}
+              />
+            </div>
+            <div data-evt="ecosystem_company_selected" data-evt-company="publishing" data-evt-source="cross_promo">
+              <CrossPromo
+                title="Write your own songs?"
+                body="Source Publishing registers your compositions and collects the royalties they earn."
+                cta="Explore Source Publishing"
+                href={SITES.publishing.url}
+              />
+            </div>
           </div>
         </Section>
       </main>
