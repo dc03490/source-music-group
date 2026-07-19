@@ -172,11 +172,12 @@ export default function Home() {
         <Section id="submit" className="border-t border-border bg-card-muted/50">
           <Container className="text-center">
             <Reveal>
-              <Eyebrow>Get In Touch</Eyebrow>
+              <Eyebrow>Submissions</Eyebrow>
               <SectionTitle className="mt-3">Submit your music</SectionTitle>
               <Lead className="mx-auto mt-4 max-w-lg">
-                Looking for a partner who actually has your back? Send us your music and a little
-                about your goals. We listen to everything.
+                Send us your music and a few lines about your goals. We&apos;re a small team and we
+                sign selectively — submissions are reviewed in batches, and if it&apos;s a fit,
+                we&apos;ll reach out.
               </Lead>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <ButtonLink href="mailto:hello@sourcemusicgrp.com?subject=Music%20Submission" size="lg">
