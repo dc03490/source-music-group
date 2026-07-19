@@ -36,6 +36,7 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import { ConsultationForm } from "./consultation-form";
+import { FlowDiagram } from "./flow-diagram";
 import { LOCAL_LINKS } from "./local-links";
 import { RightsComparison } from "./rights-comparison";
 
@@ -362,6 +363,10 @@ export default function Home() {
                 </StaggerItem>
               ))}
             </Stagger>
+
+            <Reveal className="mt-14">
+              <FlowDiagram />
+            </Reveal>
           </Container>
         </Section>
 
