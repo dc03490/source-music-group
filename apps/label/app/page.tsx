@@ -86,7 +86,7 @@ export default function Home() {
         </Section>
 
         {/* ============ THE LABEL ============ */}
-        <Section id="about" className="border-t border-border bg-card-muted/50">
+        <Section id="about" className="scroll-mt-20 border-t border-border bg-card-muted/50">
           <Container>
             <div className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
               <Reveal>
@@ -104,7 +104,7 @@ export default function Home() {
         </Section>
 
         {/* ============ ARTISTS / DUKA ============ */}
-        <Section id="artists">
+        <Section id="artists" className="scroll-mt-20">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>The Roster</Eyebrow>
@@ -164,7 +164,7 @@ export default function Home() {
         </Section>
 
         {/* ============ SUBMIT CTA ============ */}
-        <Section id="submit" className="border-t border-border bg-card-muted/50">
+        <Section id="submit" className="scroll-mt-20 border-t border-border bg-card-muted/50">
           <Container className="text-center">
             <Reveal>
               <Eyebrow>Submissions</Eyebrow>
