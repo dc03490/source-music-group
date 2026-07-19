@@ -157,7 +157,7 @@ export default function DukaPage() {
                 loading="lazy"
               />
             </div>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <ButtonLink
                 href={SPOTIFY_ARTIST}
                 target="_blank"
@@ -170,10 +170,51 @@ export default function DukaPage() {
                 Follow Duka on Spotify
                 <ArrowUpRight className="h-4 w-4" aria-hidden />
               </ButtonLink>
+              <ButtonLink
+                href="https://music.apple.com/us/artist/duka/1287131089"
+                target="_blank"
+                rel="noopener"
+                variant="secondary"
+                size="sm"
+                data-evt="external_music_link_clicked"
+                data-evt-artist="duka"
+                data-evt-item="apple_music_artist"
+              >
+                Apple Music
+                <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </ButtonLink>
             </div>
-            {/* SOCIAL SLOTS (owner input needed): Instagram / TikTok / YouTube are unverified —
-                do not link until the owner confirms official accounts. When confirmed, render a
-                simple icon row here (lucide icons, aria-labels). */}
+            {/* Socials verified via the owner-provided Linktree (linktr.ee/dukasdayoff) on
+                2026-07-19 — all four handles are @dukasdayoff. */}
+            <div className="mt-8">
+              <p className="font-pixel text-[0.62rem] uppercase tracking-[0.14em] text-subtle">
+                Find Duka everywhere
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+                {[
+                  { label: "Instagram", href: "https://instagram.com/dukasdayoff" },
+                  { label: "TikTok", href: "https://tiktok.com/@dukasdayoff" },
+                  { label: "YouTube", href: "https://www.youtube.com/@dukasdayoff" },
+                  { label: "X", href: "https://x.com/dukasdayoff" },
+                  { label: "Linktree", href: "https://linktr.ee/dukasdayoff" },
+                ].map((s) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener"
+                      className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      data-evt="social_link_clicked"
+                      data-evt-platform={s.label.toLowerCase()}
+                      data-evt-artist="duka"
+                    >
+                      {s.label}
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Container>
         </Section>
 
