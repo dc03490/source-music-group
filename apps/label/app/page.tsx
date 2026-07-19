@@ -5,19 +5,18 @@ import {
   CrossPromo,
   EcosystemNav,
   Eyebrow,
-  FeatureCard,
   Footer,
   SkipLink,
   Lead,
   Reveal,
   Section,
   SectionTitle,
-  Stagger,
-  StaggerItem,
   SITES,
 } from "@source/ui";
-import { Disc3, Megaphone, Gem, Handshake } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ArrowUpRight, Disc3 } from "lucide-react";
 import { SubmissionForm } from "./submission-form";
+import { LabelPrinciples } from "./label-principles";
 import { LOCAL_LINKS } from "./local-links";
 
 const SPOTIFY_ARTIST = "https://open.spotify.com/artist/0oxAY1bzauffvCA5m6tsBZ";
@@ -38,7 +37,7 @@ export default function Home() {
           {/* Legacy hero glow: purple/teal/magenta radials */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-80 blur-2xl"
+            className="pointer-events-none absolute inset-0 -bottom-24 opacity-90 blur-2xl"
             style={{
               background:
                 "radial-gradient(closest-side at 50% 30%, rgba(123,47,247,.28), transparent 70%), radial-gradient(closest-side at 30% 60%, rgba(29,211,176,.18), transparent 70%), radial-gradient(closest-side at 72% 55%, rgba(224,33,138,.22), transparent 70%)",
@@ -46,23 +45,23 @@ export default function Home() {
           />
           <Container className="relative text-center">
             <Reveal>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/assets/logo.png"
                 alt="Source Music Group"
-                className="mx-auto mb-6 h-auto w-[clamp(180px,32vw,300px)] drop-shadow-[0_0_40px_rgba(224,33,138,0.35)]"
-                width={300}
-                height={300}
+                width={96}
+                height={96}
+                priority
+                className="mx-auto mb-8 h-20 w-20 sm:h-24 sm:w-24 drop-shadow-[0_0_32px_rgba(224,33,138,0.35)]"
               />
             </Reveal>
             <Reveal delay={0.06}>
               <Badge>
                 <Disc3 className="h-3.5 w-3.5 text-gold" />
-                Boutique music label
+                Independent Record Label
               </Badge>
             </Reveal>
             <Reveal delay={0.12}>
-              <h1 className="mx-auto mt-6 max-w-3xl text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+              <h1 className="mx-auto mt-6 max-w-4xl text-balance text-[clamp(2.75rem,7.5vw,5.25rem)] font-semibold leading-[0.98] tracking-tight">
                 Where artists become <span className="grad-text">partners</span>.
               </h1>
             </Reveal>
@@ -78,7 +77,7 @@ export default function Home() {
                 <ButtonLink href="#artists" size="lg">
                   Meet Duka
                 </ButtonLink>
-                <ButtonLink href="mailto:hello@sourcemusicgrp.com" variant="secondary" size="lg">
+                <ButtonLink href="#submit" variant="secondary" size="lg">
                   Submit Your Music
                 </ButtonLink>
               </div>
@@ -89,36 +88,18 @@ export default function Home() {
         {/* ============ THE LABEL ============ */}
         <Section id="about" className="border-t border-border bg-card-muted/50">
           <Container>
-            <Reveal className="mx-auto max-w-2xl text-center">
-              <Eyebrow>The Label</Eyebrow>
-              <SectionTitle className="mt-3">Not a factory. A partnership.</SectionTitle>
-              <Lead className="mt-4">
-                We stay small on purpose. Fewer artists, deeper focus, and a model where your wins
-                are our wins. No faceless machine — just a team invested in building something that
-                lasts with you.
-              </Lead>
-            </Reveal>
-
-            <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <StaggerItem>
-                <FeatureCard title="Marketing Guidance" icon={Megaphone} accent="gold">
-                  Strategy that cuts through the noise — rollout planning, audience growth, playlist
-                  and social positioning, and the data to know what&apos;s actually working.
-                </FeatureCard>
-              </StaggerItem>
-              <StaggerItem>
-                <FeatureCard title="Unique Music" icon={Gem} accent="gold">
-                  We champion artists with a distinct voice. No chasing trends — we help you sharpen
-                  what already makes you different and put it in front of the right ears.
-                </FeatureCard>
-              </StaggerItem>
-              <StaggerItem>
-                <FeatureCard title="Artist Partnership" icon={Handshake} accent="gold">
-                  An independent, business-partner relationship — transparent terms, shared upside,
-                  and decisions made together. You stay in control of your art and your career.
-                </FeatureCard>
-              </StaggerItem>
-            </Stagger>
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+              <Reveal>
+                <Eyebrow>The Label</Eyebrow>
+                <SectionTitle className="mt-3">Not a factory. A partnership.</SectionTitle>
+                <Lead className="mt-4">
+                  We stay small on purpose. Fewer artists, deeper focus, and a model where your wins
+                  are our wins. No faceless machine — just a team invested in building something
+                  that lasts with you.
+                </Lead>
+              </Reveal>
+              <LabelPrinciples />
+            </div>
           </Container>
         </Section>
 
@@ -130,48 +111,55 @@ export default function Home() {
               <SectionTitle className="mt-3">Artists</SectionTitle>
             </Reveal>
 
-            <Reveal delay={0.1}>
-              <div className="mx-auto mt-14 grid max-w-4xl items-start gap-8 lg:grid-cols-[280px_1fr]">
-                <div className="overflow-hidden rounded-[var(--radius-xl)] border border-border bg-card">
-                  {/* Replace duka-placeholder.svg with a real photo when available */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/assets/duka-placeholder.svg" alt="Duka" className="aspect-square w-full object-cover" />
+            <div className="mx-auto mt-14 grid max-w-5xl items-start gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
+              <Reveal>
+                <Eyebrow className="text-magenta-text">First on the Roster</Eyebrow>
+                <h3 className="mt-3 text-5xl font-semibold tracking-tight sm:text-6xl">
+                  <span className="grad-text">Duka</span>
+                </h3>
+                <p className="mt-1 font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-magenta-text">
+                  Source Music Group · Artist
+                </p>
+                <p className="mt-4 leading-relaxed text-muted-foreground">
+                  Duka is the first artist on the Source Music Group roster — an independent voice
+                  with a sound that doesn&apos;t sit neatly in a box. Stream the latest below, and
+                  follow along as the catalog grows.
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <ButtonLink href="/artists/duka" size="sm">
+                    Artist page
+                    <ArrowRight className="h-4 w-4" aria-hidden />
+                  </ButtonLink>
+                  <ButtonLink
+                    href={SPOTIFY_ARTIST}
+                    target="_blank"
+                    rel="noopener"
+                    variant="secondary"
+                    size="sm"
+                  >
+                    Open in Spotify
+                    <ArrowUpRight className="h-4 w-4" aria-hidden />
+                  </ButtonLink>
                 </div>
+                {/* PHOTO SLOT (future): when real Duka photography arrives, convert this grid to
+                    [photo | text] — add an <Image> column here; see /artists/duka for the
+                    matching slot. */}
+              </Reveal>
 
-                <div>
-                  <h3 className="text-2xl font-semibold tracking-tight">Duka</h3>
-                  <p className="mt-1 font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-magenta-text">
-                    Source Music Group · Artist
-                  </p>
-                  <p className="mt-4 leading-relaxed text-muted-foreground">
-                    {/* PLACEHOLDER BIO — replace with Duka's real bio when ready. */}
-                    Duka is the first artist on the Source Music Group roster — an independent voice
-                    with a sound that doesn&apos;t sit neatly in a box. Stream the latest below, and
-                    follow along as the catalog grows.
-                  </p>
-
-                  <div className="mt-5">
-                    <ButtonLink href={SPOTIFY_ARTIST} target="_blank" rel="noopener" variant="secondary" size="sm">
-                      Open in Spotify ↗
-                    </ButtonLink>
-                  </div>
-
-                  <div className="mt-6">
-                    <iframe
-                      title="Duka on Spotify"
-                      style={{ borderRadius: 12 }}
-                      src="https://open.spotify.com/embed/artist/0oxAY1bzauffvCA5m6tsBZ?utm_source=generator&theme=0"
-                      width="100%"
-                      height={352}
-                      frameBorder={0}
-                      allowFullScreen
-                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
+              {/* Embed stays outside Reveal/Stagger — arming remounts the iframe. */}
+              <div>
+                <iframe
+                  title="Duka on Spotify"
+                  style={{ borderRadius: 12, border: 0 }}
+                  src="https://open.spotify.com/embed/artist/0oxAY1bzauffvCA5m6tsBZ?utm_source=generator&theme=0"
+                  width="100%"
+                  height={352}
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                />
               </div>
-            </Reveal>
+            </div>
           </Container>
         </Section>
 
