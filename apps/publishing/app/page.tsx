@@ -6,6 +6,7 @@ import {
   CrossPromo,
   EcosystemNav,
   Eyebrow,
+  FAQ,
   FeatureCard,
   Footer,
   SkipLink,
@@ -17,7 +18,23 @@ import {
   StaggerItem,
   SITES,
 } from "@source/ui";
-import { CircleDollarSign, FileStack, Clapperboard, BookMarked, ShieldCheck } from "lucide-react";
+import {
+  BookMarked,
+  BookOpen,
+  Briefcase,
+  CircleDollarSign,
+  Clapperboard,
+  FileStack,
+  Film,
+  Library,
+  MicVocal,
+  Music4,
+  PenLine,
+  Radio,
+  RefreshCw,
+  ShieldCheck,
+  SlidersHorizontal,
+} from "lucide-react";
 import { ConsultationForm } from "./consultation-form";
 import { LOCAL_LINKS } from "./local-links";
 import { RightsComparison } from "./rights-comparison";
@@ -34,6 +51,91 @@ const steps = [
   {
     step: "Royalties flow through",
     text: "As societies and platforms pay out, we account and pass your share through with transparent statements. Administration is commission-based — the exact terms are in your agreement before you sign.",
+  },
+];
+
+const audiences = [
+  {
+    title: "Songwriters",
+    icon: PenLine,
+    text: "Writing for yourself or for other artists — we register your share, keep your splits documented, and collect the writer royalties your songs generate.",
+  },
+  {
+    title: "Producers",
+    icon: SlidersHorizontal,
+    text: "Producer splits are publishing too. If you hold writer shares on records you produce, we document, register, and administer them like any other composition interest.",
+  },
+  {
+    title: "Composers",
+    icon: Music4,
+    text: "Scores, cues, and instrumentals earn publishing royalties. We keep registrations and metadata in order so your work is identifiable wherever it's used.",
+  },
+  {
+    title: "Artists who write",
+    icon: MicVocal,
+    text: "Record your own songs and you're on both sides — master and publishing. We administer the composition side while your label or distributor handles the recording.",
+  },
+  {
+    title: "Catalog owners & estates",
+    icon: Library,
+    text: "Inherited or acquired a catalog? We help organize what's there — registrations, splits, paperwork — and administer it going forward.",
+  },
+  {
+    title: "Managers",
+    icon: Briefcase,
+    text: "Managing a writer or a roster? We take on the publishing administration and give you clean statements to plan around.",
+  },
+];
+
+const royaltyCategories = [
+  {
+    title: "Performance",
+    icon: Radio,
+    text: "Earned when your song is performed publicly — radio, venues, live shows, and the performance share of streams. Collected by PROs like ASCAP, BMI, and SESAC.",
+  },
+  {
+    title: "Mechanical",
+    icon: RefreshCw,
+    text: "Earned when your song is reproduced — the mechanical share of streams, downloads, and physical. In the US, largely collected by The MLC.",
+  },
+  {
+    title: "Sync",
+    icon: Film,
+    text: "Earned when your song is licensed into film, TV, ads, or games. Negotiated per placement — the reason we keep your catalog sync-ready.",
+  },
+  {
+    title: "Print",
+    icon: BookOpen,
+    text: "Earned from sheet music and licensed lyric reprints. Smaller for most catalogs — but it's still your money when it happens.",
+  },
+];
+
+/* NOTE FOR COUNSEL REVIEW: the role, fee, and agreement answers below must
+   match the actual administration agreement before any agreement is signed. */
+const faqItems = [
+  {
+    q: "Are you a publisher or an administrator?",
+    a: "We act as your administrator. You keep ownership of your songs — we register your works, manage splits and metadata, and collect publishing royalties on your behalf. We don't take your copyrights.",
+  },
+  {
+    q: "What does it cost?",
+    a: "Administration is commission-based: we earn a percentage of the publishing royalties we collect for you. The exact rate, term, territory, and termination rights are published in your agreement before you sign.",
+  },
+  {
+    q: "Is the agreement exclusive? How long does it run?",
+    a: "Term, territory, exclusivity, and post-term collection are all set out in the agreement you review before signing. We'd rather you read the terms than take our word for it — and we'll walk through anything that's unclear.",
+  },
+  {
+    q: "Do I need to join a PRO first?",
+    a: "It helps, but it isn't a blocker. If you're already with a PRO like ASCAP or BMI, we work with your existing memberships. If not, we'll walk you through which memberships make sense and how to set them up.",
+  },
+  {
+    q: "What happens after I request a consultation?",
+    a: "A real person reads your note and replies from publishing@sourcemusicgrp.com, typically within a few business days. We'll look at your catalog together and tell you honestly whether administration makes sense for where you are.",
+  },
+  {
+    q: "What's the difference between master and publishing royalties?",
+    a: "The master is the recording; the composition is the song itself — the lyrics and melody. Master royalties pay whoever owns the recording. Publishing royalties pay the songwriters through performance, mechanical, sync, and print income. Source Publishing works on the publishing side.",
   },
 ];
 
@@ -100,7 +202,7 @@ export default function Home() {
             <Reveal>
               <Badge>
                 <ShieldCheck className="h-3.5 w-3.5 text-teal" />
-                Music publishing &amp; royalty collection
+                Music publishing administration
               </Badge>
             </Reveal>
             <Reveal delay={0.08}>
@@ -123,7 +225,7 @@ export default function Home() {
                   Request a consultation
                 </ButtonLink>
                 <ButtonLink href="#services" variant="secondary" size="lg">
-                  What we collect
+                  What we do
                 </ButtonLink>
               </div>
             </Reveal>
@@ -175,6 +277,30 @@ export default function Home() {
           </Container>
         </Section>
 
+        {/* ============ WHO WE SERVE ============ */}
+        <Section id="who">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>Who We Serve</Eyebrow>
+              <SectionTitle className="mt-3">Built for the people who write the songs.</SectionTitle>
+              <Lead className="mt-4">
+                If you hold a share of a composition, publishing royalties are part of your income —
+                whether writing is your whole job or one of several hats.
+              </Lead>
+            </Reveal>
+
+            <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {audiences.map((item) => (
+                <StaggerItem key={item.title}>
+                  <FeatureCard title={item.title} icon={item.icon} accent="teal">
+                    {item.text}
+                  </FeatureCard>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </Container>
+        </Section>
+
         {/* ============ MASTER VS PUBLISHING RIGHTS ============ */}
         <Section id="rights" className="border-t border-border bg-card-muted/50">
           <Container>
@@ -215,6 +341,30 @@ export default function Home() {
           </Container>
         </Section>
 
+        {/* ============ ROYALTY CATEGORIES ============ */}
+        <Section id="royalties" className="border-t border-border bg-card-muted/50">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>Royalty Categories</Eyebrow>
+              <SectionTitle className="mt-3">Where publishing money comes from.</SectionTitle>
+              <Lead className="mt-4">
+                Four royalty streams attach to every composition. Different uses, different
+                collectors — one reason publishing income is easy to lose track of.
+              </Lead>
+            </Reveal>
+
+            <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {royaltyCategories.map((item) => (
+                <StaggerItem key={item.title}>
+                  <FeatureCard title={item.title} icon={item.icon} accent="teal">
+                    {item.text}
+                  </FeatureCard>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </Container>
+        </Section>
+
         {/* ============ TERMS TRANSPARENCY ============ */}
         <Section id="terms">
           <Container>
@@ -237,6 +387,20 @@ export default function Home() {
                 </StaggerItem>
               ))}
             </Stagger>
+          </Container>
+        </Section>
+
+        {/* ============ FAQ ============ */}
+        <Section id="faq" className="border-t border-border bg-card-muted/50">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>FAQ</Eyebrow>
+              <SectionTitle className="mt-3">Common questions, straight answers.</SectionTitle>
+            </Reveal>
+            {/* FAQ is stateful — keep it outside Reveal/Stagger so arming can't remount it. */}
+            <div className="mx-auto mt-14 max-w-2xl">
+              <FAQ items={faqItems} />
+            </div>
           </Container>
         </Section>
 
@@ -317,9 +481,9 @@ export default function Home() {
 
         <Section className="pt-0">
           <CrossPromo
-            title="Want to audit your catalog?"
-            body="Source Royalty finds metadata issues and missing income with AI."
-            cta="Try Source Royalty"
+            title="Want to audit what your catalog earned?"
+            body="Source Royalty is the intelligence layer of the ecosystem — it audits statements and metadata to flag potential royalty gaps worth investigating."
+            cta="Explore Source Royalty"
             href={SITES.royalty.url}
           />
         </Section>
