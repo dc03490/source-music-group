@@ -17,19 +17,20 @@ import {
   SITES,
 } from "@source/ui";
 import { CircleDollarSign, FileStack, Clapperboard, BookMarked, ShieldCheck } from "lucide-react";
+import { RightsComparison } from "./rights-comparison";
 
 const steps = [
   {
     step: "Send us your catalog",
-    text: "Share your songs, splits, and any existing registrations. We audit what's collected and what's missing.",
+    text: "Share your songs, splits, and any existing registrations. We review what's registered, what's missing, and what needs cleaning up.",
   },
   {
-    step: "We register & collect",
-    text: "We register your works globally and connect to the societies and platforms that owe you money.",
+    step: "We register & administer",
+    text: "We register your works across major societies and platforms, fix the splits and metadata that need it, and keep the paperwork current as your catalog grows.",
   },
   {
-    step: "You get paid",
-    text: "Royalties flow in with transparent statements — on a fair, independent-friendly split.",
+    step: "Royalties flow through",
+    text: "As societies and platforms pay out, we account and pass your share through with transparent statements. Administration is commission-based — the exact terms are in your agreement before you sign.",
   },
 ];
 
@@ -56,14 +57,14 @@ export default function Home() {
               <h1 className="mx-auto mt-6 max-w-3xl text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
                 Protect Your Songs.
                 <br />
-                <span className="grad-text">Collect Every Royalty.</span>
+                <span className="grad-text">Collect What They Earn.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.16}>
               <Lead className="mx-auto mt-6 max-w-xl">
-                Source Publishing makes sure the money your songs earn actually reaches you. We handle
-                the registrations, the collection societies, and the paperwork — so you can focus on
-                writing.
+                Source Publishing handles the business side of your songwriting — registrations,
+                splits, society paperwork, and collection — so the royalties your compositions earn
+                have a clear path back to you.
               </Lead>
             </Reveal>
             <Reveal delay={0.24}>
@@ -84,40 +85,59 @@ export default function Home() {
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>What We Do</Eyebrow>
-              <SectionTitle className="mt-3">Your royalties, fully collected.</SectionTitle>
+              <SectionTitle className="mt-3">The business side of your songs, handled.</SectionTitle>
               <Lead className="mt-4">
-                Independent songwriters leave real money on the table every year — uncollected
-                mechanicals, performance royalties, and sync fees scattered across dozens of
-                societies. We chase all of it.
+                Every song has two halves: the recording and the composition. We work on the
+                composition side — registering your songs across major societies and platforms,
+                keeping splits and metadata clean, and collecting the publishing royalties they
+                generate.
               </Lead>
             </Reveal>
 
             <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               <StaggerItem>
                 <FeatureCard title="Royalty Collection" icon={CircleDollarSign} accent="teal">
-                  We register your catalog with collection societies and streaming platforms worldwide
-                  and gather every mechanical, performance, and streaming royalty you&apos;re owed.
+                  We register your works with the societies and platforms that pay composition
+                  royalties — performance, mechanical, and streaming — and collect what comes in on
+                  your behalf, with statements that show where each payment came from.
                 </FeatureCard>
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="Publishing Administration" icon={FileStack} accent="teal">
-                  Splits, metadata, and society paperwork handled correctly the first time — with
-                  clear, transparent statements so you always know what you earned and why.
+                  Splits, metadata, and society paperwork, handled carefully and documented clearly —
+                  so you always know what you earned, and why.
                 </FeatureCard>
               </StaggerItem>
               <StaggerItem>
-                <FeatureCard title="Sync Licensing" icon={Clapperboard} accent="teal">
-                  We pitch your catalog for film, TV, ads, and games — and negotiate the license so
-                  your music earns beyond the stream.
+                <FeatureCard title="Sync Preparation" icon={Clapperboard} accent="teal">
+                  We get your catalog sync-ready — metadata, splits, and licensing paperwork prepared
+                  in advance, so when an opportunity comes you can clear it quickly.
                 </FeatureCard>
               </StaggerItem>
               <StaggerItem>
-                <FeatureCard title="Register Your Works" icon={BookMarked} accent="teal">
-                  New release or a back catalog that&apos;s never been collected — we get every song
-                  properly registered with the right ISWCs, splits, and territories.
+                <FeatureCard title="Song Registration" icon={BookMarked} accent="teal">
+                  New release or an unregistered back catalog — we submit your songs to the right
+                  societies with clean splits and metadata, so identifiers like ISWCs can be assigned
+                  and your works are findable.
                 </FeatureCard>
               </StaggerItem>
             </Stagger>
+          </Container>
+        </Section>
+
+        {/* ============ MASTER VS PUBLISHING RIGHTS ============ */}
+        <Section id="rights" className="border-t border-border bg-card-muted/50">
+          <Container>
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <Eyebrow>Rights 101</Eyebrow>
+              <SectionTitle className="mt-3">One song, two copyrights.</SectionTitle>
+              <Lead className="mt-4">
+                Every released song carries two separate rights, and they earn separately. Knowing
+                which is which tells you where your money should come from — and which half we
+                handle.
+              </Lead>
+            </Reveal>
+            <RightsComparison />
           </Container>
         </Section>
 
@@ -126,7 +146,7 @@ export default function Home() {
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>How It Works</Eyebrow>
-              <SectionTitle className="mt-3">Three steps to getting paid.</SectionTitle>
+              <SectionTitle className="mt-3">How administration works.</SectionTitle>
             </Reveal>
 
             <Stagger className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-3">

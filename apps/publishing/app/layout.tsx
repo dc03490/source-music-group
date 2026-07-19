@@ -7,16 +7,19 @@ const pressStart = Press_Start_2P({ weight: "400", subsets: ["latin"], variable:
 import { SITES } from "@source/ui";
 import "./globals.css";
 
+const title = "Source Publishing — Music Publishing Administration for Independent Songwriters";
+const description =
+  "Publishing administration for songwriters, producers, and composers — song registration across major societies and platforms, split and metadata management, royalty collection, and sync preparation.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITES.publishing.url),
-  title: "Source Publishing — Protect Your Songs. Collect Every Royalty.",
-  description:
-    "Global publishing administration for independent songwriters: PRO and MLC registration, royalty collection, sync licensing, and transparent statements.",
+  title,
+  description,
   openGraph: {
     type: "website",
     siteName: "Source Publishing",
-    title: "Source Publishing — Publishing administration",
-    description: "Protect your songs. Collect every royalty.",
+    title,
+    description: "Protect your songs. Collect what they earn.",
     url: SITES.publishing.url,
   },
 };

@@ -547,7 +547,7 @@ export default function Home() {
         <Section className="pt-0">
           <CrossPromo
             title="Need publishing administration?"
-            body="Source Publishing registers your works and collects across societies worldwide."
+            body="Source Publishing registers your works and collects across major societies and platforms."
             cta="Visit Source Publishing"
             href={SITES.publishing.url}
           />
