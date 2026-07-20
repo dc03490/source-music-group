@@ -26,24 +26,24 @@ export function EcosystemNav({
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
       <nav className="mx-auto flex h-16 max-w-[var(--container-page)] items-center justify-between px-6 lg:px-8">
         <a href={SITES.source.url} aria-label="Source home">
           <Wordmark sub={sub} logoSrc={logoSrc} />
         </a>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {localLinks?.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="py-2 text-sm font-medium tracking-tight text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
           {localLinks && localLinks.length > 0 ? (
-            <span aria-hidden className="mx-2 h-4 w-px bg-border" />
+            <span aria-hidden className="h-4 w-px bg-border" />
           ) : null}
           {NAV_LINKS.map((link) => {
             const isActive = link.siteKey && link.siteKey === active;
@@ -53,7 +53,7 @@ export function EcosystemNav({
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
+                  "py-2 text-sm font-medium tracking-tight transition-colors",
                   isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                 )}
               >
