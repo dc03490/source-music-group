@@ -94,6 +94,7 @@ export default function Home() {
       <EcosystemNav
         active="royalty"
         sub="Royalty"
+        logoSrc="/assets/logo.png"
         localLinks={LOCAL_LINKS}
         cta={{ label: "Join Early Access", href: "/early-access" }}
       />

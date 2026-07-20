@@ -189,6 +189,7 @@ export default function Home() {
       <EcosystemNav
         active="publishing"
         sub="Publishing Co."
+        logoSrc="/assets/logo.png"
         localLinks={LOCAL_LINKS}
         cta={{ label: "Request a consultation", href: "/#consult" }}
       />

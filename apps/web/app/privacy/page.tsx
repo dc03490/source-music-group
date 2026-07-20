@@ -39,7 +39,10 @@ export default function PrivacyPage() {
   return (
     <>
       <SkipLink />
-      <EcosystemNav cta={{ label: "Explore the companies", href: "/#companies" }} />
+      <EcosystemNav
+        logoSrc="/assets/logo.png"
+        cta={{ label: "Explore the companies", href: "/#companies" }}
+      />
       <main id="main">
         <Section className="pt-20 sm:pt-24">
           <Container className="max-w-2xl">

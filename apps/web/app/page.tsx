@@ -44,7 +44,10 @@ export default function Home() {
   return (
     <>
       <SkipLink />
-      <EcosystemNav cta={{ label: "Explore the companies", href: "#companies" }} />
+      <EcosystemNav
+        logoSrc="/assets/logo.png"
+        cta={{ label: "Explore the companies", href: "#companies" }}
+      />
 
       <main id="main">
         {/* ============ HERO ============ */}

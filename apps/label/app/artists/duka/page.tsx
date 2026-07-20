@@ -50,6 +50,7 @@ export default function DukaPage() {
       <EcosystemNav
         active="label"
         sub="Music Group"
+        logoSrc="/assets/logo.png"
         localLinks={LOCAL_LINKS}
         cta={{ label: "Submit Your Music", href: "/#submit" }}
       />

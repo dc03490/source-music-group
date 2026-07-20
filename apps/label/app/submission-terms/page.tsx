@@ -47,6 +47,7 @@ export default function SubmissionTermsPage() {
       <EcosystemNav
         active="label"
         sub="Music Group"
+        logoSrc="/assets/logo.png"
         localLinks={LOCAL_LINKS}
         cta={{ label: "Submit Your Music", href: "/#submit" }}
       />
