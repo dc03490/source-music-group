@@ -83,7 +83,7 @@ export function Wordmark({
     <span className={cn("inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap", className)}>
       {logoSrc ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={logoSrc} alt="" className="h-9 w-9 shrink-0 object-contain" width={36} height={36} />
+        <img src={logoSrc} alt="" className="h-14 w-14 shrink-0 object-contain" width={56} height={56} />
       ) : null}
       <span className="inline-flex flex-col leading-none">
         <span className="font-pixel text-[0.8rem] uppercase tracking-[0.08em] text-gold">Source</span>
