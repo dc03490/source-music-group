@@ -58,7 +58,7 @@ export default function Home() {
             <Reveal delay={0.06}>
               <Badge>
                 <Disc3 className="h-3.5 w-3.5 text-gold" />
-                Independent Hip Hop / R&amp;B Label
+                Independent Label
               </Badge>
             </Reveal>
             <Reveal delay={0.12}>
