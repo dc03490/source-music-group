@@ -27,23 +27,30 @@ export function EcosystemNav({
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
-      <nav className="mx-auto flex h-16 max-w-[var(--container-page)] items-center justify-between px-6 lg:px-8">
-        <a href={SITES.source.url} aria-label="Source home">
+      {/* Wider than the content container (--container-page, 72rem) — this row can carry
+          more items (logo + local links + ecosystem links + CTA) than a reading-width
+          column, especially on content-heavy sites like Publishing (4 local links + 5
+          ecosystem links + a two-word CTA is the densest header in the ecosystem). The
+          `xl` breakpoint (1280px, not `md`/`lg`) keeps tablets and small laptops on the
+          compact hamburger menu instead of a cramped or clipped desktop row — verified
+          against Publishing's header at every width from 375px to 1440px. */}
+      <nav className="mx-auto flex h-16 max-w-[90rem] items-center justify-between gap-4 px-6 lg:px-8">
+        <a href={SITES.source.url} aria-label="Source home" className="shrink-0">
           <Wordmark sub={sub} logoSrc={logoSrc} />
         </a>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden min-w-0 items-center gap-6 xl:flex">
           {localLinks?.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="py-2 text-sm font-medium tracking-tight text-muted-foreground transition-colors hover:text-foreground"
+              className="whitespace-nowrap py-2 text-sm font-medium tracking-tight text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
           {localLinks && localLinks.length > 0 ? (
-            <span aria-hidden className="h-4 w-px bg-border" />
+            <span aria-hidden className="h-4 w-px shrink-0 bg-border" />
           ) : null}
           {NAV_LINKS.map((link) => {
             const isActive = link.siteKey && link.siteKey === active;
@@ -53,7 +60,7 @@ export function EcosystemNav({
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "py-2 text-sm font-medium tracking-tight transition-colors",
+                  "whitespace-nowrap py-2 text-sm font-medium tracking-tight transition-colors",
                   isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                 )}
               >
@@ -64,14 +71,14 @@ export function EcosystemNav({
           })}
         </div>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <ButtonLink href={cta.href} size="sm">
+        <div className="hidden shrink-0 items-center gap-2 xl:flex">
+          <ButtonLink href={cta.href} size="sm" className="whitespace-nowrap">
             {cta.label}
           </ButtonLink>
         </div>
 
         <button
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground md:hidden"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-foreground xl:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -81,7 +88,7 @@ export function EcosystemNav({
       </nav>
 
       {open ? (
-        <div className="border-t border-border bg-background md:hidden">
+        <div className="border-t border-border bg-background xl:hidden">
           <div className="space-y-1 px-6 py-4">
             {localLinks && localLinks.length > 0 ? (
               <div className="mb-2 border-b border-border pb-2">
