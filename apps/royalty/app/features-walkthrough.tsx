@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { cn, PhoneFrame, ScreenCollect, ScreenDashboard, ScreenScan } from "@source/ui";
+import { cn, PhoneFrame, PhoneTabBar, ScreenActivity, ScreenCollect, ScreenReview } from "@source/ui";
 import { ScanSearch, AlertTriangle, HandCoins } from "lucide-react";
 
 const STEPS = [
@@ -9,19 +9,22 @@ const STEPS = [
     title: "Scan your catalog",
     text: "Connect your releases and let the AI read every registration, split, and statement — in minutes, from your phone.",
     icon: ScanSearch,
-    screen: <ScreenScan />,
+    screen: <ScreenReview />,
+    tab: "audit",
   },
   {
     title: "Spot potential gaps",
     text: "Metadata issues, unregistered works, unclaimed mechanicals — flagged and ranked by how much they're worth to you.",
     icon: AlertTriangle,
-    screen: <ScreenDashboard />,
+    screen: <ScreenActivity />,
+    tab: "home",
   },
   {
     title: "Collect with confidence",
     text: "Guided fixes and claim tracking through resolution. Check the status from anywhere.",
     icon: HandCoins,
     screen: <ScreenCollect />,
+    tab: "claims",
   },
 ] as const;
 
@@ -68,7 +71,7 @@ export function FeaturesWalkthrough() {
 
       {/* Phone first on mobile so the screen being described is visible above the step list. */}
       <div className="order-first mx-auto lg:order-none">
-        <PhoneFrame>{step.screen}</PhoneFrame>
+        <PhoneFrame tabBar={<PhoneTabBar active={step.tab} />}>{step.screen}</PhoneFrame>
       </div>
 
       <p aria-live="polite" className="sr-only">

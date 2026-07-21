@@ -5,6 +5,7 @@ import {
   Card,
   Container,
   CrossPromo,
+  DesktopDashboard,
   EcosystemNav,
   Eyebrow,
   FAQ,
@@ -13,9 +14,10 @@ import {
   SkipLink,
   Lead,
   PhoneFrame,
+  PhoneTabBar,
   PricingCard,
   Reveal,
-  ScreenDashboard,
+  ScreenHome,
   Section,
   SectionTitle,
   Stagger,
@@ -152,8 +154,8 @@ export default function Home() {
               </div>
 
               <Reveal delay={0.2} className="mx-auto">
-                <PhoneFrame>
-                  <ScreenDashboard />
+                <PhoneFrame tabBar={<PhoneTabBar active="home" />}>
+                  <ScreenHome />
                 </PhoneFrame>
               </Reveal>
             </div>
@@ -175,14 +177,12 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={0.12}>
-              <div className="mx-auto mt-14 flex max-w-4xl flex-col items-center gap-10 lg:flex-row lg:items-end">
+              <div className="mx-auto mt-14 flex max-w-5xl flex-col items-center gap-10 lg:flex-row lg:items-end">
                 <BrowserFrame className="w-full flex-1" url="source-royalty.com/dashboard">
-                  <div className="mx-auto max-w-sm">
-                    <ScreenDashboard />
-                  </div>
+                  <DesktopDashboard />
                 </BrowserFrame>
-                <PhoneFrame className="shrink-0">
-                  <ScreenDashboard />
+                <PhoneFrame className="shrink-0" tabBar={<PhoneTabBar active="home" />}>
+                  <ScreenHome />
                 </PhoneFrame>
               </div>
             </Reveal>
