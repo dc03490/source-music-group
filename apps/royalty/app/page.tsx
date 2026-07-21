@@ -24,7 +24,6 @@ import {
   StaggerItem,
   SITES,
 } from "@source/ui";
-import Image from "next/image";
 import {
   Activity,
   Archive,
@@ -112,16 +111,6 @@ export default function Home() {
             <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_auto]">
               <div className="text-center lg:text-left">
                 <Reveal>
-                  <Image
-                    src="/assets/logo.png"
-                    alt="Source Royalty"
-                    width={256}
-                    height={256}
-                    priority
-                    className="mx-auto mb-8 h-56 w-56 sm:h-64 sm:w-64 lg:mx-0 drop-shadow-[0_0_32px_rgba(46,107,255,0.35)]"
-                  />
-                </Reveal>
-                <Reveal delay={0.04}>
                   <Badge>
                     <Smartphone className="h-3.5 w-3.5 text-teal" />
                     Designed for mobile &amp; desktop
