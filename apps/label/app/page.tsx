@@ -106,7 +106,7 @@ export default function Home() {
         </Section>
 
         {/* ============ THE LABEL ============ */}
-        <Section id="about" className="scroll-mt-20 border-t border-border bg-card-muted/50">
+        <Section id="about" className="scroll-mt-24 border-t border-border bg-card-muted/50">
           <Container>
             <div className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
               <Reveal>
@@ -124,7 +124,7 @@ export default function Home() {
         </Section>
 
         {/* ============ ARTISTS / DUKA ============ */}
-        <Section id="artists" className="scroll-mt-20">
+        <Section id="artists" className="scroll-mt-24">
           <Container>
             <Reveal className="mx-auto max-w-2xl text-center">
               <Eyebrow>The Roster</Eyebrow>
@@ -190,7 +190,7 @@ export default function Home() {
         {/* "Latest Release" label + year verified July 19, 2026 from the Spotify artist
             page ("Latest Release • Single" card for Min Type, <time datetime="2026">) —
             see artists/duka/tracks.ts for the full provenance note. */}
-        <Section id="latest" className="scroll-mt-20 border-t border-border bg-card-muted/50">
+        <Section id="latest" className="scroll-mt-24 border-t border-border bg-card-muted/50">
           <Container className="text-center">
             <Reveal>
               <Eyebrow>Latest Release</Eyebrow>
@@ -250,7 +250,7 @@ export default function Home() {
         </Section>
 
         {/* ============ FAN LIST ============ */}
-        <Section id="updates" className="scroll-mt-20">
+        <Section id="updates" className="scroll-mt-24">
           <Container className="text-center">
             <Reveal className="mx-auto max-w-2xl">
               <Eyebrow>Fan List</Eyebrow>
@@ -267,7 +267,7 @@ export default function Home() {
         </Section>
 
         {/* ============ SUBMIT CTA ============ */}
-        <Section id="submit" className="scroll-mt-20 border-t border-border bg-card-muted/50">
+        <Section id="submit" className="scroll-mt-24 border-t border-border bg-card-muted/50">
           <Container className="text-center">
             <Reveal>
               <Eyebrow>Submissions</Eyebrow>

@@ -34,7 +34,7 @@ export function EcosystemNav({
           `xl` breakpoint (1280px, not `md`/`lg`) keeps tablets and small laptops on the
           compact hamburger menu instead of a cramped or clipped desktop row — verified
           against Publishing's header at every width from 375px to 1440px. */}
-      <nav className="mx-auto flex h-16 max-w-[90rem] items-center justify-between gap-4 px-6 lg:px-8">
+      <nav className="mx-auto flex h-20 max-w-[90rem] items-center justify-between gap-4 px-6 lg:px-8">
         <a href={SITES.source.url} aria-label="Source home" className="shrink-0">
           <Wordmark sub={sub} logoSrc={logoSrc} />
         </a>

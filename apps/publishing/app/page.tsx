@@ -492,7 +492,7 @@ export default function Home() {
         </Section>
 
         {/* ============ SYNC & LICENSING ============ */}
-        <Section id="sync" className="scroll-mt-20">
+        <Section id="sync" className="scroll-mt-24">
           <Container>
             <Reveal className="mx-auto max-w-2xl">
               <Card className="text-center">
