@@ -133,7 +133,7 @@ export default function Home() {
 
             <div className="mx-auto mt-14 grid max-w-5xl items-start gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
               <Reveal>
-                <div className="overflow-hidden rounded-[var(--radius-xl)] border border-border shadow-[var(--shadow-card)]">
+                <div className="mx-auto max-w-[340px] overflow-hidden rounded-[var(--radius-xl)] border border-border shadow-[var(--shadow-card)] lg:mx-0">
                   <Image
                     src="/assets/duka.jpg"
                     alt="Duka"

@@ -90,7 +90,7 @@ export default function DukaPage() {
               </p>
             </Reveal>
             <Reveal delay={0.08}>
-              <div className="mx-auto mt-8 max-w-sm overflow-hidden rounded-[var(--radius-xl)] border border-border shadow-[var(--shadow-card)]">
+              <div className="mx-auto mt-8 max-w-[340px] overflow-hidden rounded-[var(--radius-xl)] border border-border shadow-[var(--shadow-card)]">
                 <Image
                   src="/assets/duka.jpg"
                   alt="Duka"
