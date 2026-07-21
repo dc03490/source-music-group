@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   ButtonLink,
   Container,
@@ -88,7 +89,18 @@ export default function DukaPage() {
                 transparent terms, shared upside, and creative control that stays with the artist.
               </p>
             </Reveal>
-            {/* PHOTO SLOT: artist photography */}
+            <Reveal delay={0.08}>
+              <div className="mx-auto mt-8 max-w-sm overflow-hidden rounded-[var(--radius-xl)] border border-border shadow-[var(--shadow-card)]">
+                <Image
+                  src="/assets/duka.jpg"
+                  alt="Duka"
+                  width={1365}
+                  height={2048}
+                  priority
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+            </Reveal>
             {/* VIDEO SLOT: embed when official videos exist */}
             {/* PRESS SLOT: real press quotes only — never invented */}
           </Container>

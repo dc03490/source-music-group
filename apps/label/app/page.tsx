@@ -131,56 +131,67 @@ export default function Home() {
               <SectionTitle className="mt-3">Artists</SectionTitle>
             </Reveal>
 
-            <div className="mx-auto mt-14 grid max-w-5xl items-start gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
+            <div className="mx-auto mt-14 grid max-w-5xl items-start gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
               <Reveal>
-                <Eyebrow className="text-magenta-text">First on the Roster</Eyebrow>
-                <h3 className="mt-3 text-5xl font-semibold tracking-tight sm:text-6xl">
-                  <span className="grad-text">Duka</span>
-                </h3>
-                <p className="mt-1 font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-magenta-text">
-                  Source Music Group · Artist
-                </p>
-                <p className="mt-4 leading-relaxed text-muted-foreground">
-                  Duka is the first artist on the Source Music Group roster — an independent voice
-                  working the lane between Hip Hop and R&amp;B. Stream the latest below, and follow
-                  along as the catalog grows.
-                </p>
-                <div className="mt-6 flex flex-wrap items-center gap-3">
-                  <ButtonLink href="/artists/duka" size="sm">
-                    Artist page
-                    <ArrowRight className="h-4 w-4" aria-hidden />
-                  </ButtonLink>
-                  <ButtonLink
-                    href={SPOTIFY_ARTIST}
-                    target="_blank"
-                    rel="noopener"
-                    variant="secondary"
-                    size="sm"
-                    data-evt="external_music_link_clicked"
-                    data-evt-artist="duka"
-                    data-evt-item="artist"
-                  >
-                    Open in Spotify
-                    <ArrowUpRight className="h-4 w-4" aria-hidden />
-                  </ButtonLink>
+                <div className="overflow-hidden rounded-[var(--radius-xl)] border border-border shadow-[var(--shadow-card)]">
+                  <Image
+                    src="/assets/duka.jpg"
+                    alt="Duka"
+                    width={1365}
+                    height={2048}
+                    className="h-auto w-full object-cover"
+                  />
                 </div>
-                {/* PHOTO SLOT (future): when real Duka photography arrives, convert this grid to
-                    [photo | text] — add an <Image> column here; see /artists/duka for the
-                    matching slot. */}
               </Reveal>
 
-              {/* Embed stays outside Reveal/Stagger — arming remounts the iframe. */}
               <div>
-                <iframe
-                  title="Duka on Spotify"
-                  style={{ borderRadius: 12, border: 0 }}
-                  src="https://open.spotify.com/embed/artist/0oxAY1bzauffvCA5m6tsBZ?utm_source=generator&theme=0"
-                  width="100%"
-                  height={352}
-                  allowFullScreen
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                />
+                <Reveal>
+                  <Eyebrow className="text-magenta-text">First on the Roster</Eyebrow>
+                  <h3 className="mt-3 text-5xl font-semibold tracking-tight sm:text-6xl">
+                    <span className="grad-text">Duka</span>
+                  </h3>
+                  <p className="mt-1 font-pixel text-[0.55rem] uppercase tracking-[0.14em] text-magenta-text">
+                    Source Music Group · Artist
+                  </p>
+                  <p className="mt-4 leading-relaxed text-muted-foreground">
+                    Duka is the first artist on the Source Music Group roster — an independent voice
+                    working the lane between Hip Hop and R&amp;B. Stream the latest below, and follow
+                    along as the catalog grows.
+                  </p>
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    <ButtonLink href="/artists/duka" size="sm">
+                      Artist page
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                    </ButtonLink>
+                    <ButtonLink
+                      href={SPOTIFY_ARTIST}
+                      target="_blank"
+                      rel="noopener"
+                      variant="secondary"
+                      size="sm"
+                      data-evt="external_music_link_clicked"
+                      data-evt-artist="duka"
+                      data-evt-item="artist"
+                    >
+                      Open in Spotify
+                      <ArrowUpRight className="h-4 w-4" aria-hidden />
+                    </ButtonLink>
+                  </div>
+                </Reveal>
+
+                {/* Embed stays outside Reveal/Stagger — arming remounts the iframe. */}
+                <div className="mt-8">
+                  <iframe
+                    title="Duka on Spotify"
+                    style={{ borderRadius: 12, border: 0 }}
+                    src="https://open.spotify.com/embed/artist/0oxAY1bzauffvCA5m6tsBZ?utm_source=generator&theme=0"
+                    width="100%"
+                    height={352}
+                    allowFullScreen
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </Container>
