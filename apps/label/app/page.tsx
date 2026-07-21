@@ -49,10 +49,10 @@ export default function Home() {
               <Image
                 src="/assets/logo.png"
                 alt="Source Music Group"
-                width={96}
-                height={96}
+                width={128}
+                height={128}
                 priority
-                className="mx-auto mb-8 h-20 w-20 sm:h-24 sm:w-24 drop-shadow-[0_0_32px_rgba(224,33,138,0.35)]"
+                className="mx-auto mb-8 h-28 w-28 sm:h-32 sm:w-32 drop-shadow-[0_0_32px_rgba(224,33,138,0.35)]"
               />
             </Reveal>
             <Reveal delay={0.06}>
