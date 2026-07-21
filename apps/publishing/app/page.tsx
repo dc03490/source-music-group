@@ -18,6 +18,7 @@ import {
   StaggerItem,
   SITES,
 } from "@source/ui";
+import Image from "next/image";
 import {
   BookMarked,
   BookOpen,
@@ -202,6 +203,16 @@ export default function Home() {
           />
           <Container className="relative text-center">
             <Reveal>
+              <Image
+                src="/assets/logo.png"
+                alt="Source Publishing Company"
+                width={256}
+                height={256}
+                priority
+                className="mx-auto mb-8 h-56 w-56 sm:h-64 sm:w-64 drop-shadow-[0_0_32px_rgba(29,211,176,0.35)]"
+              />
+            </Reveal>
+            <Reveal delay={0.04}>
               <Badge>
                 <ShieldCheck className="h-3.5 w-3.5 text-teal" />
                 Music publishing administration
