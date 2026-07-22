@@ -314,7 +314,7 @@ export default function Home() {
                   <img
                     src="/assets/duka.jpg"
                     alt="Duka"
-                    className="aspect-[3/4] w-full rounded-[var(--radius-card)] object-cover"
+                    className="mx-auto aspect-[3/4] w-full max-w-[220px] rounded-[var(--radius-card)] object-cover"
                   />
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                     Duka — first artist on the Source Music Group roster
