@@ -8,7 +8,7 @@ import { LOCAL_LINKS } from "../local-links";
    counsel before the platform handles any account, royalty, or catalog data. */
 
 export const metadata: Metadata = {
-  title: "Data Policy — Source Royalty",
+  title: "Data Policy | Source Royalty",
   description: "How Source Royalty will handle your information and catalog data.",
   alternates: { canonical: "/data-policy" },
 };
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     h: "What we collect",
-    p: "Today, this site collects only what you submit through the early-access form: your name, email address, and the role you select. Catalog data — statements, registrations, splits — will only be collected at launch, and only what you explicitly authorize for your audit.",
+    p: "Today, this site collects only what you submit through the early-access form: your name, email address, and the role you select. Catalog data (statements, registrations, splits) will only be collected at launch, and only what you explicitly authorize for your audit.",
   },
   {
     h: "How we'll use it",
@@ -28,7 +28,7 @@ const sections = [
   },
   {
     h: "Your control",
-    p: "You can ask us what information we hold about you and request deletion at any time — of your early-access details now, and of your catalog data once the platform is live.",
+    p: "You can ask us what information we hold about you and request deletion at any time: of your early-access details now, and of your catalog data once the platform is live.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function DataPolicyPage() {
             <SectionTitle as="h1">Data Policy</SectionTitle>
             <p className="mt-3 font-mono text-sm text-subtle">Effective July 18, 2026</p>
             <Lead className="mt-6">
-              Early-access commitment — a full data policy will be published before the platform
+              Early-access commitment: a full data policy will be published before the platform
               handles catalog data.
             </Lead>
             <div className="mt-10 space-y-8">

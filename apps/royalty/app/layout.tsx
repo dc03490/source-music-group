@@ -8,15 +8,15 @@ import { SITES } from "@source/ui";
 import "./globals.css";
 import { SiteAnalytics } from "./site-analytics";
 
-const title = "Source Royalty — AI Music Royalty Audit & Catalog Monitoring";
+const title = "Source Royalty | AI Music Royalty Audit & Catalog Monitoring";
 const description =
-  "AI-powered music royalty audit and catalog monitoring — find metadata issues, missing registrations, and potential royalty gaps across PRO, MLC, and DSP statements. In development — join early access.";
+  "AI-powered music royalty audit and catalog monitoring: find metadata issues, missing registrations, and potential royalty gaps across PRO, MLC, and DSP statements. In development, join early access.";
 
 const ogImage = {
   url: "/og.png",
   width: 1200,
   height: 630,
-  alt: "Source Royalty — AI music royalty audit & catalog monitoring, in development",
+  alt: "Source Royalty, AI music royalty audit & catalog monitoring, in development",
 };
 
 export const metadata: Metadata = {

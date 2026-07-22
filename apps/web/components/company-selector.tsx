@@ -60,7 +60,7 @@ const RESULTS: Record<
     company: "royalty",
     cta: "Go to Source Royalty",
     bar: "bg-gradient-to-r from-blue to-purple",
-    phrase: (make) => `As ${make} who wants royalty visibility, start with ${SITES.royalty.name} — early access is open.`,
+    phrase: (make) => `As ${make} who wants royalty visibility, start with ${SITES.royalty.name}: early access is open.`,
   },
   partnership: {
     name: "the Source team",

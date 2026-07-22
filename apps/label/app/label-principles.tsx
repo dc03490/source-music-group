@@ -8,17 +8,17 @@ const principles = [
   {
     n: "01",
     title: "Marketing Guidance",
-    body: "Strategy that cuts through the noise — rollout planning, audience growth, playlist and social positioning, and the data to know what's actually working.",
+    body: "Strategy that cuts through the noise: rollout planning, audience growth, playlist and social positioning, and the data to know what's actually working.",
   },
   {
     n: "02",
     title: "Unique Music",
-    body: "We champion artists with a distinct voice. No chasing trends — we help you sharpen what already makes you different and put it in front of the right ears.",
+    body: "We champion artists with a distinct voice. No chasing trends. We help you sharpen what already makes you different and put it in front of the right ears.",
   },
   {
     n: "03",
     title: "Artist Partnership",
-    body: "An independent, business-partner relationship — transparent terms, shared upside, and decisions made together. You stay in control of your art and your career.",
+    body: "An independent, business-partner relationship: transparent terms, shared upside, and decisions made together. You stay in control of your art and your career.",
   },
 ];
 

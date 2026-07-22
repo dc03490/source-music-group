@@ -34,7 +34,7 @@ const textareaClasses =
 
 const labelClasses = "mb-2 block text-sm font-medium text-foreground";
 
-const smallPrint = "No mailing list, no spam — we only use this to reply to your request.";
+const smallPrint = "No mailing list, no spam. We only use this to reply to your request.";
 
 export function ConsultationForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -66,7 +66,7 @@ export function ConsultationForm() {
         role="status"
         className="rounded-[var(--radius-card)] border border-teal/40 bg-card p-6 text-center text-[15px] leading-relaxed text-foreground"
       >
-        Request received. A real person will reply from publishing@sourcemusicgrp.com — typically
+        Request received. A real person will reply from publishing@sourcemusicgrp.com, typically
         within a few business days.
       </p>
     );

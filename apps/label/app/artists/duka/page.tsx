@@ -17,9 +17,9 @@ import { FanSignupForm } from "../../fan-signup-form";
 import { SPOTIFY_ARTIST, TRACKS } from "./tracks";
 
 export const metadata: Metadata = {
-  title: "Duka — Source Music Group",
+  title: "Duka | Source Music Group",
   description:
-    "Duka is the first artist on the Source Music Group roster — Hip Hop / R&B. Stream the full catalog on Spotify: Toxic, Min Type, Confidential, and more.",
+    "Duka is the first artist on the Source Music Group roster (Hip Hop / R&B). Stream the full catalog on Spotify: Toxic, Min Type, Confidential, and more.",
   keywords: ["Duka", "Hip Hop", "R&B", "independent artist", "Source Music Group"],
   alternates: { canonical: "/artists/duka" },
 };
@@ -80,7 +80,7 @@ export default function DukaPage() {
                 <Eyebrow className="text-magenta-text">Source Music Group · Artist</Eyebrow>
               </div>
               <p className="mt-6 leading-relaxed text-muted-foreground">
-                Duka is the first artist on the Source Music Group roster — an independent voice
+                Duka is the first artist on the Source Music Group roster, an independent voice
                 working the lane between Hip Hop and R&amp;B, with a sound that doesn&apos;t sit
                 neatly in either box.
               </p>
@@ -239,7 +239,7 @@ export default function DukaPage() {
                 Get the next release first
               </h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                One email when new music drops — a link to press play, and that&apos;s it.
+                One email when new music drops: a link to press play, and that&apos;s it.
               </p>
             </Reveal>
             {/* Form stays outside Reveal/Stagger — arming remounts children. */}
@@ -263,7 +263,7 @@ export default function DukaPage() {
                     Booking
                   </span>
                   <a
-                    href="mailto:hello@sourcemusicgrp.com?subject=Duka%20—%20Booking%20inquiry"
+                    href="mailto:hello@sourcemusicgrp.com?subject=Duka%20-%20Booking%20inquiry"
                     data-evt="primary_cta_clicked"
                     data-evt-cta="booking_email"
                     data-evt-location="duka_business"
@@ -277,7 +277,7 @@ export default function DukaPage() {
                     Press
                   </span>
                   <a
-                    href="mailto:hello@sourcemusicgrp.com?subject=Duka%20—%20Press%20inquiry"
+                    href="mailto:hello@sourcemusicgrp.com?subject=Duka%20-%20Press%20inquiry"
                     data-evt="primary_cta_clicked"
                     data-evt-cta="press_email"
                     data-evt-location="duka_business"
@@ -291,7 +291,7 @@ export default function DukaPage() {
                     Partnerships
                   </span>
                   <a
-                    href="mailto:hello@sourcemusicgrp.com?subject=Duka%20—%20Partnership%20inquiry"
+                    href="mailto:hello@sourcemusicgrp.com?subject=Duka%20-%20Partnership%20inquiry"
                     data-evt="primary_cta_clicked"
                     data-evt-cta="partnership_email"
                     data-evt-location="duka_business"

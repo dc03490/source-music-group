@@ -7,7 +7,7 @@ import { Container, EcosystemNav, Footer, Lead, Section, SectionTitle, SkipLink 
    launch that collects account, royalty, or catalog data. */
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Source",
+  title: "Privacy Policy | Source",
   description: "How the Source websites handle your information.",
   alternates: { canonical: "/privacy" },
 };
@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 const sections = [
   {
     h: "What we collect",
-    p: "The Source websites are informational. We do not require accounts, and we do not collect personal information unless you choose to send it to us — for example, by emailing us or submitting a form on one of our company sites. If you do, we receive what you send (such as your name, email address, and message).",
+    p: "The Source websites are informational. We do not require accounts, and we do not collect personal information unless you choose to send it to us, for example, by emailing us or submitting a form on one of our company sites. If you do, we receive what you send (such as your name, email address, and message).",
   },
   {
     h: "How we use it",
-    p: "We use the information you send us only to respond to you and to evaluate the inquiry you made — a partnership question, a publishing or music submission, or an early-access request. We do not sell your information.",
+    p: "We use the information you send us only to respond to you and to evaluate the inquiry you made: a partnership question, a publishing or music submission, or an early-access request. We do not sell your information.",
   },
   {
     h: "Cookies and analytics",
@@ -49,8 +49,8 @@ export default function PrivacyPage() {
             <SectionTitle as="h1">Privacy Policy</SectionTitle>
             <p className="mt-3 font-mono text-sm text-subtle">Effective July 17, 2026</p>
             <Lead className="mt-6">
-              This is a short, plain-language interim policy. As Source products launch — including
-              anything that handles account, royalty, or catalog data — this policy will be expanded
+              This is a short, plain-language interim policy. As Source products launch (including
+              anything that handles account, royalty, or catalog data) this policy will be expanded
               and reviewed by counsel before those features go live.
             </Lead>
             <div className="mt-10 space-y-8">

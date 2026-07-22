@@ -62,7 +62,7 @@ export function Footer({
           <div className="lg:col-span-2">
             <Wordmark />
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              The modern operating system for music rights — helping creators own, understand, and
+              The modern operating system for music rights, helping creators own, understand, and
               maximize the value of their work.
             </p>
             {contactEmail ? (

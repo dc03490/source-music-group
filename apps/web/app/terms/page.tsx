@@ -7,7 +7,7 @@ import { Container, EcosystemNav, Footer, Lead, Section, SectionTitle, SkipLink 
    payment functionality launches. */
 
 export const metadata: Metadata = {
-  title: "Terms of Use — Source",
+  title: "Terms of Use | Source",
   description: "The terms that apply to using the Source websites.",
   alternates: { canonical: "/terms" },
 };
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     h: "What these sites are",
-    p: "The Source websites describe Source and its companies — Source Music Group, Source Publishing, and Source Royalty. They are informational. Nothing on these sites is a contract offer, legal advice, financial advice, or a guarantee of any service outcome, including royalty recovery.",
+    p: "The Source websites describe Source and its companies: Source Music Group, Source Publishing, and Source Royalty. They are informational. Nothing on these sites is a contract offer, legal advice, financial advice, or a guarantee of any service outcome, including royalty recovery.",
   },
   {
     h: "Early-stage services",

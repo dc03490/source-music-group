@@ -6,7 +6,7 @@ import { Disc3, PenLine } from "lucide-react";
    Safe inside Stagger/StaggerItem because it holds no state. */
 
 const masterBullets = [
-  "Owned by whoever owns the recording — usually the artist or label",
+  "Owned by whoever owns the recording, usually the artist or label",
   "Earns from streams, downloads, and licensing of that recording",
   "Paid through distributors and labels",
 ];
@@ -34,7 +34,7 @@ export function RightsComparison() {
           </p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight">Master Rights</h3>
           <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-            The master is the specific recorded performance — the track people actually stream.
+            The master is the specific recorded performance: the track people actually stream.
           </p>
           <ul className="mt-4 space-y-2.5">
             {masterBullets.map((b) => (
@@ -45,7 +45,7 @@ export function RightsComparison() {
             ))}
           </ul>
           <p className="mt-6 text-sm text-subtle">
-            Not what we administer — for Source artists, that&apos;s Source Music Group.
+            Not what we administer. For Source artists, that&apos;s Source Music Group.
           </p>
         </div>
       </StaggerItem>
@@ -64,7 +64,7 @@ export function RightsComparison() {
           </p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight">Publishing Rights</h3>
           <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-            The composition is the song itself — the lyrics, melody, and structure underneath any
+            The composition is the song itself: the lyrics, melody, and structure underneath any
             recording of it.
           </p>
           <ul className="mt-4 space-y-2.5">

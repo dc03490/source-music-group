@@ -13,7 +13,7 @@ import {
 } from "@source/ui";
 
 export const metadata: Metadata = {
-  title: "Contact — Source",
+  title: "Contact | Source",
   description:
     "Reach the Source team: general questions and partnerships, publishing inquiries, music submissions, and Source Royalty early access.",
   alternates: { canonical: "/contact" },
@@ -71,7 +71,7 @@ export default function ContactPage() {
                 Talk to the Source team.
               </SectionTitle>
               <Lead className="mt-6">
-                Pick the route that fits — each company handles its own inquiries, so you reach the
+                Pick the route that fits: each company handles its own inquiries, so you reach the
                 right people first.
               </Lead>
             </div>

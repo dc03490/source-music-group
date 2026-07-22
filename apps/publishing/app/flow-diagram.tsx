@@ -55,7 +55,7 @@ export function FlowDiagram() {
         <EndNode label="You" sub="statements + payment" />
       </div>
       <figcaption className="mt-4 text-center text-sm text-subtle">
-        Simplified — each stream has its own societies, timelines, and paperwork. That&apos;s the
+        Simplified. Each stream has its own societies, timelines, and paperwork. That&apos;s the
         part we handle.
       </figcaption>
     </figure>

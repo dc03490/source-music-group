@@ -416,9 +416,9 @@ export function ScreenActivity() {
         <MiniLine className="mx-0 w-full" />
       </ChartCard>
       <div className="mx-4 overflow-hidden rounded-2xl border border-border bg-card-muted">
-        <ActivityRow icon={CheckCircle2} title="New match found" subtitle="Toxic — streaming royalty" tone="teal" />
+        <ActivityRow icon={CheckCircle2} title="New match found" subtitle="Toxic: streaming royalty" tone="teal" />
         <ActivityRow icon={FileCheck} title="Statement processed" subtitle="Q2 distributor report" tone="blue" />
-        <ActivityRow icon={ShieldCheck} title="Registration confirmed" subtitle="Min Type — MLC" tone="gold" />
+        <ActivityRow icon={ShieldCheck} title="Registration confirmed" subtitle="Min Type: MLC" tone="gold" />
       </div>
     </div>
   );

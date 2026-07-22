@@ -8,7 +8,7 @@ import { LOCAL_LINKS } from "../local-links";
    unsolicited-materials / coincidental-similarity language. */
 
 export const metadata: Metadata = {
-  title: "Submission Terms — Source Music Group",
+  title: "Submission Terms | Source Music Group",
   description: "Plain-language ground rules for submitting music to Source Music Group.",
   alternates: { canonical: "/submission-terms" },
 };
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     h: "What submitting means",
-    p: "Sending us music — through the form or by email — is an invitation for us to listen, nothing more. It doesn't create a contract, a partnership, or any business relationship between us.",
+    p: "Sending us music (through the form or by email) is an invitation for us to listen, nothing more. It doesn't create a contract, a partnership, or any business relationship between us.",
   },
   {
     h: "No obligation to respond",
@@ -57,7 +57,7 @@ export default function SubmissionTermsPage() {
             <SectionTitle as="h1">Submission Terms</SectionTitle>
             <p className="mt-3 font-mono text-sm text-subtle">Effective July 18, 2026</p>
             <Lead className="mt-6">
-              Plain-language ground rules for sending us your music. No legalese — just what
+              Plain-language ground rules for sending us your music. No legalese, just what
               submitting does and doesn&apos;t mean.
             </Lead>
             <div className="mt-10 space-y-8">

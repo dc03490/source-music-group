@@ -7,14 +7,14 @@ import { ScanSearch, AlertTriangle, HandCoins } from "lucide-react";
 const STEPS = [
   {
     title: "Scan your catalog",
-    text: "Connect your releases and let the AI read every registration, split, and statement — in minutes, from your phone.",
+    text: "Connect your releases and let the AI read every registration, split, and statement, in minutes, from your phone.",
     icon: ScanSearch,
     screen: <ScreenReview />,
     tab: "audit",
   },
   {
     title: "Spot potential gaps",
-    text: "Metadata issues, unregistered works, unclaimed mechanicals — flagged and ranked by how much they're worth to you.",
+    text: "Metadata issues, unregistered works, unclaimed mechanicals: flagged and ranked by how much they're worth to you.",
     icon: AlertTriangle,
     screen: <ScreenActivity />,
     tab: "home",

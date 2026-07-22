@@ -7,37 +7,37 @@ import { cn, SITES } from "@source/ui";
 const AUDIENCES = [
   {
     role: "Artist",
-    line: `Start with ${SITES.label.name} — release and career support.`,
+    line: `Start with ${SITES.label.name}: release and career support.`,
     href: SITES.label.url,
     dot: "bg-gold",
   },
   {
     role: "Songwriter",
-    line: `Start with ${SITES.publishing.name} — registration and administration for your songs.`,
+    line: `Start with ${SITES.publishing.name}: registration and administration for your songs.`,
     href: SITES.publishing.url,
     dot: "bg-teal",
   },
   {
     role: "Producer",
-    line: `Start with ${SITES.publishing.name} — your composition interests, organized.`,
+    line: `Start with ${SITES.publishing.name}: your composition interests, organized.`,
     href: SITES.publishing.url,
     dot: "bg-teal",
   },
   {
     role: "Manager",
-    line: `Start with ${SITES.royalty.name} — royalty visibility across your roster.`,
+    line: `Start with ${SITES.royalty.name}: royalty visibility across your roster.`,
     href: SITES.royalty.url,
     dot: "bg-blue",
   },
   {
     role: "Label",
-    line: `Start with ${SITES.royalty.name} — catalog-wide royalty data in one place.`,
+    line: `Start with ${SITES.royalty.name}: catalog-wide royalty data in one place.`,
     href: SITES.royalty.url,
     dot: "bg-blue",
   },
   {
     role: "Catalog owner",
-    line: `Start with ${SITES.royalty.name} — understand what your catalog earns.`,
+    line: `Start with ${SITES.royalty.name}: understand what your catalog earns.`,
     href: SITES.royalty.url,
     dot: "bg-blue",
   },

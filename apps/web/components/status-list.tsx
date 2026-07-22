@@ -7,9 +7,9 @@ import { Card, cn } from "@source/ui";
    publishing accepting administration inquiries; royalty in development with
    early access open). */
 const STATUS = [
-  { label: "Source Music Group — operating · artist roster: Duka", dot: "bg-gold" },
-  { label: "Source Publishing — accepting administration inquiries", dot: "bg-teal" },
-  { label: "Source Royalty — in development · early access open", dot: "bg-blue" },
+  { label: "Source Music Group: operating · artist roster: Duka", dot: "bg-gold" },
+  { label: "Source Publishing: accepting administration inquiries", dot: "bg-teal" },
+  { label: "Source Royalty: in development · early access open", dot: "bg-blue" },
 ] as const;
 
 /** Plain-facts ecosystem status list, styled like a terminal readout. */

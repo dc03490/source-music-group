@@ -38,7 +38,7 @@ export function FanSignupForm() {
           Follow Duka on Spotify
         </ButtonLink>
         <p className="mt-4 text-sm text-subtle">
-          Email alerts are coming soon — following on Spotify is the fastest way to catch the next
+          Email alerts are coming soon. Following on Spotify is the fastest way to catch the next
           release.
         </p>
       </div>
@@ -74,7 +74,7 @@ export function FanSignupForm() {
 
   return (
     <form onSubmit={handleSubmit} className="relative text-left">
-      <input type="hidden" name="_subject" value="Source Music Group — fan list signup" />
+      <input type="hidden" name="_subject" value="Source Music Group - fan list signup" />
       {/* Honeypot — hidden from real users and assistive tech. */}
       <div aria-hidden="true" className="absolute h-px w-px overflow-hidden [clip-path:inset(50%)]">
         <label htmlFor="fl-gotcha">Leave this field empty</label>
@@ -109,7 +109,7 @@ export function FanSignupForm() {
 
       {status === "error" ? (
         <p role="alert" className="mt-4 text-center text-sm text-magenta-text">
-          Something went wrong on our end. Try again in a minute — or{" "}
+          Something went wrong on our end. Try again in a minute, or{" "}
           <a
             href={SPOTIFY_ARTIST}
             target="_blank"

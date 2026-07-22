@@ -8,15 +8,15 @@ import { SITES } from "@source/ui";
 import "./globals.css";
 import { SiteAnalytics } from "./site-analytics";
 
-const title = "Source Publishing — Music Publishing Administration for Independent Songwriters";
+const title = "Source Publishing | Music Publishing Administration for Independent Songwriters";
 const description =
-  "Publishing administration for songwriters, producers, and composers — song registration across major societies and platforms, split and metadata management, royalty collection, and sync preparation.";
+  "Publishing administration for songwriters, producers, and composers: song registration across major societies and platforms, split and metadata management, royalty collection, and sync preparation.";
 
 const ogImage = {
   url: "/og.png",
   width: 1200,
   height: 630,
-  alt: "Source Publishing — music publishing administration for independent songwriters",
+  alt: "Source Publishing, music publishing administration for independent songwriters",
 };
 
 export const metadata: Metadata = {

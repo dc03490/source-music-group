@@ -83,8 +83,8 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.16}>
               <Lead className="mx-auto mt-6 max-w-2xl">
-                Source is the parent of three connected companies — a record label, a publishing
-                administrator, and a royalty-intelligence platform — built for artists, songwriters,
+                Source is the parent of three connected companies (a record label, a publishing
+                administrator, and a royalty-intelligence platform) built for artists, songwriters,
                 producers, managers, and rights holders.
               </Lead>
             </Reveal>
@@ -195,7 +195,7 @@ export default function Home() {
                 Your rights are an asset. Treat them like one.
               </SectionTitle>
               <Lead className="mt-4">
-                Most creators never see the full value of their work — royalties go uncollected,
+                Most creators never see the full value of their work: royalties go uncollected,
                 metadata drifts, and ownership gets murky. Source turns rights management into
                 infrastructure.
               </Lead>
@@ -205,7 +205,7 @@ export default function Home() {
               <StaggerItem>
                 <FeatureCard title="Data-driven" icon={BarChart3}>
                   Every recommendation is grounded in your actual catalog, statements, and
-                  registrations — not guesswork.
+                  registrations, not guesswork.
                 </FeatureCard>
               </StaggerItem>
               <StaggerItem>
@@ -216,7 +216,7 @@ export default function Home() {
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="Creator-owned" icon={ShieldCheck}>
-                  You keep ownership and control. Transparent terms across every Source company —
+                  You keep ownership and control. Transparent terms across every Source company,
                   no fine-print surprises.
                 </FeatureCard>
               </StaggerItem>
@@ -231,7 +231,7 @@ export default function Home() {
               <Eyebrow>The Ecosystem</Eyebrow>
               <SectionTitle className="mt-3">How the companies work together</SectionTitle>
               <Lead className="mt-4">
-                Each Source company stands on its own — together they cover the full life of a song,
+                Each Source company stands on its own. Together they cover the full life of a song,
                 from release to royalty.
               </Lead>
             </Reveal>
@@ -317,7 +317,7 @@ export default function Home() {
                     className="mx-auto aspect-[3/4] w-full max-w-[220px] rounded-[var(--radius-card)] object-cover"
                   />
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                    Duka — first artist on the Source Music Group roster
+                    Duka, first artist on the Source Music Group roster
                   </p>
                   <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-gold-2">
                     Meet Duka
@@ -339,7 +339,7 @@ export default function Home() {
             <Reveal>
               <SectionTitle>Partner with Source</SectionTitle>
               <Lead className="mx-auto mt-4 max-w-lg">
-                Distribution, sync, catalog, or technology — if you work with music rights, we want
+                Distribution, sync, catalog, or technology: if you work with music rights, we want
                 to talk.
               </Lead>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -366,7 +366,7 @@ export default function Home() {
             <Reveal>
               <SectionTitle>Find your starting point.</SectionTitle>
               <Lead className="mx-auto mt-4 max-w-lg">
-                Three companies, one connected system — pick the one that fits where you are today.
+                Three companies, one connected system. Pick the one that fits where you are today.
               </Lead>
               <div data-evt="ecosystem_company_selected" data-evt-source="index_strip">
                 <CompanyIndexStrip className="mx-auto mt-8 max-w-3xl" />

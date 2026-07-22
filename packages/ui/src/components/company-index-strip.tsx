@@ -6,7 +6,7 @@ import { SITES } from "../content/ecosystem";
 const COMPANIES = [
   {
     site: SITES.royalty,
-    descriptor: "Royalty intelligence — early access open",
+    descriptor: "Royalty intelligence, early access open",
     dot: "bg-blue",
   },
   {

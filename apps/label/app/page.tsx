@@ -114,7 +114,7 @@ export default function Home() {
                 <SectionTitle className="mt-3">Not a factory. A partnership.</SectionTitle>
                 <Lead className="mt-4">
                   We stay small on purpose. Fewer artists, deeper focus, and a model where your wins
-                  are our wins. No faceless machine — just a team invested in building something
+                  are our wins. No faceless machine, just a team invested in building something
                   that lasts with you.
                 </Lead>
               </Reveal>
@@ -154,7 +154,7 @@ export default function Home() {
                     Source Music Group · Artist
                   </p>
                   <p className="mt-4 leading-relaxed text-muted-foreground">
-                    Duka is the first artist on the Source Music Group roster — an independent voice
+                    Duka is the first artist on the Source Music Group roster, an independent voice
                     working the lane between Hip Hop and R&amp;B. Stream the latest below, and follow
                     along as the catalog grows.
                   </p>
@@ -219,7 +219,7 @@ export default function Home() {
                 via <Image> when available. */}
             <div className="mx-auto mt-8 max-w-xl">
               <iframe
-                title={`${LATEST.track.title} — Duka on Spotify`}
+                title={`${LATEST.track.title} by Duka on Spotify`}
                 style={{ borderRadius: 12, border: 0 }}
                 src={`${LATEST.track.url.replace(
                   "open.spotify.com/track/",
@@ -267,7 +267,7 @@ export default function Home() {
               <Eyebrow>Fan List</Eyebrow>
               <SectionTitle className="mt-3">Get the next release first.</SectionTitle>
               <Lead className="mx-auto mt-4 max-w-lg">
-                One email when new Duka music drops — a link to press play, and that&apos;s it.
+                One email when new Duka music drops: a link to press play, and that&apos;s it.
               </Lead>
             </Reveal>
             {/* Form stays outside Reveal/Stagger — arming remounts children. */}
@@ -285,7 +285,7 @@ export default function Home() {
               <SectionTitle className="mt-3">Submit your music</SectionTitle>
               <Lead className="mx-auto mt-4 max-w-lg">
                 Send us your music and a few lines about your goals. We&apos;re a small team and we
-                sign selectively — submissions are reviewed in batches, and if it&apos;s a fit,
+                sign selectively, submissions are reviewed in batches, and if it&apos;s a fit,
                 we&apos;ll reach out.
               </Lead>
             </Reveal>
@@ -302,7 +302,7 @@ export default function Home() {
             <p className="mt-3 text-sm text-muted-foreground">
               Not submitting music? Reach the right desk:{" "}
               <a
-                href="mailto:hello@sourcemusicgrp.com?subject=Booking%20inquiry%20—%20Source%20Music%20Group"
+                href="mailto:hello@sourcemusicgrp.com?subject=Booking%20inquiry%20-%20Source%20Music%20Group"
                 className="text-gold-2 hover:underline"
                 data-evt="primary_cta_clicked"
                 data-evt-cta="booking_email"
@@ -312,7 +312,7 @@ export default function Home() {
               </a>{" "}
               ·{" "}
               <a
-                href="mailto:hello@sourcemusicgrp.com?subject=Press%20inquiry%20—%20Source%20Music%20Group"
+                href="mailto:hello@sourcemusicgrp.com?subject=Press%20inquiry%20-%20Source%20Music%20Group"
                 className="text-gold-2 hover:underline"
                 data-evt="primary_cta_clicked"
                 data-evt-cta="press_email"
@@ -322,7 +322,7 @@ export default function Home() {
               </a>{" "}
               ·{" "}
               <a
-                href="mailto:hello@sourcemusicgrp.com?subject=Partnership%20inquiry%20—%20Source%20Music%20Group"
+                href="mailto:hello@sourcemusicgrp.com?subject=Partnership%20inquiry%20-%20Source%20Music%20Group"
                 className="text-gold-2 hover:underline"
                 data-evt="primary_cta_clicked"
                 data-evt-cta="partnership_email"
@@ -340,7 +340,7 @@ export default function Home() {
             <div data-evt="ecosystem_company_selected" data-evt-company="royalty" data-evt-source="cross_promo">
               <CrossPromo
                 title="Know where your money comes from."
-                body="Source Royalty is building a clear view of every royalty stream for artists and managers — early access is open now."
+                body="Source Royalty is building a clear view of every royalty stream for artists and managers. Early access is open now."
                 cta="Explore Source Royalty"
                 href={SITES.royalty.url}
               />

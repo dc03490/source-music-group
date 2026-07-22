@@ -14,7 +14,7 @@ import {
 import { StatusList } from "../../components/status-list";
 
 export const metadata: Metadata = {
-  title: "About — Source",
+  title: "About | Source",
   description:
     "Source is an early-stage music rights & music technology company: a record label, a publishing administrator, and a royalty-intelligence platform, built as one system.",
   alternates: { canonical: "/about" },
@@ -26,15 +26,15 @@ export const metadata: Metadata = {
 const beliefs = [
   {
     h: "A song outlives its release cycle.",
-    p: "Most of the industry is organized around the moment a song comes out. The rights, registrations, and royalties live on for decades — and that long tail is where creators lose the most value. Source is built around the whole life of the song.",
+    p: "Most of the industry is organized around the moment a song comes out. The rights, registrations, and royalties live on for decades, and that long tail is where creators lose the most value. Source is built around the whole life of the song.",
   },
   {
     h: "Three problems, three companies, one system.",
-    p: "Releasing music, administering compositions, and understanding royalty data are different disciplines, so each gets its own company — Source Music Group, Source Publishing, and Source Royalty. They share one design system, one data philosophy, and one owner, so nothing falls between them.",
+    p: "Releasing music, administering compositions, and understanding royalty data are different disciplines, so each gets its own company: Source Music Group, Source Publishing, and Source Royalty. They share one design system, one data philosophy, and one owner, so nothing falls between them.",
   },
   {
     h: "Trust is earned with plain language.",
-    p: "We don't promise recovered money before data has been analyzed, and we don't dress up placeholders as traction. What we publish is what is true today — and the sites grow as the companies do.",
+    p: "We don't promise recovered money before data has been analyzed, and we don't dress up placeholders as traction. What we publish is what is true today, and the sites grow as the companies do.",
   },
 ];
 
@@ -55,8 +55,8 @@ export default function AboutPage() {
             </SectionTitle>
             <Lead className="mt-6">
               Source is an early-stage, founder-led music rights and music technology company. We
-              are building three connected companies — a record label, a publishing administrator,
-              and a royalty-intelligence platform — so that the people who make music can own,
+              are building three connected companies (a record label, a publishing administrator,
+              and a royalty-intelligence platform) so that the people who make music can own,
               understand, and collect on their work at every stage.
             </Lead>
           </Container>
@@ -80,7 +80,7 @@ export default function AboutPage() {
           <Container className="max-w-2xl">
             <h2 className="text-xl font-semibold tracking-tight">Where things stand</h2>
             <p className="mt-3 leading-relaxed text-muted-foreground">
-              We are building in the open. This is the honest, current state of the ecosystem —
+              We are building in the open. This is the honest, current state of the ecosystem,
               updated as it changes:
             </p>
             <StatusList className="mt-6" />

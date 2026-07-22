@@ -8,15 +8,15 @@ import { SITES } from "@source/ui";
 import "./globals.css";
 import { SiteAnalytics } from "./site-analytics";
 
-const title = "Source — One company for the life of a song.";
+const title = "Source: One company for the life of a song.";
 const description =
-  "A music rights & music technology company — record label, publishing administration, and royalty intelligence for artists, songwriters, producers, managers, and rights holders.";
+  "A music rights & music technology company: record label, publishing administration, and royalty intelligence for artists, songwriters, producers, managers, and rights holders.";
 
 const ogImage = {
   url: "/og.png",
   width: 1200,
   height: 630,
-  alt: "Source — a music rights & music technology company",
+  alt: "Source, a music rights & music technology company",
 };
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ const orgJsonLd = {
   name: "Source",
   url: SITES.source.url,
   description:
-    "A music rights & music technology company — record label, publishing administration, and royalty intelligence for artists, songwriters, producers, managers, and rights holders.",
+    "A music rights & music technology company: record label, publishing administration, and royalty intelligence for artists, songwriters, producers, managers, and rights holders.",
   subOrganization: [
     { "@type": "Organization", name: "Source Royalty", url: SITES.royalty.url },
     { "@type": "Organization", name: "Source Publishing", url: SITES.publishing.url },

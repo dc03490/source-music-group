@@ -52,7 +52,7 @@ const steps = [
   },
   {
     step: "Royalties flow through",
-    text: "As societies and platforms pay out, we account and pass your share through with transparent statements. Administration is commission-based — the exact terms are in your agreement before you sign.",
+    text: "As societies and platforms pay out, we account and pass your share through with transparent statements. Administration is commission-based: the exact terms are in your agreement before you sign.",
   },
 ];
 
@@ -60,7 +60,7 @@ const audiences = [
   {
     title: "Songwriters",
     icon: PenLine,
-    text: "Writing for yourself or for other artists — we register your share, keep your splits documented, and collect the writer royalties your songs generate.",
+    text: "Writing for yourself or for other artists, we register your share, keep your splits documented, and collect the writer royalties your songs generate.",
   },
   {
     title: "Producers",
@@ -75,12 +75,12 @@ const audiences = [
   {
     title: "Artists who write",
     icon: MicVocal,
-    text: "Record your own songs and you're on both sides — master and publishing. We administer the composition side while your label or distributor handles the recording.",
+    text: "Record your own songs and you're on both sides: master and publishing. We administer the composition side while your label or distributor handles the recording.",
   },
   {
     title: "Catalog owners & estates",
     icon: Library,
-    text: "Inherited or acquired a catalog? We help organize what's there — registrations, splits, paperwork — and administer it going forward.",
+    text: "Inherited or acquired a catalog? We help organize what's there (registrations, splits, paperwork) and administer it going forward.",
   },
   {
     title: "Managers",
@@ -93,22 +93,22 @@ const royaltyCategories = [
   {
     title: "Performance",
     icon: Radio,
-    text: "Earned when your song is performed publicly — radio, venues, live shows, and the performance share of streams. Collected by PROs like ASCAP, BMI, and SESAC.",
+    text: "Earned when your song is performed publicly: radio, venues, live shows, and the performance share of streams. Collected by PROs like ASCAP, BMI, and SESAC.",
   },
   {
     title: "Mechanical",
     icon: RefreshCw,
-    text: "Earned when your song is reproduced — the mechanical share of streams, downloads, and physical. In the US, largely collected by The MLC.",
+    text: "Earned when your song is reproduced: the mechanical share of streams, downloads, and physical. In the US, largely collected by The MLC.",
   },
   {
     title: "Sync",
     icon: Film,
-    text: "Earned when your song is licensed into film, TV, ads, or games. Negotiated per placement — the reason we keep your catalog sync-ready.",
+    text: "Earned when your song is licensed into film, TV, ads, or games. Negotiated per placement, the reason we keep your catalog sync-ready.",
   },
   {
     title: "Print",
     icon: BookOpen,
-    text: "Earned from sheet music and licensed lyric reprints. Smaller for most catalogs — but it's still your money when it happens.",
+    text: "Earned from sheet music and licensed lyric reprints. Smaller for most catalogs, but it's still your money when it happens.",
   },
 ];
 
@@ -117,7 +117,7 @@ const royaltyCategories = [
 const faqItems = [
   {
     q: "Are you a publisher or an administrator?",
-    a: "We act as your administrator. You keep ownership of your songs — we register your works, manage splits and metadata, and collect publishing royalties on your behalf. We don't take your copyrights.",
+    a: "We act as your administrator. You keep ownership of your songs: we register your works, manage splits and metadata, and collect publishing royalties on your behalf. We don't take your copyrights.",
   },
   {
     q: "What does it cost?",
@@ -125,7 +125,7 @@ const faqItems = [
   },
   {
     q: "Is the agreement exclusive? How long does it run?",
-    a: "Term, territory, exclusivity, and post-term collection are all set out in the agreement you review before signing. We'd rather you read the terms than take our word for it — and we'll walk through anything that's unclear.",
+    a: "Term, territory, exclusivity, and post-term collection are all set out in the agreement you review before signing. We'd rather you read the terms than take our word for it, and we'll walk through anything that's unclear.",
   },
   {
     q: "Do I need to join a PRO first?",
@@ -137,7 +137,7 @@ const faqItems = [
   },
   {
     q: "What's the difference between master and publishing royalties?",
-    a: "The master is the recording; the composition is the song itself — the lyrics and melody. Master royalties pay whoever owns the recording. Publishing royalties pay the songwriters through performance, mechanical, sync, and print income. Source Publishing works on the publishing side.",
+    a: "The master is the recording; the composition is the song itself: the lyrics and melody. Master royalties pay whoever owns the recording. Publishing royalties pay the songwriters through performance, mechanical, sync, and print income. Source Publishing works on the publishing side.",
   },
 ];
 
@@ -146,11 +146,11 @@ const faqItems = [
 const termsItems = [
   {
     title: "Administrator, not owner",
-    text: "We act as your administrator — you keep ownership of your songs. We register, collect, and account; the copyrights stay yours.",
+    text: "We act as your administrator: you keep ownership of your songs. We register, collect, and account; the copyrights stay yours.",
   },
   {
     title: "Commission-based",
-    text: "We earn a percentage of the publishing royalties we collect on your behalf. The exact rate is published in your agreement — not discovered after.",
+    text: "We earn a percentage of the publishing royalties we collect on your behalf. The exact rate is published in your agreement, not discovered after.",
   },
   {
     title: "Terms before you sign",
@@ -158,14 +158,14 @@ const termsItems = [
   },
   {
     title: "Ask us anything",
-    text: "Source Publishing is early-stage, and we'd rather earn trust than assume it. If something matters to you — collection periods, post-term collection, how you'd leave — ask, and we'll answer in plain language.",
+    text: "Source Publishing is early-stage, and we'd rather earn trust than assume it. If something matters to you, like collection periods, post-term collection, or how you'd leave, ask, and we'll answer in plain language.",
   },
 ];
 
 const afterSteps = [
   {
     title: "A real reply",
-    text: "A person — not an autoresponder — reads your note and replies from publishing@sourcemusicgrp.com, typically within a few business days.",
+    text: "A person, not an autoresponder, reads your note and replies from publishing@sourcemusicgrp.com, typically within a few business days.",
   },
   {
     title: "A catalog conversation",
@@ -173,14 +173,14 @@ const afterSteps = [
   },
   {
     title: "Your decision, on paper",
-    text: "If it's a fit, you get the full agreement — commission, term, territory, termination — to read before you sign. If it's not, you'll still leave knowing more about your catalog than when you came.",
+    text: "If it's a fit, you get the full agreement (commission, term, territory, termination) to read before you sign. If it's not, you'll still leave knowing more about your catalog than when you came.",
   },
 ];
 
 const helpfulItems = [
   "Split sheets or writer-share agreements",
-  "Society memberships — your PRO and, in the US, The MLC",
-  "A list of released songs — titles, writers, release dates",
+  "Society memberships: your PRO and, in the US, The MLC",
+  "A list of released songs: titles, writers, release dates",
 ];
 
 export default function Home() {
@@ -227,8 +227,8 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.16}>
               <Lead className="mx-auto mt-6 max-w-xl">
-                Source Publishing handles the business side of your songwriting — registrations,
-                splits, society paperwork, and collection — so the royalties your compositions earn
+                Source Publishing handles the business side of your songwriting: registrations,
+                splits, society paperwork, and collection, so the royalties your compositions earn
                 have a clear path back to you.
               </Lead>
             </Reveal>
@@ -259,7 +259,7 @@ export default function Home() {
               <SectionTitle className="mt-3">The business side of your songs, handled.</SectionTitle>
               <Lead className="mt-4">
                 Every song has two halves: the recording and the composition. We work on the
-                composition side — registering your songs across major societies and platforms,
+                composition side, registering your songs across major societies and platforms,
                 keeping splits and metadata clean, and collecting the publishing royalties they
                 generate.
               </Lead>
@@ -269,25 +269,25 @@ export default function Home() {
               <StaggerItem>
                 <FeatureCard title="Royalty Collection" icon={CircleDollarSign} accent="teal">
                   We register your works with the societies and platforms that pay composition
-                  royalties — performance, mechanical, and streaming — and collect what comes in on
+                  royalties (performance, mechanical, and streaming) and collect what comes in on
                   your behalf, with statements that show where each payment came from.
                 </FeatureCard>
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="Publishing Administration" icon={FileStack} accent="teal">
-                  Splits, metadata, and society paperwork, handled carefully and documented clearly —
+                  Splits, metadata, and society paperwork, handled carefully and documented clearly,
                   so you always know what you earned, and why.
                 </FeatureCard>
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="Sync Preparation" icon={Clapperboard} accent="teal">
-                  We get your catalog sync-ready — metadata, splits, and licensing paperwork prepared
+                  We get your catalog sync-ready: metadata, splits, and licensing paperwork prepared
                   in advance, so when an opportunity comes you can clear it quickly.
                 </FeatureCard>
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="Song Registration" icon={BookMarked} accent="teal">
-                  New release or an unregistered back catalog — we submit your songs to the right
+                  New release or an unregistered back catalog, we submit your songs to the right
                   societies with clean splits and metadata, so identifiers like ISWCs can be assigned
                   and your works are findable.
                 </FeatureCard>
@@ -303,7 +303,7 @@ export default function Home() {
               <Eyebrow>Who We Serve</Eyebrow>
               <SectionTitle className="mt-3">Built for the people who write the songs.</SectionTitle>
               <Lead className="mt-4">
-                If you hold a share of a composition, publishing royalties are part of your income —
+                If you hold a share of a composition, publishing royalties are part of your income,
                 whether writing is your whole job or one of several hats.
               </Lead>
             </Reveal>
@@ -328,7 +328,7 @@ export default function Home() {
               <SectionTitle className="mt-3">One song, two copyrights.</SectionTitle>
               <Lead className="mt-4">
                 Every released song carries two separate rights, and they earn separately. Knowing
-                which is which tells you where your money should come from — and which half we
+                which is which tells you where your money should come from, and which half we
                 handle.
               </Lead>
             </Reveal>
@@ -368,7 +368,7 @@ export default function Home() {
               <SectionTitle className="mt-3">Where publishing money comes from.</SectionTitle>
               <Lead className="mt-4">
                 Four royalty streams attach to every composition. Different uses, different
-                collectors — one reason publishing income is easy to lose track of.
+                collectors: one reason publishing income is easy to lose track of.
               </Lead>
             </Reveal>
 
@@ -395,7 +395,7 @@ export default function Home() {
               <Eyebrow>How We Work</Eyebrow>
               <SectionTitle className="mt-3">Straight terms, in writing.</SectionTitle>
               <Lead className="mt-4">
-                Publishing deals have a reputation. Ours is simple to explain — and everything below
+                Publishing deals have a reputation. Ours is simple to explain, and everything below
                 is spelled out in the agreement you read before you sign.
               </Lead>
             </Reveal>
@@ -485,7 +485,7 @@ export default function Home() {
               <SectionTitle className="mt-3">Request a publishing consultation</SectionTitle>
               <Lead className="mx-auto mt-4 max-w-lg">
                 Tell us about your songs and where they&apos;re released. We&apos;ll review your
-                catalog together and walk you through what administration could look like — no
+                catalog together and walk you through what administration could look like: no
                 pressure, no obligation.
               </Lead>
             </Reveal>
@@ -517,7 +517,7 @@ export default function Home() {
                 </p>
                 <p className="mt-4">
                   <a
-                    href="mailto:publishing@sourcemusicgrp.com?subject=Sync%20inquiry%20—%20Source%20Publishing"
+                    href="mailto:publishing@sourcemusicgrp.com?subject=Sync%20inquiry%20-%20Source%20Publishing"
                     data-evt="primary_cta_clicked"
                     data-evt-cta="sync_email"
                     data-evt-location="sync"
@@ -540,7 +540,7 @@ export default function Home() {
           <div data-evt="ecosystem_company_selected" data-evt-company="royalty" data-evt-source="cross_promo">
             <CrossPromo
               title="Want to audit what your catalog earned?"
-              body="Source Royalty is the intelligence layer of the ecosystem — it audits statements and metadata to flag potential royalty gaps worth investigating."
+              body="Source Royalty is the intelligence layer of the ecosystem: it audits statements and metadata to flag potential royalty gaps worth investigating."
               cta="Explore Source Royalty"
               href={SITES.royalty.url}
             />

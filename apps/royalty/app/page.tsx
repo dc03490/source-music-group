@@ -50,7 +50,7 @@ import { LOCAL_LINKS } from "./local-links";
 const faqItems = [
   {
     q: "What exactly is a catalog audit?",
-    a: "We read your releases, registrations, splits, and statements, then flag metadata issues, missing registrations, and potentially unmatched royalties — ranked by estimated value so you know what's worth investigating first.",
+    a: "We read your releases, registrations, splits, and statements, then flag metadata issues, missing registrations, and potentially unmatched royalties, ranked by estimated value so you know what's worth investigating first.",
   },
   {
     q: "Is my catalog data safe?",
@@ -58,7 +58,7 @@ const faqItems = [
   },
   {
     q: "Which platforms and societies do you cover?",
-    a: "Source Royalty is being built to analyze the statements and registration data you authorize or export — from PROs, the MLC, distributors, and DSP portals — with supported sources expanding through early access.",
+    a: "Source Royalty is being built to analyze the statements and registration data you authorize or export, from PROs, the MLC, distributors, and DSP portals, with supported sources expanding through early access.",
   },
   {
     q: "When does the platform launch?",
@@ -73,7 +73,7 @@ const faqItems = [
 const joinSteps = [
   {
     title: "You're on the list",
-    text: "We confirm your spot by email. No spam — just launch updates.",
+    text: "We confirm your spot by email. No spam, just launch updates.",
   },
   {
     title: "Audits open in waves",
@@ -81,7 +81,7 @@ const joinSteps = [
   },
   {
     title: "You connect your data",
-    text: "Link or upload the statements and registrations you want reviewed — you stay in control.",
+    text: "Link or upload the statements and registrations you want reviewed. You stay in control.",
   },
   {
     title: "You get your first audit",
@@ -124,7 +124,7 @@ export default function Home() {
                 <Reveal delay={0.16}>
                   <Lead className="mx-auto mt-6 max-w-xl lg:mx-0">
                     Source Royalty uses AI to identify metadata issues, missing registrations, and
-                    potential royalty opportunities across your music catalog — from your pocket, on
+                    potential royalty opportunities across your music catalog, from your pocket, on
                     the go, or on the big screen.
                   </Lead>
                 </Reveal>
@@ -172,7 +172,7 @@ export default function Home() {
               </SectionTitle>
               <Lead className="mt-4">
                 One URL, no downloads. Check your catalog&apos;s status from the studio, the tour
-                van, or the couch — one dashboard, planned for every screen.
+                van, or the couch, one dashboard, planned for every screen.
               </Lead>
             </Reveal>
 
@@ -200,7 +200,7 @@ export default function Home() {
             <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               <StaggerItem>
                 <FeatureCard title="Artists" icon={Mic2} accent="blue">
-                  Independent or signed — see how your releases are registered and where your
+                  Independent or signed, see how your releases are registered and where your
                   recording royalties flow.
                 </FeatureCard>
               </StaggerItem>
@@ -242,7 +242,7 @@ export default function Home() {
               <Eyebrow>How It Works</Eyebrow>
               <SectionTitle className="mt-3">Three taps from scan to action.</SectionTitle>
               <Lead className="mt-4">
-                Tap a step to see the screen — a preview of the planned flow, sized for one thumb.
+                Tap a step to see the screen: a preview of the planned flow, sized for one thumb.
               </Lead>
             </Reveal>
             <Reveal delay={0.12}>
@@ -264,7 +264,7 @@ export default function Home() {
             <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               <StaggerItem>
                 <FeatureCard title="Catalog Health Score" icon={Gauge} accent="blue">
-                  One number that tells you how collectable your catalog is — and exactly what&apos;s
+                  One number that tells you how collectable your catalog is, and exactly what&apos;s
                   dragging it down.
                 </FeatureCard>
               </StaggerItem>
@@ -282,7 +282,7 @@ export default function Home() {
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="Registration Tracking" icon={ListChecks} accent="blue">
-                  Every work, every society, every territory — tracked so nothing falls out of the
+                  Every work, every society, every territory: tracked so nothing falls out of the
                   system unnoticed.
                 </FeatureCard>
               </StaggerItem>
@@ -294,7 +294,7 @@ export default function Home() {
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="AI Insights" icon={Activity} accent="blue">
-                  Proactive alerts when something changes — a spike, a gap, a new unclaimed match
+                  Proactive alerts when something changes: a spike, a gap, a new unclaimed match
                   worth chasing.
                 </FeatureCard>
               </StaggerItem>
@@ -335,7 +335,7 @@ export default function Home() {
               </StaggerItem>
               <StaggerItem>
                 <FeatureCard title="Fragmented sources" icon={Network} accent="teal">
-                  Royalties arrive from dozens of sources on different schedules — gaps are hard to
+                  Royalties arrive from dozens of sources on different schedules. Gaps are hard to
                   see without one view.
                 </FeatureCard>
               </StaggerItem>
@@ -415,7 +415,7 @@ export default function Home() {
                 <Card className="h-full">
                   <h3 className="text-base font-semibold tracking-tight">Free first audit</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Your first full catalog audit is free when audits open — a health score and a
+                    Your first full catalog audit is free when audits open: a health score and a
                     ranked issue list.
                   </p>
                 </Card>
@@ -432,7 +432,7 @@ export default function Home() {
                 <Card className="h-full">
                   <h3 className="text-base font-semibold tracking-tight">A say in the roadmap</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Tell us what your catalog needs — early feedback shapes what we build first.
+                    Tell us what your catalog needs. Early feedback shapes what we build first.
                   </p>
                 </Card>
               </StaggerItem>
@@ -451,7 +451,7 @@ export default function Home() {
                 <Eyebrow>Planned Pricing</Eyebrow>
                 <SectionTitle className="mt-3">Start free. Upgrade when it pays for itself.</SectionTitle>
                 <Lead className="mt-4">
-                  Planned launch pricing — plans and prices may change before release.
+                  Planned launch pricing. Plans and prices may change before release.
                 </Lead>
               </Reveal>
             </div>
@@ -495,7 +495,7 @@ export default function Home() {
                   blurb="Every artist on your roster, one dashboard."
                   features={["Up to 25 artists", "Roster-wide health scores", "Priority claim support", "Exports & reporting"]}
                   cta="Talk to us"
-                  href="mailto:royalty@sourcemusicgrp.com?subject=Source%20Royalty%20—%20Label%20plan"
+                  href="mailto:royalty@sourcemusicgrp.com?subject=Source%20Royalty%20-%20Label%20plan"
                 />
               </StaggerItem>
             </Stagger>

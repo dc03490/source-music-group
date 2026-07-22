@@ -12,7 +12,7 @@ import { Button, ButtonLink } from "@source/ui";
    arming remounts children, which would wipe form state mid-typing. */
 const FORM_ID = process.env.NEXT_PUBLIC_FORMSPREE_ROYALTY;
 
-const MAILTO = "mailto:royalty@sourcemusicgrp.com?subject=Early%20access%20—%20Source%20Royalty";
+const MAILTO = "mailto:royalty@sourcemusicgrp.com?subject=Early%20access%20-%20Source%20Royalty";
 
 const ROLES = [
   "Artist",
@@ -30,7 +30,7 @@ const inputClasses =
 
 const labelClasses = "mb-2 block text-sm font-medium text-foreground";
 
-const smallPrint = "No spam — just launch updates, and you can unsubscribe anytime.";
+const smallPrint = "No spam, just launch updates, and you can unsubscribe anytime.";
 
 export function EarlyAccessForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -134,7 +134,7 @@ export function EarlyAccessForm() {
       </div>
 
       <Button type="submit" size="lg" className="mt-7 w-full" disabled={status === "submitting"}>
-        {status === "submitting" ? "Joining…" : "Join early access — free audit at launch"}
+        {status === "submitting" ? "Joining…" : "Join early access (free audit at launch)"}
       </Button>
 
       {status === "error" ? (

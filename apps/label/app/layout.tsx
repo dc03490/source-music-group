@@ -8,15 +8,15 @@ import { SITES } from "@source/ui";
 import "./globals.css";
 import { SiteAnalytics } from "./site-analytics";
 
-const title = "Source Music Group — Independent Record Label Where Artists Become Partners";
+const title = "Source Music Group | Independent Record Label Where Artists Become Partners";
 const description =
-  "Source Music Group is an independent Hip Hop and R&B label focused on artist development and real partnership — sharp marketing guidance, genuinely unique music, and transparent, artist-first terms. Home of Duka.";
+  "Source Music Group is an independent Hip Hop and R&B label focused on artist development and real partnership: sharp marketing guidance, genuinely unique music, and transparent, artist-first terms. Home of Duka.";
 
 const ogImage = {
   url: "/assets/og-image.png",
   width: 1200,
   height: 630,
-  alt: "Source Music Group — independent record label",
+  alt: "Source Music Group, an independent record label",
 };
 
 export const metadata: Metadata = {

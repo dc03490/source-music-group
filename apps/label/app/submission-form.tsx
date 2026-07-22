@@ -27,7 +27,7 @@ const labelClasses = "mb-2 block text-sm font-medium text-foreground";
 
 const smallPrint = (
   <>
-    Submitting won&apos;t create any obligation on either side — see our{" "}
+    Submitting won&apos;t create any obligation on either side. See our{" "}
     <a href="/submission-terms" className="underline underline-offset-4 hover:text-foreground">
       Submission Terms
     </a>
@@ -63,7 +63,7 @@ export function SubmissionForm() {
         role="status"
         className="rounded-[var(--radius-card)] border border-teal/40 bg-card p-6 text-center text-[15px] leading-relaxed text-foreground"
       >
-        Got it — your submission is in. We review in batches and can&apos;t reply to everything,
+        Got it. Your submission is in. We review in batches and can&apos;t reply to everything,
         but if it&apos;s a fit we&apos;ll reach out from hello@sourcemusicgrp.com.
       </p>
     );
@@ -87,7 +87,7 @@ export function SubmissionForm() {
 
   return (
     <form onSubmit={handleSubmit} onFocus={markStarted} className="relative text-left">
-      <input type="hidden" name="_subject" value="Source Music Group — music submission" />
+      <input type="hidden" name="_subject" value="Source Music Group - music submission" />
       {/* Honeypot — hidden from real users and assistive tech. */}
       <div aria-hidden="true" className="absolute h-px w-px overflow-hidden [clip-path:inset(50%)]">
         <label htmlFor="ms-gotcha">Leave this field empty</label>
@@ -152,7 +152,7 @@ export function SubmissionForm() {
             className={inputClasses}
           />
           <p id="ms-links-hint" className="mt-2 text-sm text-subtle">
-            Spotify, Apple Music, SoundCloud, or YouTube — whatever shows your best work.
+            Spotify, Apple Music, SoundCloud, or YouTube: whatever shows your best work.
           </p>
         </div>
         <div>
@@ -167,7 +167,7 @@ export function SubmissionForm() {
             className={textareaClasses}
           />
           <p id="ms-about-hint" className="mt-2 text-sm text-subtle">
-            A few lines is plenty — where you are now and where you&apos;re trying to go.
+            A few lines is plenty: where you are now and where you&apos;re trying to go.
           </p>
         </div>
       </div>
