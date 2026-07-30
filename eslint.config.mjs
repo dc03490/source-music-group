@@ -71,7 +71,24 @@ export default tseslint.config(
 
   /* Config files at the repo root run in Node and are not part of any app. */
   {
-    files: ["*.{js,mjs,cjs,ts}", "infra/**/*.ts", "sst.config.ts"],
+    files: ["*.{js,mjs,cjs,ts}"],
     languageOptions: { globals: globals.node },
+  },
+
+  /* SST infrastructure definitions.
+
+     `/// <reference path="./.sst/platform/config.d.ts" />` is not a style choice
+     here — it is how SST exposes its globals ($config, sst.aws.*, $interpolate)
+     to the type checker. There is no import form, so the triple-slash rule has
+     to be off for these files specifically.
+
+     These are also typechecked separately (tsconfig.infra.json), because the
+     referenced file only exists after `pnpm sst:install`. */
+  {
+    files: ["infra/**/*.ts", "sst.config.ts"],
+    languageOptions: { globals: globals.node },
+    rules: {
+      "@typescript-eslint/triple-slash-reference": "off",
+    },
   },
 );

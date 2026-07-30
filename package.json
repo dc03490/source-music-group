@@ -11,7 +11,9 @@
     "typecheck": "turbo run typecheck",
     "test": "vitest run",
     "test:watch": "vitest",
-    "docs:generate": "turbo run docs:generate"
+    "docs:generate": "turbo run docs:generate",
+    "typecheck:infra": "tsc -p tsconfig.infra.json",
+    "sst:install": "sst install"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -20,6 +22,7 @@
     "eslint": "^10.8.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.8.0",
+    "sst": "^4.17.1",
     "tsx": "^4.23.1",
     "turbo": "^2.3.3",
     "typescript": "^5.6.3",

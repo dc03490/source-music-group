@@ -1,0 +1,138 @@
+name: Deploy console
+
+# Deploys the Source Royalty console and its AWS infrastructure via SST.
+#
+# STATUS: NOT YET RUNNABLE. This encodes the intended pipeline, but it requires
+# AWS setup that has not been done — an IAM OIDC identity provider, two deploy
+# roles, and the GitHub variables below. Until then it will fail at the
+# credential step. See docs/runbooks/deploy.md for the one-time setup.
+#
+# Design notes worth keeping:
+#
+# 1. NO LONG-LIVED AWS KEYS. Authentication is OIDC federation: GitHub issues a
+#    short-lived token per run, exchanged for a role we control. A compromised
+#    repository therefore yields no durable AWS credentials. This is why
+#    `permissions: id-token: write` appears on every AWS-touching job.
+#
+# 2. MIGRATIONS ARE A SEPARATE, GATED JOB — never a side effect of deploying
+#    code. The schema holds financial data and is a Protected Area. Production
+#    additionally requires a human approval via a GitHub Environment rule.
+#
+# 3. Migration ordering: for an ADDITIVE change, migrate before deploying code
+#    that uses it. For a REMOVAL, deploy code that stops using the column first,
+#    then migrate in a later release. The job order below assumes additive,
+#    which is the common case; a removal needs a deliberate two-release dance.
+#    See docs/runbooks/migrations.md.
+
+on:
+  push:
+    branches: [ecosystem]
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: Stage to deploy
+        type: choice
+        options: [staging, production]
+        default: staging
+        required: true
+      run_migrations:
+        description: Apply pending database migrations
+        type: boolean
+        default: false
+
+# Never run two deploys to the same stage concurrently — SST/CloudFormation
+# stack updates are not safe to interleave. Deliberately NOT cancel-in-progress:
+# interrupting a stack update mid-flight is worse than queueing.
+concurrency:
+  group: deploy-${{ github.event.inputs.stage || 'staging' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+
+jobs:
+  # Re-run the gates rather than trusting that CI passed on this commit; a
+  # workflow_dispatch can target a ref whose CI never ran.
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm test
+
+  migrate:
+    name: Apply migrations
+    needs: verify
+    # Only when explicitly requested. A push never migrates implicitly.
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_migrations }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # The Environment is what enforces human approval for production.
+    environment: ${{ inputs.stage }}
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Assume AWS deploy role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # DATABASE_URL is built from an IAM auth token, not a stored password —
+      # there is no database password anywhere in this pipeline.
+      - name: Apply migrations
+        run: pnpm --filter @source/db db:migrate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+  deploy:
+    name: Deploy (SST)
+    needs: [verify, migrate]
+    # `always()` plus explicit result checks: the migrate job is skipped on a
+    # normal push, and a skipped dependency must not block the deploy — but a
+    # FAILED migration must.
+    if: ${{ always() && needs.verify.result == 'success' && needs.migrate.result != 'failure' && needs.migrate.result != 'cancelled' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: ${{ github.event.inputs.stage || 'staging' }}
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Assume AWS deploy role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy
+        run: pnpm dlx sst deploy --stage ${{ github.event.inputs.stage || 'staging' }}

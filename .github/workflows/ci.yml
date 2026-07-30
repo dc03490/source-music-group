@@ -1,0 +1,139 @@
+name: CI
+
+# Runs on every pull request and on pushes to the working branch.
+#
+# This workflow needs NO AWS access and no secrets — it is purely the quality
+# gates, so it works today and keeps working regardless of infrastructure state.
+# Deploys live in deploy.yml, which does need AWS.
+#
+# Note: the repo checks out to a path without spaces here, unlike the local
+# working directory ("Source  Music Group", with a double space). Scripts that
+# work in CI may still need quoting locally.
+
+on:
+  pull_request:
+  push:
+    branches: [ecosystem, main]
+
+# A newer push supersedes an in-flight run for the same ref.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Typecheck · lint · test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # corepack activates the pnpm version pinned in package.json
+      # ("packageManager": "pnpm@9.15.9"), so CI and local cannot drift.
+      - name: Enable corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      # Order is deliberate: typecheck first because it is the fastest way to
+      # find a broken change, and because a type error makes later failures
+      # noisy and harder to read.
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      # Includes the repo-wide prohibited-claims scan and the docs integrity
+      # checks (link resolution, Mermaid fences, ADR structure), so a compliance
+      # violation or a broken doc link fails here.
+      - name: Test
+        run: pnpm test
+
+      # Generated docs must match a fresh render. This is what stops the schema
+      # reference silently drifting from the schema.
+      - name: Check generated docs are current
+        run: |
+          pnpm docs:generate
+          if ! git diff --quiet --exit-code -- docs/; then
+            echo "::error::Generated docs are stale. Run 'pnpm docs:generate' and commit the result."
+            git diff --stat -- docs/
+            git diff -- docs/
+            exit 1
+          fi
+
+  # Separate job because it needs the SST platform (~474MB, downloaded by
+  # `sst install`), which would slow every other job for no benefit. Cached on
+  # the SST version so only a version bump pays the download cost.
+  #
+  # This exists so the infra definitions cannot rot silently: they typecheck
+  # against real SST/Pulumi types, which is the only validation available until
+  # an AWS account exists to deploy into.
+  infra:
+    name: Typecheck infrastructure
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Resolve SST version
+        id: sst
+        run: echo "version=$(node -p "require('./node_modules/sst/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Cache SST platform
+        uses: actions/cache@v4
+        with:
+          path: .sst
+          key: sst-platform-${{ runner.os }}-${{ steps.sst.outputs.version }}
+
+      - name: Install SST platform
+        run: pnpm sst:install
+
+      - name: Typecheck infra
+        run: pnpm typecheck:infra
+
+  build:
+    name: Build marketing apps
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      # The four marketing apps share packages/ui, so a change there can break
+      # any of them. Building all four is the only way to know.
+      - name: Build
+        run: pnpm build

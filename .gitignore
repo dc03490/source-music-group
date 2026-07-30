@@ -9,6 +9,11 @@ dist/
 build/
 .turbo/
 
+# SST: the platform and provider binaries are downloaded by `sst install`
+# (~474MB). Never committed. Run `pnpm sst install` after cloning to get the
+# component types that sst.config.ts and infra/ typecheck against.
+.sst/
+
 # env
 .env
 .env.*
