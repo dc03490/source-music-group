@@ -46,6 +46,22 @@ No architecture is built speculatively for royalty APIs that do not exist.
   different layout and changes it without notice. This never ends. It is contained by header
   fingerprinting, a user-facing column mapper, and golden fixtures — but it is ongoing manual work.
   A runbook for this (`runbooks/add-statement-format.md`) is an M2 deliverable.
+
+## First target format
+
+Duka's catalog is distributed through **Amuse**, so the Amuse royalty export is the first format
+taken end to end (confirmed 2026-07-21). Note what it does and does not cover:
+
+| | Amuse provides | Still needed from elsewhere |
+| --- | --- | --- |
+| Side of the song | Master / recording | Publishing (composition) |
+| Keyed on | ISRC, or UPC + track no. | ISWC; work title + IPI with no ISRC at all |
+| Royalty types | Distributor revenue from DSPs | Performance (PRO), mechanical (The MLC), neighbouring (SoundExchange) |
+
+Amuse alone therefore cannot exercise work-side matching, ISWC keying, or the writer-side vs
+publisher-side share model. A PRO statement and an MLC statement are required before the matching
+ladder and the split rules can be considered tested — which is why the plan calls for a
+**structurally different** second source rather than a second distributor.
 - **User friction is the biggest product risk.** The user has to find and export their
   statements. Many artists do not know their distributor login. This is a plausible way the
   product fails, and it must be tested with real people during M2 rather than assumed.

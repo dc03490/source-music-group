@@ -7,7 +7,7 @@ then misleads.
 
 ## Start-here paths
 
-**New developer, first day**
+### New developer, first day
 
 1. [domain/glossary.md](domain/glossary.md) — read this first. The music-rights domain is
    genuinely arcane, and most expensive mistakes here come from assuming a term means what it
@@ -18,22 +18,30 @@ then misleads.
    including the stacks we chose *against*.
 4. [architecture/environments.md](architecture/environments.md) — get it running.
 
-**Adding support for a new statement format** (the most common ongoing task)
+### Adding support for a new statement format (the most common ongoing task)
 
 - `runbooks/add-statement-format.md` — *not yet written (M2). It is written by mapping the second
   real format and recording what actually happened, rather than from theory.*
 
-**Working on matching or issue rules**
+### Working on the database schema
+
+1. [domain/schema.md](domain/schema.md) — the reasoning, especially the decisions that look wrong
+   until you know the domain.
+2. [domain/schema.generated.md](domain/schema.generated.md) — the structural reference, generated
+   from the Drizzle schema.
+3. [runbooks/migrations.md](runbooks/migrations.md) — how to change it safely.
+
+### Working on matching or issue rules
 
 - `domain/matching.md` *(M3)*, then `domain/rules.generated.md` *(M4, generated from the rule
   registry)*
 
-**Writing any user-facing copy**
+### Writing any user-facing copy
 
 - [compliance/claims-lexicon.md](compliance/claims-lexicon.md) — non-optional. CI fails on
   prohibited claims, including in these docs.
 
-**Operating / on call**
+### Operating / on call
 
 - [runbooks/](runbooks/) — deploy, migrations, restore, incident response.
 
