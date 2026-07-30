@@ -382,6 +382,8 @@ export default function Home() {
               <StaggerItem className="h-full">
                 <Card className="h-full">
                   <h3 className="text-base font-semibold tracking-tight">What we don&apos;t guarantee</h3>
+                  {/* lexicon-allow: missing money — negated disclaimer. This card exists to
+                      state what we do NOT promise, so it must name the thing it disclaims. */}
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     An audit surfaces potential gaps for review. We don&apos;t promise missing
                     money, recovery amounts, or outcomes.

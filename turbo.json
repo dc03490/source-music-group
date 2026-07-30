@@ -14,9 +14,17 @@
       "cache": false,
       "persistent": true
     },
-    "lint": {},
     "typecheck": {
       "dependsOn": ["^build"]
+    },
+    "docs:generate": {
+      "outputs": ["../../docs/domain/*.generated.md"]
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:migrate": {
+      "cache": false
     }
   }
 }
