@@ -127,10 +127,18 @@ SST creates its own state bucket on first run.
 > Aurora engine version that is unavailable in the region. Treat the first run as a debugging
 > session.
 
-#### 5. Immediately after the database exists
+#### 5. Immediately after Aurora exists
 
-Apply migration `0000_init.sql` and confirm it runs. It is 700+ lines that have never touched a
-database — see [migrations.md](migrations.md) and the "Known unverified" section of
+Apply the migrations and re-run the verification against Aurora:
+
+```bash
+DATABASE_URL='<aurora connection string>' pnpm --filter @source/db db:migrate
+DATABASE_URL='<aurora connection string>' pnpm --filter @source/db verify:migration
+```
+
+All nine checks should read `PASS`. Migration `0000` has already been verified against PostgreSQL
+17.6, but `infra/database.ts` pins Aurora to **16.6** — so this is confirming the same SQL on the
+version production will actually run. See the verification table in
 [../domain/schema.md](../domain/schema.md).
 
 Record real account IDs and ARNs in the team password manager, **not** in this file.

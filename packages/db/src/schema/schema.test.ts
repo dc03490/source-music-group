@@ -7,18 +7,20 @@ import * as schema from "./index";
 
 /* Schema invariant tests.
 
-   There is no database available in CI or locally, so the migration cannot be
-   applied here. What CAN be verified without one is everything that would
-   otherwise fail at apply time in production, plus the structural invariants
-   the whole security and compliance model rests on.
+   These run WITHOUT a database, which is the point: they gate every pull request
+   without CI needing Postgres credentials. They cover the structural invariants
+   the security and compliance model rests on, plus anything that would otherwise
+   only fail at migration time.
 
-   The most valuable check below is the COMMENT ON cross-reference: 39 comments
-   were hand-written into the generated migration, and one referring to a column
-   that does not exist would abort the migration mid-run.
+   The most valuable check is the COMMENT ON cross-reference: 39 comments were
+   hand-written into the generated migration, and one naming a column that does
+   not exist would abort the migration mid-run.
 
-   Still unverified until a real database exists: that the SQL executes. Applying
-   this migration to a throwaway Postgres is the first thing to do once Aurora
-   (or any local Postgres) is available. */
+   Complementary, not redundant: migration 0000 has separately been APPLIED to a
+   real PostgreSQL 17.6 and verified with `pnpm --filter @source/db
+   verify:migration`, which checks the resulting database rather than the schema
+   definition. See docs/domain/schema.md for those results. Run that script
+   against Aurora too once it exists — the pinned Aurora version is 16.6. */
 
 const MIGRATION = readFileSync(
   fileURLToPath(new URL("../../migrations/0000_init.sql", import.meta.url)),

@@ -165,12 +165,37 @@ By design, because these are findings rather than errors:
 
 Full procedure and rollback policy: [../runbooks/migrations.md](../runbooks/migrations.md).
 
-## Known unverified
+## Verification status
 
-**Migration `0000_init.sql` has never been executed.** It is 700+ lines validated by typecheck and
-introspection only — no Postgres was available when it was written. The highest-risk hand-written
-part (39 `COMMENT ON` statements, any of which could name a nonexistent column and abort the
-migration mid-run) is cross-referenced against the schema by a test. That is not the same as
-applying it.
+**Migration `0000_init.sql` has been applied and verified.** Run against PostgreSQL 17.6 on
+2026-07-29, followed by `pnpm --filter @source/db verify:migration`, which asserts nine properties
+of the *result* rather than merely that the statements ran:
 
-**Applying this migration to a throwaway Postgres is the first task once one is available.**
+| # | Check | Result |
+| --- | --- | --- |
+| 1 | 27 tables created | 27 |
+| 2 | `pg_trgm` extension installed | present |
+| 3 | 3 GIN trigram indexes exist | all 3 |
+| 4 | Both compliance `CHECK` constraints present | both |
+| 5 | **The compliance `CHECK` actually rejects an unexplained monetary value** | refused with `check_violation` |
+| 6 | `COMMENT ON` documentation landed | 37 comments |
+| 7 | Partial unique indexes on soft-deletable tables | 5 |
+| 8 | Money columns are `numeric(18,6)` | all correct |
+| 9 | Every table except `organization` has `org_id` | all covered |
+
+Check 5 is the one worth noting: it does not confirm the constraint exists, it attempts to insert a
+dollar figure with no `estimate_basis` and asserts the database refuses it. A compliance control
+nobody has watched reject anything is not known to work.
+
+Check 3 also retroactively proves the hand-added `CREATE EXTENSION pg_trgm` was **necessary** —
+`drizzle-kit` omitted it, and without it those three index creations would have failed.
+
+### What remains unverified
+
+- **Aurora specifically.** `infra/database.ts` pins Aurora PostgreSQL **16.6**; verification ran on
+  **17.6**. Nothing in the migration is version-specific, but "works on 17" is not the same
+  statement as "works on 16.6 in Aurora". Re-run `verify:migration` against Aurora after the first
+  `sst deploy`.
+- **Row-level security.** No policies exist yet; the tenant-isolation model is still application-only.
+- **Behaviour under load.** Index choices are reasoned, not measured. Revisit when there is real
+  statement volume.

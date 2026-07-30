@@ -1,7 +1,9 @@
 # Runbook: database migrations
 
-> **Status: intended procedure.** The database is not yet provisioned. This records the design so
-> it is not improvised under pressure later. Correct it the first time it is genuinely exercised.
+> **Status: partially exercised.** The `db:generate` → read SQL → `db:migrate` → `verify:migration`
+> loop has been run for real against a PostgreSQL 17.6 instance, so those steps are tested. The
+> Aurora, CI-gating, and rollback sections are still design — correct them the first time they are
+> genuinely used.
 
 ## Why migrations are gated
 
@@ -69,8 +71,25 @@ If a migration is wrong:
 
 Case 3 is the reason to read generated SQL before applying it.
 
+## Verifying a migration applied correctly
+
+`db:migrate` exiting 0 proves the statements ran, not that the result is right. Always follow with:
+
+```bash
+DATABASE_URL='…' pnpm --filter @source/db verify:migration
+```
+
+Nine checks, all of which must read `PASS`. Extend `packages/db/scripts/verify-migration.ts`
+whenever a migration adds something worth asserting — an extension, a constraint that must bite, a
+column whose type matters.
+
+Migration `0000` passed all nine against PostgreSQL 17.6 on 2026-07-29. See the table in
+[../domain/schema.md](../domain/schema.md).
+
 ## Before the first production migration
 
+- [x] The generate → review → migrate → verify loop exercised against a real database.
+- [ ] The same verification re-run against **Aurora 16.6** (verified so far only on 17.6).
 - [ ] Aurora PITR enabled, with the retention window set deliberately.
 - [ ] A restore **rehearsed** at least once. An untested backup is not a backup.
 - [ ] `restore-from-backup.md` written from that rehearsal.
